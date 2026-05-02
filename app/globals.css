@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  /* Quiet Luxury Palette */
+  --color-cream:      #FAFAF7;
+  --color-cream-dark: #F0EBE0;
+  --color-ink:        #1A1A1A;
+  --color-ink-muted:  #6B6B6B;
+  --color-ink-subtle: #C4C4C4;
+  --color-surface:    #FFFFFF;
+
+  /* Typography */
+  --font-sans:    var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-instrument-serif), Georgia, serif;
+
+  /* Radii */
+  --radius-card: 0.75rem;
+  --radius-btn:  0.5rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  background-color: #FAFAF7;
+  color: #1A1A1A;
+  height: 100%;
+}
+
+/* Reduced motion — disable flip animation */
+@media (prefers-reduced-motion: reduce) {
+  .card-inner { transition: none !important; }
+}
+
+/* Skeleton pulse */
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+.skeleton {
+  background: #E8E3D8;
+  border-radius: 6px;
+  animation: skeleton-pulse 1.6s ease-in-out infinite;
+}

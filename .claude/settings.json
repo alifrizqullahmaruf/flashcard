@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(wmic logicaldisk *)",
+      "Bash(npm config *)",
+      "PowerShell($env:npm_config_cache = \"D:\\\\npm-cache\"; npm config set cache \"D:\\\\npm-cache\")",
+      "PowerShell($env:npm_config_cache = \"D:\\\\npm-cache\"; cd \"D:\\\\PARA\\\\Project\\\\flashcard\"; npm install zod papaparse @types/papaparse --prefer-offline 2>&1 | Select-Object -Last 10)"
+    ]
+  }
+}
