@@ -1,43 +1,385 @@
 @import "tailwindcss";
 
 @theme {
-  /* Quiet Luxury Palette */
-  --color-cream:      #FAFAF7;
-  --color-cream-dark: #F0EBE0;
-  --color-ink:        #1A1A1A;
-  --color-ink-muted:  #6B6B6B;
-  --color-ink-subtle: #C4C4C4;
-  --color-surface:    #FFFFFF;
+  /* Mint & Coral Palette — Indo Youth Learning */
+  --color-mint:        #00D4A8;  /* Primary: actions, CTAs */
+  --color-mint-dark:   #00B891;  /* Hover state */
+  --color-mint-deep:   #008F73;  /* Button shadow base */
+  --color-mint-soft:   #E5FBF5;  /* Backgrounds, badges */
 
-  /* Typography */
-  --font-sans:    var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-instrument-serif), Georgia, serif;
+  --color-coral:       #FF7676;  /* Accent: highlights, errors */
+  --color-coral-dark:  #FF5252;
+  --color-coral-deep:  #E03B3B;  /* Button shadow */
+  --color-coral-soft:  #FFE5E5;
+
+  --color-sun:         #FFD23F;  /* XP / streak highlight */
+  --color-sun-dark:    #F5B800;
+  --color-sun-soft:    #FFF7D6;
+
+  --color-sky:         #4DB8FF;
+  --color-sky-dark:    #1E96E0;
+  --color-sky-soft:    #E5F4FF;
+
+  --color-purple:      #A78BFA;  /* Achievement / level up */
+  --color-purple-soft: #F3EEFF;
+
+  /* Surface & Text */
+  --color-surface:     #FFFFFF;
+  --color-bg:          #F7F9FB;
+  --color-bg-soft:     #EEF2F6;
+
+  --color-ink:         #1F2937;
+  --color-ink-muted:   #6B7280;
+  --color-ink-subtle:  #9CA3AF;
+  --color-ink-faint:   #E5E7EB;  /* Lighter, friendlier border */
+
+  --color-success:     #10B981;
+  --color-error:       #EF4444;
+
+  /* Legacy backward-compat */
+  --color-cream:      #F7F9FB;
+  --color-cream-dark: #EEF2F6;
+
+  /* Typography — DUAL FONT SYSTEM */
+  --font-sans:    var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bricolage), var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
 
   /* Radii */
-  --radius-card: 0.75rem;
-  --radius-btn:  0.5rem;
+  --radius-card: 1rem;
+  --radius-card-lg: 1.5rem;
+  --radius-btn:  0.875rem;       /* 14px — slightly bigger for friendlier feel */
+  --radius-pill: 9999px;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 
 html, body {
-  background-color: #FAFAF7;
-  color: #1A1A1A;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
   height: 100%;
 }
 
-/* Reduced motion — disable flip animation */
-@media (prefers-reduced-motion: reduce) {
-  .card-inner { transition: none !important; }
+body {
+  font-family: var(--font-sans);
+  font-feature-settings: 'cv11', 'ss01';
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Skeleton pulse */
+/* Display font helper — for hero, big numbers, section titles */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+
+/* Tabular numerics for counters */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .card-inner,
+  .bounce-in,
+  .pop-in,
+  .flame-pulse,
+  .wiggle,
+  .slide-up {
+    transition: none !important;
+    animation: none !important;
+  }
+  .btn-3d:active {
+    transform: none !important;
+  }
+}
+
+/* === ANIMATIONS === */
+
+@keyframes bounce-in {
+  0%   { transform: scale(0.6) translateY(20px); opacity: 0; }
+  60%  { transform: scale(1.05) translateY(-4px); opacity: 1; }
+  80%  { transform: scale(0.97); }
+  100% { transform: scale(1); }
+}
+.bounce-in {
+  animation: bounce-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+
+@keyframes pop-in {
+  0%   { transform: scale(0.85); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.pop-in {
+  animation: pop-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+
+@keyframes slide-up {
+  0%   { transform: translateY(16px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+.slide-up {
+  animation: slide-up 0.4s ease-out backwards;
+}
+
+@keyframes flame-pulse {
+  0%, 100% { transform: scale(1) rotate(-2deg); }
+  50%      { transform: scale(1.1) rotate(3deg); }
+}
+.flame-pulse {
+  animation: flame-pulse 2s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25%      { transform: rotate(-5deg); }
+  75%      { transform: rotate(5deg); }
+}
+.wiggle:hover {
+  animation: wiggle 0.4s ease-in-out;
+}
+
+/* === DUOLINGO-STYLE 3D BUTTON === */
+
+.btn-3d {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-radius: var(--radius-btn);
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+  user-select: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-3d:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.btn-3d:active:not(:disabled) {
+  transform: translateY(3px);
+}
+
+/* Mint variant */
+.btn-3d-mint {
+  background-color: var(--color-mint);
+  color: white;
+  box-shadow: 0 5px 0 0 var(--color-mint-deep);
+}
+.btn-3d-mint:active:not(:disabled) {
+  box-shadow: 0 2px 0 0 var(--color-mint-deep);
+}
+
+/* Coral variant */
+.btn-3d-coral {
+  background-color: var(--color-coral);
+  color: white;
+  box-shadow: 0 5px 0 0 var(--color-coral-deep);
+}
+.btn-3d-coral:active:not(:disabled) {
+  box-shadow: 0 2px 0 0 var(--color-coral-deep);
+}
+
+/* Sun variant */
+.btn-3d-sun {
+  background-color: var(--color-sun);
+  color: var(--color-ink);
+  box-shadow: 0 5px 0 0 var(--color-sun-dark);
+}
+.btn-3d-sun:active:not(:disabled) {
+  box-shadow: 0 2px 0 0 var(--color-sun-dark);
+}
+
+/* White variant (for cards on colored backgrounds) */
+.btn-3d-white {
+  background-color: white;
+  color: var(--color-mint-dark);
+  box-shadow: 0 5px 0 0 #DDDDDD;
+}
+.btn-3d-white:active:not(:disabled) {
+  box-shadow: 0 2px 0 0 #DDDDDD;
+}
+
+/* Outline variant */
+.btn-3d-outline {
+  background-color: white;
+  color: var(--color-ink);
+  border: 2px solid var(--color-ink-faint);
+  box-shadow: 0 5px 0 0 var(--color-ink-faint);
+}
+.btn-3d-outline:hover:not(:disabled) {
+  background-color: var(--color-bg-soft);
+}
+.btn-3d-outline:active:not(:disabled) {
+  box-shadow: 0 2px 0 0 var(--color-ink-faint);
+}
+
+/* === CARD STYLES === */
+
+.card-3d {
+  background: white;
+  border-radius: var(--radius-card);
+  box-shadow: 0 4px 0 0 var(--color-ink-faint);
+  border: 2px solid var(--color-ink-faint);
+}
+.card-3d-soft {
+  background: white;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-ink-faint);
+}
+
+/* Skeleton */
 @keyframes skeleton-pulse {
   0%, 100% { opacity: 1; }
-  50%       { opacity: 0.4; }
+  50%      { opacity: 0.4; }
 }
 .skeleton {
-  background: #E8E3D8;
-  border-radius: 6px;
+  background: var(--color-bg-soft);
+  border-radius: 8px;
   animation: skeleton-pulse 1.6s ease-in-out infinite;
 }
+
+/* Backward-compat — keep btn-press for older usage */
+.btn-press {
+  position: relative;
+  transition: transform 0.1s ease;
+  box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.12);
+}
+.btn-press:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.12);
+}
+
+/* ═══════════════════════════════════════════════════════
+   "KERTAS MODERN" — Paper-tactile design tokens
+   ═══════════════════════════════════════════════════════ */
+
+/* Subtle paper texture — fine noise + barely-visible line grid */
+.paper-bg {
+  background-color: var(--color-bg);
+  background-image:
+    /* Faint horizontal lines like notebook paper, very subtle */
+    linear-gradient(to bottom, transparent 0, transparent calc(100% - 1px), rgba(31, 41, 55, 0.025) calc(100% - 1px)),
+    /* Noise grain via SVG */
+    url("data:image/svg+xml;utf8,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.12 0 0 0 0 0.16 0 0 0 0 0.22 0 0 0 0.45 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  background-size: 100% 32px, 200px 200px;
+  background-attachment: fixed, fixed;
+}
+
+/* Subtle paper card — single sheet feel with very subtle texture */
+.paper-card {
+  background-color: var(--color-surface);
+  background-image: url("data:image/svg+xml;utf8,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+/* ─── Highlighter underline ─── */
+/* Use as: <span className="highlight-mint">text</span> */
+/* Real-highlighter feel: gradient covers lower 40-50% of text */
+.highlight-mint,
+.highlight-coral,
+.highlight-sun,
+.highlight-sky {
+  display: inline;
+  padding: 0 0.18em;
+  margin: 0 -0.05em;
+  border-radius: 0.15em;
+  /* slight skew via box-decoration-break for multi-line wrap */
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  font-weight: inherit;
+}
+.highlight-mint {
+  background: linear-gradient(180deg, transparent 55%, rgba(0, 212, 168, 0.42) 55%, rgba(0, 212, 168, 0.5) 95%, transparent 95%);
+}
+.highlight-coral {
+  background: linear-gradient(180deg, transparent 55%, rgba(255, 118, 118, 0.4) 55%, rgba(255, 118, 118, 0.48) 95%, transparent 95%);
+}
+.highlight-sun {
+  background: linear-gradient(180deg, transparent 55%, rgba(255, 210, 63, 0.55) 55%, rgba(255, 210, 63, 0.65) 95%, transparent 95%);
+}
+.highlight-sky {
+  background: linear-gradient(180deg, transparent 55%, rgba(77, 184, 255, 0.4) 55%, rgba(77, 184, 255, 0.48) 95%, transparent 95%);
+}
+
+/* ─── Sticker chip ─── */
+/* Tilted, slight shadow, like a real sticker stuck on paper */
+.sticker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.35em 0.75em;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  line-height: 1;
+  border: 1.5px solid currentColor;
+  box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: transform 0.15s ease;
+  white-space: nowrap;
+}
+.sticker:hover {
+  transform: rotate(0deg) translateY(-1px) !important;
+}
+/* Auto-tilt rotation variants — apply via :nth-child or class */
+.sticker-tilt-left { transform: rotate(-2deg); }
+.sticker-tilt-right { transform: rotate(2deg); }
+.sticker-tilt-mild { transform: rotate(-1deg); }
+
+.sticker-mint {
+  background: var(--color-mint-soft);
+  color: var(--color-mint-deep);
+  border-color: var(--color-mint);
+}
+.sticker-coral {
+  background: var(--color-coral-soft);
+  color: var(--color-coral-deep);
+  border-color: var(--color-coral);
+}
+.sticker-sun {
+  background: var(--color-sun-soft);
+  color: #8B5A00;
+  border-color: var(--color-sun);
+}
+.sticker-sky {
+  background: var(--color-sky-soft);
+  color: var(--color-sky-dark);
+  border-color: var(--color-sky);
+}
+.sticker-purple {
+  background: var(--color-purple-soft);
+  color: #6D28D9;
+  border-color: var(--color-purple);
+}
+
+/* ─── Tape strip (washi tape ornament) ─── */
+.tape {
+  position: relative;
+  display: inline-block;
+  padding: 0.5em 1.5em;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  /* Diagonal stripe pattern like washi tape */
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.18) 0,
+    rgba(255, 255, 255, 0.18) 4px,
+    transparent 4px,
+    transparent 10px
+  );
+  /* Soft edge fade simulating torn tape */
+  mask-image: linear-gradient(to right, transparent 0, black 6%, black 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, black 6%, black 94%, transparent 100%);
+}
+.tape-mint { background-color: var(--color-mint); color: white; }
+.tape-coral { background-color: var(--color-coral); color: white; }
+.tape-sun { background-color: var(--color-sun); color: var(--color-ink); }
+
+/* ─── Decorative imperfection wrapper ─── */
+.tilt-mild { transform: rotate(-1deg); }
+.tilt-soft { transform: rotate(1deg); }
+.tilt-extra { transform: rotate(-2deg); }

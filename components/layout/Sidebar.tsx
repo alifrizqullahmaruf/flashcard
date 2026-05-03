@@ -4,53 +4,55 @@ import { usePathname } from 'next/navigation'
 
 type IconProps = { active: boolean }
 
-function IconFolder({ active }: IconProps) {
+function IconHome({ active }: IconProps) {
+  const c = active ? '#FFFFFF' : '#6B7280'
   return (
-    <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
+    <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
       <path
-        d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"
-        stroke={active ? '#1A1A1A' : '#6B6B6B'} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+        d="M3 11l9-8 9 8v9a2 2 0 01-2 2h-4v-7H10v7H6a2 2 0 01-2-2v-9z"
+        stroke={c} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"
+        fill={active ? 'rgba(255,255,255,0.18)' : 'none'}
       />
     </svg>
   )
 }
 
-function IconSearch({ active }: IconProps) {
+function IconFolder({ active }: IconProps) {
+  const c = active ? '#FFFFFF' : '#6B7280'
   return (
-    <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
-      <circle cx="11" cy="11" r="7" stroke={active ? '#1A1A1A' : '#6B6B6B'} strokeWidth="1.5" />
-      <path d="M21 21l-4.35-4.35" stroke={active ? '#1A1A1A' : '#6B6B6B'} strokeWidth="1.5" strokeLinecap="round" />
+    <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+      <path
+        d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"
+        stroke={c} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"
+        fill={active ? 'rgba(255,255,255,0.18)' : 'none'}
+      />
     </svg>
   )
 }
 
 function IconStats({ active }: IconProps) {
+  const c = active ? '#FFFFFF' : '#6B7280'
   return (
-    <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
-      <path
-        d="M4 20V10M10 20V4M16 20v-7M22 20H2"
-        stroke={active ? '#1A1A1A' : '#6B6B6B'} strokeWidth="1.5" strokeLinecap="round"
-      />
+    <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+      <path d="M5 21V11M12 21V3M19 21v-7" stroke={c} strokeWidth="2.5" strokeLinecap="round" />
     </svg>
   )
 }
 
 function IconProfile({ active }: IconProps) {
+  const c = active ? '#FFFFFF' : '#6B7280'
   return (
-    <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
-      <circle cx="12" cy="8" r="4" stroke={active ? '#1A1A1A' : '#6B6B6B'} strokeWidth="1.5" />
-      <path
-        d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"
-        stroke={active ? '#1A1A1A' : '#6B6B6B'} strokeWidth="1.5" strokeLinecap="round"
-      />
+    <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+      <circle cx="12" cy="8" r="4" stroke={c} strokeWidth="2.2" fill={active ? 'rgba(255,255,255,0.18)' : 'none'} />
+      <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke={c} strokeWidth="2.2" strokeLinecap="round" />
     </svg>
   )
 }
 
 const links = [
-  { href: '/decks', label: 'Folder', icon: IconFolder, match: (p: string) => p === '/decks' || p.startsWith('/decks') || p.startsWith('/folders') },
-  { href: '/search', label: 'Cari', icon: IconSearch, match: (p: string) => p.startsWith('/search') },
-  { href: '/stats', label: 'Progress', icon: IconStats, match: (p: string) => p.startsWith('/stats') },
+  { href: '/', label: 'Beranda', icon: IconHome, match: (p: string) => p === '/' },
+  { href: '/decks', label: 'Folder', icon: IconFolder, match: (p: string) => p === '/decks' || p.startsWith('/decks') || p.startsWith('/folders') || p.startsWith('/search') },
+  { href: '/stats', label: 'Progres', icon: IconStats, match: (p: string) => p.startsWith('/stats') },
   { href: '/profile', label: 'Profil', icon: IconProfile, match: (p: string) => p.startsWith('/profile') },
 ]
 
@@ -58,29 +60,52 @@ export default function Sidebar() {
   const pathname = usePathname()
 
   return (
-    <aside className="hidden md:flex flex-col w-56 shrink-0 border-r border-cream-dark bg-surface min-h-screen sticky top-0">
-      <div className="px-6 py-6 border-b border-cream-dark">
-        <span className="font-display text-xl text-ink">Flashcard</span>
+    <aside className="hidden md:flex flex-col w-64 shrink-0 bg-surface min-h-screen sticky top-0 border-r border-ink-faint">
+      {/* Brand */}
+      <div className="px-6 py-7 flex items-center gap-3">
+        <div
+          className="w-11 h-11 rounded-2xl bg-mint flex items-center justify-center"
+          style={{ boxShadow: '0 4px 0 0 #008F73' }}
+        >
+          <span className="font-display text-white text-2xl leading-none">H</span>
+        </div>
+        <div>
+          <p className="font-display text-2xl text-ink leading-none tracking-tight">Hafalin</p>
+          <p className="text-ink-subtle text-[11px] font-bold uppercase tracking-wider mt-1">Belajar Seru</p>
+        </div>
       </div>
-      <nav className="flex flex-col gap-1 p-3 flex-1">
+
+      {/* Nav */}
+      <nav className="flex flex-col gap-1.5 px-3 flex-1">
         {links.map(({ href, label, icon: Icon, match }) => {
           const active = match(pathname)
           return (
             <Link
               key={href}
               href={href}
-              className={`flex items-center gap-3 h-10 px-3 rounded-lg text-sm font-medium transition-colors ${
+              aria-current={active ? 'page' : undefined}
+              className={`group relative flex items-center gap-3 h-12 px-4 rounded-btn text-sm font-extrabold transition-all duration-200 ${
                 active
-                  ? 'bg-cream text-ink'
-                  : 'text-ink-muted hover:bg-cream hover:text-ink'
+                  ? 'bg-mint text-white'
+                  : 'text-ink-muted hover:bg-bg-soft hover:text-ink active:scale-[0.98]'
               }`}
+              style={active ? { boxShadow: '0 3px 0 0 #008F73' } : undefined}
             >
+              {/* Active indicator dot */}
+              {active && (
+                <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-white rounded-r-full opacity-90" />
+              )}
               <Icon active={active} />
-              {label}
+              <span>{label}</span>
             </Link>
           )
         })}
       </nav>
+
+      {/* Footer brand mark */}
+      <div className="px-6 py-5 text-[10px] text-ink-subtle font-bold uppercase tracking-widest">
+        v1.0 · MVP
+      </div>
     </aside>
   )
 }

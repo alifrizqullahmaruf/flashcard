@@ -3,6 +3,9 @@ import { getCurrentUserId } from '@/lib/auth'
 import { getUserStats } from '@/lib/firestore/stats'
 import { getFolders } from '@/lib/firestore/folders'
 import PageHeader from '@/components/layout/PageHeader'
+import StickerChip from '@/components/ui/StickerChip'
+import PencilDivider from '@/components/ui/PencilDivider'
+import Highlight from '@/components/ui/Highlight'
 import Link from 'next/link'
 
 export default async function StatsPage() {
@@ -18,44 +21,118 @@ export default async function StatsPage() {
     .sort((a, b) => b._count.decks - a._count.decks)
     .slice(0, 5)
 
+  // Placeholder — will populate when FSRS Phase 2 streak system ships
+  const streak = 0
+  const longestStreak = 0
+  const xp = 0
+
   return (
     <>
-      <PageHeader title="Progress" />
-      <div className="flex-1 px-4 py-4 overflow-y-auto">
-        <div className="grid grid-cols-3 gap-3 mb-6">
-          <StatCard label="Folder" value={stats.folderCount} />
-          <StatCard label="Deck" value={stats.deckCount} />
-          <StatCard label="Kartu" value={stats.cardCount} />
+      <PageHeader title="Progres" />
+      <div className="flex-1 px-5 py-5 overflow-y-auto max-w-2xl mx-auto w-full">
+
+        {/* Streak hero — coral gradient card */}
+        <div
+          className="relative rounded-card-lg p-6 mb-6 overflow-hidden bounce-in"
+          style={{ background: 'linear-gradient(135deg, #FF7676 0%, #FF5252 100%)' }}
+        >
+          <div className="absolute -right-6 -top-6 w-32 h-32 rounded-full bg-white/15" />
+          <div className="absolute -right-2 -bottom-10 w-28 h-28 rounded-full bg-white/10" />
+
+          <div className="relative z-10">
+            <p className="text-white/85 text-xs font-bold uppercase tracking-wider mb-1">
+              Streak Saat Ini
+            </p>
+            <div className="flex items-baseline gap-2 mb-1">
+              <span className="text-4xl flame-pulse">🔥</span>
+              <p className="font-display text-white text-6xl tabular leading-none tracking-tight">
+                {streak}
+              </p>
+              <p className="text-white text-2xl font-extrabold ml-1">hari</p>
+            </div>
+            <p className="text-white/90 text-sm font-medium mt-2">
+              {streak > 0
+                ? <>Lanjut! Streak terpanjang <Highlight color="sun">{longestStreak} hari</Highlight></>
+                : 'Mulai belajar hari ini buat dapat streak pertama!'
+              }
+            </p>
+          </div>
         </div>
 
-        {folders.length > 0 && (
-          <div className="mb-2">
-            <p className="text-ink text-sm font-medium mb-3">Folder teratas</p>
-            <div className="border border-cream-dark rounded-2xl overflow-hidden bg-surface">
-              {topFolders.map((folder) => (
+        {/* XP + Total stats grid */}
+        <div className="grid grid-cols-2 gap-3 mb-6 pop-in" style={{ animationDelay: '80ms' }}>
+          <StatCard
+            emoji="⚡"
+            value={xp}
+            label="Total XP"
+            tone="sun"
+          />
+          <StatCard
+            emoji="🃏"
+            value={stats.cardCount}
+            label="Total Kartu"
+            tone="mint"
+          />
+        </div>
+
+        {/* Sub stats */}
+        <div className="flex items-center gap-2 mb-6 pop-in" style={{ animationDelay: '140ms' }}>
+          <StickerChip color="sky" tilt="left" icon="📁">
+            {stats.folderCount} folder
+          </StickerChip>
+          <StickerChip color="purple" tilt="right" icon="📚">
+            {stats.deckCount} deck
+          </StickerChip>
+        </div>
+
+        <PencilDivider className="mb-5" />
+
+        {/* Top folders */}
+        {folders.length > 0 ? (
+          <div className="mb-6 pop-in" style={{ animationDelay: '200ms' }}>
+            <h2 className="font-display text-xl text-ink mb-3 tracking-tight">Folder Teratas</h2>
+            <div className="card-3d-soft overflow-hidden">
+              {topFolders.map((folder, i) => (
                 <Link
                   key={folder.id}
                   href={`/folders/${folder.id}`}
-                  className="flex items-center px-4 py-4 border-b border-cream-dark last:border-b-0 gap-3 hover:bg-cream transition-colors"
+                  className="flex items-center px-4 py-4 border-b border-ink-faint last:border-b-0 gap-3 hover:bg-bg-soft transition-colors"
                 >
-                  <div className="flex-1 min-w-0">
-                    <p className="text-ink font-medium text-base truncate">{folder.name}</p>
-                    <p className="text-ink-muted text-sm mt-0.5">{folder._count.decks} deck</p>
+                  <div className="w-9 h-9 rounded-pill bg-mint-soft text-mint-deep flex items-center justify-center font-extrabold text-sm shrink-0">
+                    #{i + 1}
                   </div>
-                  <span className="text-ink-subtle text-sm">→</span>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-ink font-bold text-base truncate">{folder.name}</p>
+                    <p className="text-ink-muted text-xs mt-0.5 font-medium">{folder._count.decks} deck</p>
+                  </div>
+                  <span className="text-ink-subtle text-base">→</span>
                 </Link>
               ))}
             </div>
           </div>
+        ) : (
+          <div className="card-3d-soft py-12 px-6 flex flex-col items-center gap-3 text-center">
+            <div className="text-5xl mb-1">📊</div>
+            <p className="font-display text-2xl text-ink tracking-tight">Belum ada progres</p>
+            <p className="text-ink-muted text-sm font-medium">Mulai bikin folder dan deck untuk lihat statistik di sini.</p>
+            <Link href="/decks" className="btn-3d btn-3d-mint h-12 px-7 text-sm mt-2">
+              Mulai Sekarang
+            </Link>
+          </div>
         )}
 
-        {stats.deckCount === 0 && (
-          <div className="py-16 flex flex-col items-center gap-3 text-center border border-cream-dark rounded-2xl bg-surface">
-            <p className="font-display text-xl text-ink">Belum ada progres</p>
-            <p className="text-ink-muted text-sm">Mulai bikin folder dan deck untuk lihat statistik.</p>
-            <Link href="/decks" className="mt-2 text-ink text-sm underline underline-offset-4">
-              Mulai sekarang
-            </Link>
+        {/* Achievements placeholder (Phase 2) */}
+        {folders.length > 0 && (
+          <div className="pop-in" style={{ animationDelay: '260ms' }}>
+            <h2 className="font-display text-xl text-ink mb-3 tracking-tight">Pencapaian</h2>
+            <div className="grid grid-cols-3 gap-3">
+              <AchievementBadge emoji="🌱" label="Pemula" locked={stats.cardCount === 0} />
+              <AchievementBadge emoji="🔥" label="Streak 7" locked={streak < 7} />
+              <AchievementBadge emoji="⚡" label="100 XP" locked={xp < 100} />
+              <AchievementBadge emoji="📚" label="3 Folder" locked={stats.folderCount < 3} />
+              <AchievementBadge emoji="🎯" label="50 Kartu" locked={stats.cardCount < 50} />
+              <AchievementBadge emoji="🏆" label="30 Hari" locked={streak < 30} />
+            </div>
           </div>
         )}
       </div>
@@ -63,11 +140,43 @@ export default async function StatsPage() {
   )
 }
 
-function StatCard({ label, value }: { label: string; value: number }) {
+function StatCard({
+  emoji, value, label, tone,
+}: {
+  emoji: string
+  value: number
+  label: string
+  tone: 'sun' | 'mint'
+}) {
+  const bg = tone === 'sun' ? '#FFF7D6' : '#E5FBF5'
+  const accent = tone === 'sun' ? '#F5B800' : '#00B891'
   return (
-    <div className="border border-cream-dark rounded-2xl bg-surface px-4 py-5 flex flex-col items-center gap-1">
-      <p className="font-display text-3xl text-ink">{value}</p>
-      <p className="text-ink-muted text-xs">{label}</p>
+    <div
+      className="rounded-card-lg p-5 border-2"
+      style={{ backgroundColor: bg, borderColor: accent, boxShadow: `0 4px 0 0 ${accent}` }}
+    >
+      <div className="flex items-center justify-between mb-2">
+        <span className="text-3xl leading-none">{emoji}</span>
+      </div>
+      <p className="font-display text-4xl text-ink tabular leading-none tracking-tight">{value}</p>
+      <p className="text-ink-muted text-xs font-bold uppercase tracking-wide mt-2">{label}</p>
+    </div>
+  )
+}
+
+function AchievementBadge({ emoji, label, locked }: { emoji: string; label: string; locked: boolean }) {
+  return (
+    <div
+      className={`rounded-card p-3 flex flex-col items-center gap-1 border-2 transition-all ${
+        locked
+          ? 'border-ink-faint bg-bg-soft opacity-60 grayscale'
+          : 'border-mint bg-mint-soft'
+      }`}
+    >
+      <span className="text-3xl leading-none">{emoji}</span>
+      <p className={`text-[10px] font-bold uppercase tracking-wide text-center ${locked ? 'text-ink-subtle' : 'text-mint-deep'}`}>
+        {label}
+      </p>
     </div>
   )
 }

@@ -19,9 +19,9 @@ export default function ProfileLogoutButton() {
       type="button"
       onClick={handleLogout}
       disabled={isPending}
-      className="w-full h-14 rounded-xl border border-red-200 text-red-600 text-base font-medium hover:bg-red-50 transition-colors disabled:opacity-50"
+      className="btn-3d btn-3d-coral w-full h-14 text-base"
     >
-      {isPending ? 'Keluar...' : 'Keluar dari akun'}
+      {isPending ? 'Keluar...' : 'Keluar dari Akun'}
     </button>
   )
 }

@@ -10,6 +10,8 @@ import {
 } from 'firebase/auth'
 import { auth } from '@/lib/firebase/client'
 import { createSession } from '@/lib/actions/auth.actions'
+import Highlight from '@/components/ui/Highlight'
+import TapeStrip from '@/components/ui/TapeStrip'
 
 type Mode = 'signin' | 'signup'
 
@@ -41,7 +43,7 @@ export default function LoginPage() {
       setError(result.error ?? 'Login gagal di server.')
       return false
     }
-    router.push('/decks')
+    router.push('/')
     router.refresh()
     return true
   }
@@ -83,21 +85,62 @@ export default function LoginPage() {
   const anyLoading = loading || googleLoading
 
   return (
-    <div className="min-h-dvh bg-cream flex items-center justify-center px-6 py-8">
-      <div className="w-full max-w-sm">
-        <h1 className="font-display text-4xl text-ink mb-2">Flashcard</h1>
-        <p className="text-ink-muted text-sm mb-8">
-          {mode === 'signin' ? 'Masuk untuk mulai belajar.' : 'Buat akun baru untuk mulai.'}
-        </p>
+    <div className="min-h-dvh bg-bg flex items-center justify-center px-5 py-8 relative overflow-hidden">
+      {/* Decorative background blobs */}
+      <div className="absolute -top-20 -left-20 w-80 h-80 rounded-full bg-mint-soft opacity-60 blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-20 -right-20 w-80 h-80 rounded-full bg-coral-soft opacity-60 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 right-10 w-32 h-32 rounded-full bg-sun-soft opacity-50 blur-2xl pointer-events-none" />
+
+      <div className="w-full max-w-sm relative z-10">
+
+        {/* Logo + Brand */}
+        <div className="bounce-in flex flex-col items-center mb-6">
+          <div
+            className="w-20 h-20 rounded-3xl bg-mint flex items-center justify-center mb-4"
+            style={{ boxShadow: '0 6px 0 0 #008F73' }}
+          >
+            <span className="font-display text-white text-5xl">H</span>
+          </div>
+          <h1 className="font-display text-5xl text-ink mb-2 tracking-tight">Hafalin</h1>
+          <p className="text-ink-muted text-sm font-medium text-center px-4">
+            Belajar sebentar, <Highlight color="sun">inget selamanya</Highlight> ✨
+          </p>
+          <div className="mt-3">
+            <TapeStrip color="coral" tilt="left">Gratis · Tanpa Iklan</TapeStrip>
+          </div>
+        </div>
+
+        {/* Mode tabs */}
+        <div className="bg-surface rounded-pill p-1 flex mb-5 border-2 border-ink-faint pop-in" style={{ animationDelay: '100ms' }}>
+          <button
+            type="button"
+            onClick={() => { setMode('signin'); setError(null) }}
+            className={`flex-1 h-10 rounded-pill text-sm font-bold transition-all ${
+              mode === 'signin' ? 'bg-mint text-white shadow-sm' : 'text-ink-muted'
+            }`}
+          >
+            Masuk
+          </button>
+          <button
+            type="button"
+            onClick={() => { setMode('signup'); setError(null) }}
+            className={`flex-1 h-10 rounded-pill text-sm font-bold transition-all ${
+              mode === 'signup' ? 'bg-mint text-white shadow-sm' : 'text-ink-muted'
+            }`}
+          >
+            Daftar
+          </button>
+        </div>
 
         {/* Google Sign-In */}
         <button
           type="button"
           onClick={handleGoogle}
           disabled={anyLoading}
-          className="w-full h-14 rounded-xl border border-cream-dark bg-surface flex items-center justify-center gap-3 text-ink text-base font-medium hover:bg-cream-dark transition-colors disabled:opacity-50"
+          className="btn-3d btn-3d-outline w-full h-14 text-base normal-case tracking-normal pop-in"
+          style={{ animationDelay: '160ms', textTransform: 'none', letterSpacing: 'normal' }}
         >
-          <svg width="20" height="20" viewBox="0 0 24 24">
+          <svg width="20" height="20" viewBox="0 0 24 24" className="mr-3">
             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
             <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
             <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
@@ -106,63 +149,52 @@ export default function LoginPage() {
           {googleLoading ? 'Memproses...' : 'Lanjut dengan Google'}
         </button>
 
-        <div className="flex items-center gap-3 my-5">
-          <div className="flex-1 h-px bg-cream-dark" />
-          <span className="text-ink-subtle text-xs">atau pakai email</span>
-          <div className="flex-1 h-px bg-cream-dark" />
+        <div className="flex items-center gap-3 my-5 pop-in" style={{ animationDelay: '220ms' }}>
+          <div className="flex-1 h-px bg-ink-faint" />
+          <span className="text-ink-subtle text-xs font-bold uppercase tracking-wide">atau</span>
+          <div className="flex-1 h-px bg-ink-faint" />
         </div>
 
         {/* Email + Password Form */}
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-3 pop-in" style={{ animationDelay: '280ms' }}>
           <div className="flex flex-col gap-1.5">
-            <label htmlFor="email" className="text-ink text-sm font-medium">Email</label>
+            <label htmlFor="email" className="text-ink text-sm font-bold ml-1">Email</label>
             <input
               id="email" type="email" required value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="kamu@email.com"
-              className="h-14 rounded-xl border border-cream-dark bg-surface px-4 text-base text-ink placeholder:text-ink-subtle focus:outline-none focus:ring-2 focus:ring-ink/20"
+              className="h-14 rounded-btn border-2 border-ink-faint bg-surface px-4 text-base text-ink placeholder:text-ink-subtle font-medium focus:outline-none focus:border-mint focus:ring-4 focus:ring-mint-soft transition-all"
             />
           </div>
 
           <div className="flex flex-col gap-1.5">
-            <label htmlFor="password" className="text-ink text-sm font-medium">Password</label>
+            <label htmlFor="password" className="text-ink text-sm font-bold ml-1">Password</label>
             <input
               id="password" type="password" required minLength={6} value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Minimal 6 karakter"
-              className="h-14 rounded-xl border border-cream-dark bg-surface px-4 text-base text-ink placeholder:text-ink-subtle focus:outline-none focus:ring-2 focus:ring-ink/20"
+              className="h-14 rounded-btn border-2 border-ink-faint bg-surface px-4 text-base text-ink placeholder:text-ink-subtle font-medium focus:outline-none focus:border-mint focus:ring-4 focus:ring-mint-soft transition-all"
             />
           </div>
 
-          {error && <p className="text-red-600 text-sm bg-red-50 px-3 py-2 rounded-lg">{error}</p>}
+          {error && (
+            <div className="bg-coral-soft border-2 border-coral rounded-btn px-4 py-3 flex items-start gap-2">
+              <span className="text-base">⚠️</span>
+              <p className="text-coral-dark text-sm font-semibold">{error}</p>
+            </div>
+          )}
 
           <button
             type="submit" disabled={anyLoading}
-            className="h-14 rounded-xl bg-ink text-surface text-base font-medium hover:opacity-80 transition-opacity disabled:opacity-50"
+            className="btn-3d btn-3d-mint w-full h-14 text-base mt-2"
           >
-            {loading ? 'Memproses...' : mode === 'signin' ? 'Masuk' : 'Daftar'}
+            {loading ? 'Memproses...' : mode === 'signin' ? 'Masuk' : 'Daftar Akun'}
           </button>
         </form>
 
-        <div className="mt-6 text-center text-sm text-ink-muted">
-          {mode === 'signin' ? (
-            <>
-              Belum punya akun?{' '}
-              <button type="button" onClick={() => { setMode('signup'); setError(null) }}
-                className="text-ink underline underline-offset-4 hover:text-ink-muted">
-                Daftar di sini
-              </button>
-            </>
-          ) : (
-            <>
-              Sudah punya akun?{' '}
-              <button type="button" onClick={() => { setMode('signin'); setError(null) }}
-                className="text-ink underline underline-offset-4 hover:text-ink-muted">
-                Masuk
-              </button>
-            </>
-          )}
-        </div>
+        <p className="mt-6 text-center text-xs text-ink-subtle">
+          Dengan {mode === 'signin' ? 'masuk' : 'daftar'}, kamu setuju dengan syarat penggunaan kami.
+        </p>
       </div>
     </div>
   )

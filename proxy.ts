@@ -10,7 +10,7 @@ export function proxy(request: NextRequest) {
   }
 
   if (session && isAuthRoute) {
-    return NextResponse.redirect(new URL('/decks', request.url))
+    return NextResponse.redirect(new URL('/', request.url))
   }
 
   return NextResponse.next()
