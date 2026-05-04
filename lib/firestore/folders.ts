@@ -15,6 +15,7 @@ interface FolderDoc {
 interface DeckDoc {
   title: string
   description: string | null
+  icon?: string | null
   userId: string
   folderId: string
   cardCount: number
@@ -70,6 +71,7 @@ export async function getDecksInFolder(folderId: string, userId: string): Promis
       id: doc.id,
       title: data.title,
       description: data.description,
+      icon: data.icon ?? null,
       folderId: data.folderId,
       userId: data.userId,
       createdAt: data.createdAt.toDate(),

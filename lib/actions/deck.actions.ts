@@ -38,6 +38,7 @@ export async function createDeck(
       folderId,
       parsed.data.title,
       parsed.data.description ?? null,
+      parsed.data.icon && parsed.data.icon.length > 0 ? parsed.data.icon : null,
       cards
     )
     revalidatePath('/decks')
@@ -65,7 +66,15 @@ export async function updateDeck(
   const cards = parseCards(rawCards)
 
   try {
-    const ok = await fsUpdateDeck(deckId, userId, folderId, parsed.data.title, parsed.data.description ?? null, cards)
+    const ok = await fsUpdateDeck(
+      deckId,
+      userId,
+      folderId,
+      parsed.data.title,
+      parsed.data.description ?? null,
+      parsed.data.icon && parsed.data.icon.length > 0 ? parsed.data.icon : null,
+      cards,
+    )
     if (!ok) return { success: false, error: 'Deck tidak ditemukan' }
 
     revalidatePath(`/decks/${deckId}`)

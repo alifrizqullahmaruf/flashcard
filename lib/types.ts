@@ -44,6 +44,7 @@ export type DeckData = {
   id: string
   title: string
   description: string | null
+  icon: string | null  // user-set emoji; null = inherit from parent folder
   folderId: string
   userId: string
   createdAt: Date

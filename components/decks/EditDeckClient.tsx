@@ -1,11 +1,13 @@
 'use client'
-import { useState, useTransition } from 'react'
+import { useMemo, useState, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
 import { updateDeck } from '@/lib/actions/deck.actions'
 import { toast } from '@/lib/toast'
 import CardEditorRow from '@/components/cards/CardEditorRow'
 import CardLiveList from '@/components/cards/CardLiveList'
 import ImportModal from '@/components/cards/ImportModal'
+import IconPicker from '@/components/folders/IconPicker'
+import { resolveIconVisual } from '@/lib/folders/icons'
 import type { CardInput } from '@/lib/utils/import'
 import type { DeckWithCards, FolderData } from '@/lib/types'
 
@@ -19,7 +21,17 @@ export default function EditDeckClient({ deck, folders }: Props) {
   )
   const [error, setError] = useState<string | null>(null)
   const [importOpen, setImportOpen] = useState(false)
+  const [icon, setIcon] = useState<string | null>(deck.icon)
+  const [pickerOpen, setPickerOpen] = useState(false)
   const [isPending, startTransition] = useTransition()
+
+  // Lookup folder icon for inherit-default preview
+  const folderIcon = useMemo(() => {
+    return folders.find((f) => f.id === folderId)?.icon ?? null
+  }, [folders, folderId])
+
+  const effectiveIcon = icon ?? folderIcon
+  const previewVisual = resolveIconVisual(deck.id, effectiveIcon)
 
   const addCard = (card: CardInput) => setCards((prev) => [...prev, card])
   const deleteCard = (i: number) => setCards((prev) => prev.filter((_, idx) => idx !== i))
@@ -29,6 +41,8 @@ export default function EditDeckClient({ deck, folders }: Props) {
     e.preventDefault()
     setError(null)
     const formData = new FormData(e.currentTarget)
+    if (icon) formData.set('icon', icon)
+    else formData.delete('icon')
     startTransition(async () => {
       const result = await updateDeck(deck.id, formData, cards, folderId)
       if (!result.success) {
@@ -43,6 +57,27 @@ export default function EditDeckClient({ deck, folders }: Props) {
   return (
     <>
       <form onSubmit={handleSubmit} className="flex flex-col gap-6 pb-6">
+
+        {/* Icon picker */}
+        <div className="flex flex-col gap-2">
+          <label className="text-ink text-sm font-medium">Icon</label>
+          <button
+            type="button"
+            onClick={() => setPickerOpen(true)}
+            className="flex items-center gap-3 p-3 rounded-xl border-2 border-ink-faint bg-surface hover:border-mint transition-all active:scale-[0.98]"
+          >
+            <div className={`w-12 h-12 rounded-2xl ${previewVisual.bg} flex items-center justify-center text-2xl shrink-0`}>
+              {previewVisual.emoji}
+            </div>
+            <div className="flex-1 min-w-0 text-left">
+              <p className="text-ink font-bold text-sm">
+                {icon ? 'Custom icon' : folderIcon ? 'Ikuti folder' : 'Default (auto)'}
+              </p>
+              <p className="text-ink-muted text-xs">Klik untuk ganti</p>
+            </div>
+            <span className="text-ink-subtle text-base shrink-0">→</span>
+          </button>
+        </div>
 
         {/* Folder */}
         <div className="flex flex-col gap-2">
@@ -108,6 +143,13 @@ export default function EditDeckClient({ deck, folders }: Props) {
       </form>
 
       <ImportModal open={importOpen} onClose={() => setImportOpen(false)} onImport={importCards} />
+
+      <IconPicker
+        open={pickerOpen}
+        selected={icon}
+        onSelect={(v) => setIcon(v)}
+        onClose={() => setPickerOpen(false)}
+      />
     </>
   )
 }

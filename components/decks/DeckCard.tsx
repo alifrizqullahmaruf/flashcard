@@ -4,11 +4,20 @@ import { useState, useTransition } from 'react'
 import { deleteDeck } from '@/lib/actions/deck.actions'
 import ConfirmDialog from '@/components/ui/ConfirmDialog'
 import { toast } from '@/lib/toast'
+import { resolveIconVisual } from '@/lib/folders/icons'
 import type { DeckWithCount } from '@/lib/types'
 
-type Props = { deck: DeckWithCount }
+type Props = {
+  deck: DeckWithCount
+  /**
+   * Folder's icon, used as default when deck.icon is null (inherit pattern).
+   * Pass undefined or null when folder context not available — falls back to
+   * stack-of-cards visual.
+   */
+  folderIcon?: string | null
+}
 
-export default function DeckCard({ deck }: Props) {
+export default function DeckCard({ deck, folderIcon }: Props) {
   const [confirmOpen, setConfirmOpen] = useState(false)
   const [isPending, startTransition] = useTransition()
 
@@ -21,22 +30,35 @@ export default function DeckCard({ deck }: Props) {
   }
 
   const cardCount = deck._count.cards
+  // Effective icon: deck override → folder inherit → stack-of-cards fallback
+  const effectiveIcon = deck.icon ?? folderIcon ?? null
+  const showEmoji = !!effectiveIcon
+  const visual = showEmoji ? resolveIconVisual(deck.id, effectiveIcon) : null
 
   return (
     <>
       <div className="flex items-center px-4 py-4 border-b border-ink-faint last:border-b-0 gap-3 hover:bg-bg-soft/50 transition-colors">
         <Link href={`/decks/${deck.id}`} className="flex-1 min-w-0 flex items-center gap-3">
-          {/* Stack-of-cards visual */}
-          <div className="relative w-12 h-12 shrink-0">
-            <div className="absolute inset-0 rounded-xl bg-mint-soft border border-mint/40 transform -rotate-3" />
-            <div className="absolute inset-0 rounded-xl bg-mint-soft border border-mint/60 transform rotate-2" />
-            <div className="absolute inset-0 rounded-xl bg-mint flex items-center justify-center text-white">
-              <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
-                <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="2.2" />
-                <path d="M3 9h18" stroke="currentColor" strokeWidth="2.2" />
-              </svg>
+          {/* Icon: emoji if set/inherited, else stack-of-cards default */}
+          {showEmoji && visual ? (
+            <div
+              className={`w-12 h-12 rounded-2xl ${visual.bg} flex items-center justify-center text-2xl shrink-0`}
+              style={visual.text.startsWith('#') ? { color: visual.text } : undefined}
+            >
+              {visual.emoji}
             </div>
-          </div>
+          ) : (
+            <div className="relative w-12 h-12 shrink-0">
+              <div className="absolute inset-0 rounded-xl bg-mint-soft border border-mint/40 transform -rotate-3" />
+              <div className="absolute inset-0 rounded-xl bg-mint-soft border border-mint/60 transform rotate-2" />
+              <div className="absolute inset-0 rounded-xl bg-mint flex items-center justify-center text-white">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+                  <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="2.2" />
+                  <path d="M3 9h18" stroke="currentColor" strokeWidth="2.2" />
+                </svg>
+              </div>
+            </div>
+          )}
 
           <div className="flex-1 min-w-0">
             <p className="text-ink font-extrabold text-base leading-snug truncate">{deck.title}</p>

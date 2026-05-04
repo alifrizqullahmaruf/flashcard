@@ -70,7 +70,7 @@ export default async function FolderDetailPage({
         ) : (
           <div className="border border-cream-dark rounded-2xl overflow-hidden bg-surface">
             {decks.map((deck) => (
-              <DeckCard key={deck.id} deck={deck} />
+              <DeckCard key={deck.id} deck={deck} folderIcon={folder.icon} />
             ))}
           </div>
         )}

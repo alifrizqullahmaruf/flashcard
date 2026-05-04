@@ -25,7 +25,7 @@ export default async function NewDeckPage({
         <p className="text-ink-muted text-sm mb-4">
           Folder: <span className="text-ink font-medium">{folder.name}</span>
         </p>
-        <NewDeckClient folderId={folder.id} />
+        <NewDeckClient folderId={folder.id} folderIcon={folder.icon} />
       </div>
     </>
   )

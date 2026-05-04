@@ -5,6 +5,7 @@ import type { DeckWithCards, CardData, DeckData, FsrsState, FsrsStateName } from
 interface DeckDoc {
   title: string
   description: string | null
+  icon?: string | null
   userId: string
   folderId: string
   cardCount: number
@@ -36,6 +37,7 @@ function deckDocToData(id: string, data: DeckDoc): DeckData {
     id,
     title: data.title,
     description: data.description,
+    icon: data.icon ?? null,
     folderId: data.folderId,
     userId: data.userId,
     createdAt: data.createdAt.toDate(),
@@ -114,6 +116,7 @@ export async function createDeck(
   folderId: string,
   title: string,
   description: string | null,
+  icon: string | null,
   cards: { soal: string; jawaban: string }[]
 ): Promise<string> {
   const folderRef = userFoldersRef(userId).doc(folderId)
@@ -127,6 +130,7 @@ export async function createDeck(
   batch.set(deckRef, {
     title,
     description,
+    icon,
     userId,
     folderId,
     cardCount: cards.length,
@@ -165,6 +169,7 @@ export async function updateDeck(
   folderId: string,
   title: string,
   description: string | null,
+  icon: string | null,
   cards: { id?: string; soal: string; jawaban: string }[]
 ): Promise<boolean> {
   const deckRef = userDecksRef(userId).doc(deckId)
@@ -212,6 +217,7 @@ export async function updateDeck(
   batch.update(deckRef, {
     title,
     description,
+    icon,
     folderId,
     cardCount: cards.length,
     updatedAt: now,
