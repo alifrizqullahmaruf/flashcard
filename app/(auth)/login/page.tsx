@@ -13,6 +13,8 @@ import { createSession } from '@/lib/actions/auth.actions'
 import Highlight from '@/components/ui/Highlight'
 import TapeStrip from '@/components/ui/TapeStrip'
 
+export const dynamic = 'force-dynamic'
+
 type Mode = 'signin' | 'signup'
 
 const ERROR_MAP: Record<string, string> = {
