@@ -5,6 +5,7 @@ import type { FolderData, FolderWithCount, DeckWithCount } from '@/lib/types'
 interface FolderDoc {
   name: string
   description: string | null
+  icon?: string | null
   userId: string
   deckCount: number
   createdAt: Timestamp
@@ -26,6 +27,7 @@ function folderDocToData(id: string, data: FolderDoc): FolderData {
     id,
     name: data.name,
     description: data.description,
+    icon: data.icon ?? null,
     userId: data.userId,
     createdAt: data.createdAt.toDate(),
     updatedAt: data.updatedAt.toDate(),
@@ -80,13 +82,15 @@ export async function getDecksInFolder(folderId: string, userId: string): Promis
 export async function createFolder(
   userId: string,
   name: string,
-  description: string | null
+  description: string | null,
+  icon: string | null
 ): Promise<string> {
   const ref = userFoldersRef(userId).doc()
   const now = new Date()
   await ref.set({
     name,
     description,
+    icon,
     userId,
     deckCount: 0,
     createdAt: now,
@@ -99,13 +103,14 @@ export async function updateFolder(
   folderId: string,
   userId: string,
   name: string,
-  description: string | null
+  description: string | null,
+  icon: string | null
 ): Promise<boolean> {
   const ref = userFoldersRef(userId).doc(folderId)
   const snap = await ref.get()
   if (!snap.exists) return false
 
-  await ref.update({ name, description, updatedAt: new Date() })
+  await ref.update({ name, description, icon, updatedAt: new Date() })
   return true
 }
 

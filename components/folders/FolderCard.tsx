@@ -4,24 +4,10 @@ import { useState, useTransition } from 'react'
 import { deleteFolder } from '@/lib/actions/folder.actions'
 import ConfirmDialog from '@/components/ui/ConfirmDialog'
 import { toast } from '@/lib/toast'
+import { resolveIconVisual } from '@/lib/folders/icons'
 import type { FolderWithCount } from '@/lib/types'
 
 type Props = { folder: FolderWithCount }
-
-// Deterministic color rotation by id hash (so each folder keeps the same color)
-const COLOR_VARIANTS = [
-  { bg: 'bg-mint-soft', text: 'text-mint-deep', emoji: '📘' },
-  { bg: 'bg-coral-soft', text: 'text-coral-deep', emoji: '📕' },
-  { bg: 'bg-sun-soft', text: 'text-ink', emoji: '📒' },
-  { bg: 'bg-sky-soft', text: 'text-sky-dark', emoji: '📗' },
-  { bg: 'bg-purple-soft', text: '#6D28D9', emoji: '📓' },
-] as const
-
-function colorFor(id: string) {
-  let hash = 0
-  for (let i = 0; i < id.length; i++) hash = (hash * 31 + id.charCodeAt(i)) | 0
-  return COLOR_VARIANTS[Math.abs(hash) % COLOR_VARIANTS.length]
-}
 
 export default function FolderCard({ folder }: Props) {
   const [confirmOpen, setConfirmOpen] = useState(false)
@@ -36,7 +22,7 @@ export default function FolderCard({ folder }: Props) {
   }
 
   const deckCount = folder._count.decks
-  const c = colorFor(folder.id)
+  const c = resolveIconVisual(folder.id, folder.icon)
 
   return (
     <>
@@ -44,7 +30,7 @@ export default function FolderCard({ folder }: Props) {
         <Link href={`/folders/${folder.id}`} className="flex-1 min-w-0 flex items-center gap-3">
           <div
             className={`w-12 h-12 rounded-2xl ${c.bg} flex items-center justify-center text-2xl shrink-0`}
-            style={typeof c.text === 'string' && c.text.startsWith('#') ? { color: c.text } : undefined}
+            style={c.text.startsWith('#') ? { color: c.text } : undefined}
           >
             {c.emoji}
           </div>

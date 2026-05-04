@@ -30,6 +30,7 @@ export type FolderData = {
   id: string
   name: string
   description: string | null
+  icon: string | null  // emoji string set by user; null = use deterministic fallback
   userId: string
   createdAt: Date
   updatedAt: Date

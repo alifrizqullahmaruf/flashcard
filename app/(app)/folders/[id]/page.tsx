@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getCurrentUserId } from '@/lib/auth'
 import { getFolderById, getDecksInFolder } from '@/lib/firestore/folders'
+import { resolveIconVisual } from '@/lib/folders/icons'
 import DeckCard from '@/components/decks/DeckCard'
 import PageHeader from '@/components/layout/PageHeader'
 
@@ -35,6 +36,25 @@ export default async function FolderDetailPage({
       />
 
       <div className="flex-1 px-4 py-4">
+        {/* Folder icon hero */}
+        <div className="flex items-center gap-4 mb-4">
+          {(() => {
+            const v = resolveIconVisual(folder.id, folder.icon)
+            return (
+              <div
+                className={`w-16 h-16 rounded-card-lg ${v.bg} flex items-center justify-center text-4xl shrink-0`}
+                style={v.text.startsWith('#') ? { color: v.text } : undefined}
+              >
+                {v.emoji}
+              </div>
+            )
+          })()}
+          <div className="flex-1 min-w-0">
+            <p className="text-ink-muted text-xs font-bold uppercase tracking-wide">Folder</p>
+            <p className="text-ink font-display text-xl tracking-tight truncate">{folder.name}</p>
+          </div>
+        </div>
+
         {folder.description && (
           <p className="text-ink-muted text-sm mb-4">{folder.description}</p>
         )}

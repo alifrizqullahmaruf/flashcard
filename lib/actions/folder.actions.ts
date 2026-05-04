@@ -22,7 +22,8 @@ export async function createFolder(formData: FormData): Promise<ActionResult<{ i
   const id = await fsCreateFolder(
     userId,
     parsed.data.name,
-    parsed.data.description ?? null
+    parsed.data.description ?? null,
+    parsed.data.icon && parsed.data.icon.length > 0 ? parsed.data.icon : null
   )
 
   revalidatePath('/decks')
@@ -39,7 +40,13 @@ export async function updateFolder(folderId: string, formData: FormData): Promis
     return { success: false, error: errs.name?.[0] ?? errs.description?.[0] ?? 'Input tidak valid' }
   }
 
-  const ok = await fsUpdateFolder(folderId, userId, parsed.data.name, parsed.data.description ?? null)
+  const ok = await fsUpdateFolder(
+    folderId,
+    userId,
+    parsed.data.name,
+    parsed.data.description ?? null,
+    parsed.data.icon && parsed.data.icon.length > 0 ? parsed.data.icon : null
+  )
   if (!ok) return { success: false, error: 'Folder tidak ditemukan' }
 
   revalidatePath('/decks')
