@@ -106,7 +106,12 @@ export default function QuizCarousel({ cards, deckId }: Props) {
 
     // Auto-advance setelah delay
     const delay = isCorrect ? FEEDBACK_DELAY_CORRECT : FEEDBACK_DELAY_WRONG
-    setTimeout(() => scrollToIndex(currentIndex + 1), delay)
+    setTimeout(() => {
+      const container = containerRef.current
+      if (!container) return
+      const liveIndex = Math.round(container.scrollLeft / container.clientWidth)
+      scrollToIndex(liveIndex + 1)
+    }, delay)
   }
 
   // Keyboard nav
