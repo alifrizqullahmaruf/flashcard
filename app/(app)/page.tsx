@@ -3,23 +3,31 @@ import { redirect } from 'next/navigation'
 import { getCurrentUser } from '@/lib/auth'
 import { getFolders } from '@/lib/firestore/folders'
 import { getUserStats } from '@/lib/firestore/stats'
+import { getUserData } from '@/lib/firestore/user'
 import Highlight from '@/components/ui/Highlight'
 import StickerChip from '@/components/ui/StickerChip'
+
+export const dynamic = 'force-dynamic'
 
 export default async function HomePage() {
   const user = await getCurrentUser()
   if (!user) redirect('/login')
 
-  const [folders, stats] = await Promise.all([
+  const [folders, stats, userData] = await Promise.all([
     getFolders(user.uid),
     getUserStats(user.uid),
+    getUserData(user.uid),
   ])
 
-  // Placeholder data until FSRS streak system ships (Phase 2)
-  const streak = 0
-  const xp = 0
-  const dailyGoal = 10
-  const cardsToday = 0
+  // Reset cardsStudiedToday display if lastStudyDate is not today
+  // (user doc may have stale value from yesterday)
+  const todayDateForUser = new Intl.DateTimeFormat('en-CA', { timeZone: userData.timezone }).format(new Date())
+  const isLastStudyToday = userData.lastStudyDate === todayDateForUser
+
+  const streak = userData.currentStreak
+  const xp = stats.totalReps  // 1 review = 1 XP for now (simple proxy)
+  const dailyGoal = userData.dailyGoal
+  const cardsToday = isLastStudyToday ? userData.cardsStudiedToday : 0
   const goalProgress = Math.min((cardsToday / dailyGoal) * 100, 100)
 
   const firstName = user.email?.split('@')[0]?.split('.')[0] ?? 'kamu'

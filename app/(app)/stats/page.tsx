@@ -2,29 +2,34 @@ import { redirect } from 'next/navigation'
 import { getCurrentUserId } from '@/lib/auth'
 import { getUserStats } from '@/lib/firestore/stats'
 import { getFolders } from '@/lib/firestore/folders'
+import { getUserData } from '@/lib/firestore/user'
 import PageHeader from '@/components/layout/PageHeader'
 import StickerChip from '@/components/ui/StickerChip'
 import PencilDivider from '@/components/ui/PencilDivider'
 import Highlight from '@/components/ui/Highlight'
 import Link from 'next/link'
 
+export const dynamic = 'force-dynamic'
+
 export default async function StatsPage() {
   const userId = await getCurrentUserId()
   if (!userId) redirect('/login')
 
-  const [stats, folders] = await Promise.all([
+  const [stats, folders, userData] = await Promise.all([
     getUserStats(userId),
     getFolders(userId),
+    getUserData(userId),
   ])
 
   const topFolders = [...folders]
     .sort((a, b) => b._count.decks - a._count.decks)
     .slice(0, 5)
 
-  // Placeholder — will populate when FSRS Phase 2 streak system ships
-  const streak = 0
-  const longestStreak = 0
-  const xp = 0
+  const streak = userData.currentStreak
+  const longestStreak = userData.longestStreak
+  // XP: 1 review session = 1 XP for now (simple proxy until proper XP system ships)
+  const xp = stats.totalReps
+  const masteryPct = stats.cardCount > 0 ? Math.round((stats.masteredCount / stats.cardCount) * 100) : 0
 
   return (
     <>
@@ -76,14 +81,67 @@ export default async function StatsPage() {
         </div>
 
         {/* Sub stats */}
-        <div className="flex items-center gap-2 mb-6 pop-in" style={{ animationDelay: '140ms' }}>
+        <div className="flex items-center gap-2 mb-6 pop-in flex-wrap" style={{ animationDelay: '140ms' }}>
           <StickerChip color="sky" tilt="left" icon="📁">
             {stats.folderCount} folder
           </StickerChip>
           <StickerChip color="purple" tilt="right" icon="📚">
             {stats.deckCount} deck
           </StickerChip>
+          {stats.dueTodayCount > 0 && (
+            <StickerChip color="coral" tilt="left" icon="⏰">
+              {stats.dueTodayCount} perlu review
+            </StickerChip>
+          )}
         </div>
+
+        {/* Mastery progress */}
+        {stats.cardCount > 0 && (
+          <div className="mb-6 pop-in" style={{ animationDelay: '180ms' }}>
+            <h2 className="font-display text-xl text-ink mb-3 tracking-tight">Progres Belajar</h2>
+            <div className="card-3d-soft p-5">
+              <div className="flex items-baseline justify-between mb-2">
+                <p className="font-display text-3xl text-ink tabular leading-none tracking-tight">
+                  {stats.masteredCount}<span className="text-ink-muted text-xl"> / {stats.cardCount}</span>
+                </p>
+                <p className="text-mint-deep text-sm font-bold">{masteryPct}% mastery</p>
+              </div>
+              <p className="text-ink-muted text-xs font-bold uppercase tracking-wide mb-3">
+                Kartu sudah dikuasai
+              </p>
+
+              <div className="h-3 rounded-pill bg-bg-soft overflow-hidden mb-4">
+                <div
+                  className="h-full rounded-pill transition-all"
+                  style={{
+                    width: `${masteryPct}%`,
+                    background: 'linear-gradient(90deg, #00D4A8 0%, #00B891 100%)',
+                  }}
+                />
+              </div>
+
+              <div className="grid grid-cols-3 gap-2 text-center">
+                <MiniStat value={stats.newCount} label="Baru" tone="default" />
+                <MiniStat value={stats.learningCount} label="Belajar" tone="sun" />
+                <MiniStat value={stats.masteredCount} label="Hafal" tone="mint" />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Activity stats */}
+        {stats.totalReps > 0 && (
+          <div className="grid grid-cols-2 gap-3 mb-6 pop-in" style={{ animationDelay: '220ms' }}>
+            <div className="card-3d-soft p-4 text-center">
+              <p className="font-display text-3xl text-ink tabular leading-none">{stats.totalReps}</p>
+              <p className="text-xs text-ink-muted mt-1.5 font-bold uppercase tracking-wide">Total Review</p>
+            </div>
+            <div className="card-3d-soft p-4 text-center">
+              <p className="font-display text-3xl text-ink tabular leading-none">{stats.totalLapses}</p>
+              <p className="text-xs text-ink-muted mt-1.5 font-bold uppercase tracking-wide">Pernah Lupa</p>
+            </div>
+          </div>
+        )}
 
         <PencilDivider className="mb-5" />
 
@@ -160,6 +218,17 @@ function StatCard({
       </div>
       <p className="font-display text-4xl text-ink tabular leading-none tracking-tight">{value}</p>
       <p className="text-ink-muted text-xs font-bold uppercase tracking-wide mt-2">{label}</p>
+    </div>
+  )
+}
+
+function MiniStat({ value, label, tone }: { value: number; label: string; tone: 'default' | 'sun' | 'mint' }) {
+  const bgClass = tone === 'mint' ? 'bg-mint-soft' : tone === 'sun' ? 'bg-sun-soft' : 'bg-bg-soft'
+  const textClass = tone === 'mint' ? 'text-mint-deep' : tone === 'sun' ? 'text-ink' : 'text-ink-muted'
+  return (
+    <div className={`${bgClass} rounded-card py-2.5 px-2`}>
+      <p className={`font-display text-xl ${textClass} tabular leading-none`}>{value}</p>
+      <p className={`text-[10px] mt-1 font-bold uppercase tracking-wide ${textClass} opacity-80`}>{label}</p>
     </div>
   )
 }
