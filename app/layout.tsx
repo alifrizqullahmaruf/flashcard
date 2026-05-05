@@ -31,7 +31,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="id" className={`${jakarta.variable} ${bricolage.variable} antialiased`}>
-      <body className="font-sans" style={{ backgroundColor: '#F7F9FB', color: '#1F2937' }}>
+      <body className="font-sans" style={{ color: '#1F2937' }}>
         {children}
       </body>
     </html>

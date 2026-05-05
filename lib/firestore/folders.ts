@@ -1,3 +1,4 @@
+import { cache } from 'react'
 import { adminDb } from '@/lib/firebase/admin'
 import { FieldValue, type Timestamp } from 'firebase-admin/firestore'
 import type { FolderData, FolderWithCount, DeckWithCount } from '@/lib/types'
@@ -43,7 +44,7 @@ function userDecksRef(userId: string) {
   return adminDb.collection('users').doc(userId).collection('decks')
 }
 
-export async function getFolders(userId: string): Promise<FolderWithCount[]> {
+export const getFolders = cache(async (userId: string): Promise<FolderWithCount[]> => {
   const snap = await userFoldersRef(userId).orderBy('createdAt', 'desc').get()
   return snap.docs.map((doc) => {
     const data = doc.data() as FolderDoc
@@ -52,7 +53,7 @@ export async function getFolders(userId: string): Promise<FolderWithCount[]> {
       _count: { decks: data.deckCount ?? 0 },
     }
   })
-}
+})
 
 export async function getFolderById(folderId: string, userId: string): Promise<FolderData | null> {
   const snap = await userFoldersRef(userId).doc(folderId).get()

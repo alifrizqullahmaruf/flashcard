@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useT } from '@/components/i18n/LocaleProvider'
 
 type IconProps = { active: boolean }
 
@@ -50,27 +51,29 @@ function IconProfile({ active }: IconProps) {
 }
 
 const links = [
-  { href: '/', label: 'Beranda', icon: IconHome, match: (p: string) => p === '/' },
-  { href: '/decks', label: 'Folder', icon: IconFolder, match: (p: string) => p === '/decks' || p.startsWith('/decks') || p.startsWith('/folders') || p.startsWith('/search') },
-  { href: '/stats', label: 'Progres', icon: IconStats, match: (p: string) => p.startsWith('/stats') },
-  { href: '/profile', label: 'Profil', icon: IconProfile, match: (p: string) => p.startsWith('/profile') },
+  { href: '/', labelKey: 'nav.home' as const, icon: IconHome, match: (p: string) => p === '/' },
+  { href: '/decks', labelKey: 'nav.folder' as const, icon: IconFolder, match: (p: string) => p === '/decks' || p.startsWith('/decks') || p.startsWith('/folders') || p.startsWith('/search') },
+  { href: '/stats', labelKey: 'nav.progress' as const, icon: IconStats, match: (p: string) => p.startsWith('/stats') },
+  { href: '/profile', labelKey: 'nav.profile' as const, icon: IconProfile, match: (p: string) => p.startsWith('/profile') },
 ]
 
 export default function BottomNav() {
   const pathname = usePathname()
+  const t = useT()
 
   return (
     <nav
       className="fixed bottom-3 left-3 right-3 z-40 md:hidden"
       style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
-      aria-label="Navigasi utama"
+      aria-label={t('nav.home')}
     >
       <div
         className="bg-surface rounded-pill flex items-center justify-around p-1.5 border-2 border-ink-faint"
         style={{ boxShadow: '0 4px 0 0 #E5E7EB, 0 8px 24px -4px rgba(0,0,0,0.08)' }}
       >
-        {links.map(({ href, label, icon: Icon, match }) => {
+        {links.map(({ href, labelKey, icon: Icon, match }) => {
           const active = match(pathname)
+          const label = t(labelKey)
           return (
             <Link
               key={href}

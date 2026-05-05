@@ -2,6 +2,8 @@ import { adminDb } from '@/lib/firebase/admin'
 import { Timestamp } from 'firebase-admin/firestore'
 import { applyRating, type FsrsRating } from '@/lib/fsrs/scheduler'
 import { updateStreakInTransaction } from '@/lib/firestore/user'
+import { logReviewEventInTx } from '@/lib/firestore/review-events'
+import { DEFAULT_TIMEZONE, isValidTimezone } from '@/lib/utils/timezone'
 import type { CardData, FsrsState, FsrsStateName } from '@/lib/types'
 
 interface CardDoc {
@@ -140,12 +142,34 @@ export async function rateCardInTransaction(
     const snap = await tx.get(ref)
     if (!snap.exists) throw new Error('Kartu tidak ditemukan')
 
-    // Read user doc for streak update (also acquires read lock)
+    // Read user doc — returns timezone string for dateKey computation
+    const userSnap = await tx.get(adminDb.collection('users').doc(userId))
+    const userData = userSnap.data() as { timezone?: string } | undefined
+    const tz = userData?.timezone && isValidTimezone(userData.timezone)
+      ? userData.timezone
+      : DEFAULT_TIMEZONE
+
+    // Apply streak update (uses already-fetched user data semantics; reads inside helper)
     await updateStreakInTransaction(tx, userId, now)
 
     // Now compute writes
     const card = cardDocToData(snap.id, deckId, snap.data() as CardDoc)
     const { nextState } = applyRating(card, now, rating)
     tx.update(ref, fsrsStateToFirestore(nextState, now))
+
+    // Append review event for stats/heatmap
+    logReviewEventInTx(
+      tx,
+      userId,
+      {
+        cardId,
+        deckId,
+        rating,
+        prevState: card.state,
+        newState: nextState.state,
+        timestamp: now,
+      },
+      tz
+    )
   })
 }

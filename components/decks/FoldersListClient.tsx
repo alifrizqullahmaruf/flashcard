@@ -2,11 +2,13 @@
 import Link from 'next/link'
 import { useState, useMemo } from 'react'
 import FolderCard from '@/components/folders/FolderCard'
+import { useT } from '@/components/i18n/LocaleProvider'
 import type { FolderWithCount } from '@/lib/types'
 
 type Props = { folders: FolderWithCount[] }
 
 export default function FoldersListClient({ folders }: Props) {
+  const t = useT()
   const [query, setQuery] = useState('')
 
   const filtered = useMemo(() => {
@@ -30,7 +32,7 @@ export default function FoldersListClient({ folders }: Props) {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Cari folder..."
+            placeholder={t('decks.search_placeholder')}
             className="w-full h-12 rounded-pill border border-ink-faint bg-surface pl-11 pr-4 text-sm text-ink placeholder:text-ink-subtle focus:outline-none focus:border-mint focus:ring-2 focus:ring-mint-soft"
           />
           {query && (
@@ -38,7 +40,7 @@ export default function FoldersListClient({ folders }: Props) {
               href={`/search?q=${encodeURIComponent(query)}`}
               className="absolute right-4 top-1/2 -translate-y-1/2 text-mint-dark text-xs font-bold"
             >
-              Cari di semua deck →
+              {t('decks.search_in_decks')}
             </Link>
           )}
         </div>
@@ -47,18 +49,15 @@ export default function FoldersListClient({ folders }: Props) {
       {folders.length === 0 ? (
         <div className="bg-surface border-2 border-dashed border-ink-faint rounded-card-lg p-10 text-center mt-4">
           <div className="text-6xl mb-4">📂</div>
-          <h3 className="font-extrabold text-ink text-xl mb-1">Belum ada folder</h3>
-          <p className="text-ink-muted text-sm mb-5">Buat folder pertamamu untuk mulai mengelompokkan deck.</p>
-          <Link
-            href="/folders/new"
-            className="btn-3d btn-3d-mint h-12 px-7 text-sm"
-          >
-            + Buat Folder
+          <h3 className="font-extrabold text-ink text-xl mb-1">{t('decks.empty_title')}</h3>
+          <p className="text-ink-muted text-sm mb-5">{t('decks.empty_desc')}</p>
+          <Link href="/folders/new" className="btn-3d btn-3d-mint h-12 px-7 text-sm">
+            {t('decks.empty_create')}
           </Link>
         </div>
       ) : filtered.length === 0 ? (
         <div className="py-12 text-center">
-          <p className="text-ink-muted text-sm">Tidak ada folder cocok dengan &quot;{query}&quot;</p>
+          <p className="text-ink-muted text-sm">{t('decks.no_match', { query })}</p>
         </div>
       ) : (
         <div className="bg-surface border border-ink-faint rounded-card-lg overflow-hidden">

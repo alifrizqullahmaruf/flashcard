@@ -1,11 +1,13 @@
+import { cache } from 'react'
 import { adminDb } from '@/lib/firebase/admin'
 import { FieldValue, Timestamp, type Transaction } from 'firebase-admin/firestore'
 import { computeTodayDate, computeYesterdayDate, DEFAULT_TIMEZONE, isValidTimezone } from '@/lib/utils/timezone'
-import type { UserData } from '@/lib/types'
+import type { Locale, UserData } from '@/lib/types'
 
 interface UserDoc {
   email?: string | null
   timezone?: string
+  language?: Locale
   currentStreak?: number
   longestStreak?: number
   lastStudyDate?: string | null
@@ -17,6 +19,7 @@ interface UserDoc {
 }
 
 const DEFAULT_DAILY_GOAL = 10
+const DEFAULT_LANGUAGE: Locale = 'id'
 
 function userRef(userId: string) {
   return adminDb.collection('users').doc(userId)
@@ -27,6 +30,7 @@ function docToUserData(uid: string, data: UserDoc): UserData {
     uid,
     email: data.email ?? null,
     timezone: data.timezone && isValidTimezone(data.timezone) ? data.timezone : DEFAULT_TIMEZONE,
+    language: data.language === 'en' || data.language === 'id' ? data.language : DEFAULT_LANGUAGE,
     currentStreak: data.currentStreak ?? 0,
     longestStreak: data.longestStreak ?? 0,
     lastStudyDate: data.lastStudyDate ?? null,
@@ -39,16 +43,42 @@ function docToUserData(uid: string, data: UserDoc): UserData {
 }
 
 /**
- * Read user profile. Returns defaults if document doesn't exist yet.
- * Use this for read-only display (stats, home page).
+ * Update user's language preference.
+ * Creates user doc if not exists.
  */
-export async function getUserData(userId: string): Promise<UserData> {
+export async function setUserLanguage(userId: string, language: Locale): Promise<void> {
+  if (language !== 'id' && language !== 'en') throw new Error('Invalid language')
+
+  const ref = userRef(userId)
+  const snap = await ref.get()
+  if (snap.exists) {
+    await ref.update({ language, updatedAt: FieldValue.serverTimestamp() })
+  } else {
+    await ref.set({
+      language,
+      timezone: DEFAULT_TIMEZONE,
+      dailyGoal: DEFAULT_DAILY_GOAL,
+      currentStreak: 0,
+      longestStreak: 0,
+      cardsStudiedToday: 0,
+      streakFreezes: 0,
+      createdAt: FieldValue.serverTimestamp(),
+      updatedAt: FieldValue.serverTimestamp(),
+    })
+  }
+}
+
+/**
+ * Read user profile. Returns defaults if document doesn't exist yet.
+ * Cached per-request via React.cache — multiple callers in same render share one read.
+ */
+export const getUserData = cache(async (userId: string): Promise<UserData> => {
   const snap = await userRef(userId).get()
   if (!snap.exists) {
     return docToUserData(userId, {})
   }
   return docToUserData(userId, snap.data() as UserDoc)
-}
+})
 
 /**
  * Compute the user document update for a study session, given current state.

@@ -53,16 +53,32 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html, body {
+html {
   background-color: var(--color-bg);
   color: var(--color-ink);
   min-height: 100%;
 }
 
+/* === LUSH BACKGROUND — applied directly to body =========================
+ * Layered backgrounds (top to bottom in CSS = front to back in render):
+ *   1. Dot grid pattern (subtle notebook feel)
+ *   2-5. Four soft pastel color blobs in corners (mint, sun, coral, sky)
+ *   6. Solid base color
+ * All fixed-attachment so bg stays put while content scrolls. */
 body {
   font-family: var(--font-sans);
   font-feature-settings: 'cv11', 'ss01';
   -webkit-tap-highlight-color: transparent;
+  min-height: 100dvh;
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(circle at center, rgba(31, 41, 55, 0.07) 1px, transparent 1.4px),
+    radial-gradient(ellipse 70% 55% at 5% 0%, rgba(0, 212, 168, 0.18), transparent 60%),
+    radial-gradient(ellipse 55% 45% at 95% 8%, rgba(255, 210, 63, 0.16), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 0% 100%, rgba(255, 118, 118, 0.14), transparent 60%),
+    radial-gradient(ellipse 55% 55% at 100% 95%, rgba(77, 184, 255, 0.13), transparent 60%);
+  background-size: 28px 28px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  background-attachment: fixed;
 }
 
 /* Display font helper — for hero, big numbers, section titles */
@@ -128,6 +144,14 @@ body {
 .flame-pulse {
   animation: flame-pulse 2s ease-in-out infinite;
   display: inline-block;
+}
+
+@keyframes tab-fade-in {
+  0%   { transform: translateY(8px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+.tab-fade-in {
+  animation: tab-fade-in 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 @keyframes wiggle {

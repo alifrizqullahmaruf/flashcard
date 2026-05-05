@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useT } from '@/components/i18n/LocaleProvider'
 
 type IconProps = { active: boolean }
 
@@ -50,14 +51,15 @@ function IconProfile({ active }: IconProps) {
 }
 
 const links = [
-  { href: '/', label: 'Beranda', icon: IconHome, match: (p: string) => p === '/' },
-  { href: '/decks', label: 'Folder', icon: IconFolder, match: (p: string) => p === '/decks' || p.startsWith('/decks') || p.startsWith('/folders') || p.startsWith('/search') },
-  { href: '/stats', label: 'Progres', icon: IconStats, match: (p: string) => p.startsWith('/stats') },
-  { href: '/profile', label: 'Profil', icon: IconProfile, match: (p: string) => p.startsWith('/profile') },
+  { href: '/', labelKey: 'nav.home' as const, icon: IconHome, match: (p: string) => p === '/' },
+  { href: '/decks', labelKey: 'nav.folder' as const, icon: IconFolder, match: (p: string) => p === '/decks' || p.startsWith('/decks') || p.startsWith('/folders') || p.startsWith('/search') },
+  { href: '/stats', labelKey: 'nav.progress' as const, icon: IconStats, match: (p: string) => p.startsWith('/stats') },
+  { href: '/profile', labelKey: 'nav.profile' as const, icon: IconProfile, match: (p: string) => p.startsWith('/profile') },
 ]
 
 export default function Sidebar() {
   const pathname = usePathname()
+  const t = useT()
 
   return (
     <aside className="hidden md:flex flex-col w-64 shrink-0 bg-surface min-h-screen sticky top-0 border-r border-ink-faint">
@@ -71,13 +73,13 @@ export default function Sidebar() {
         </div>
         <div>
           <p className="font-display text-2xl text-ink leading-none tracking-tight">Hafalin</p>
-          <p className="text-ink-subtle text-[11px] font-bold uppercase tracking-wider mt-1">Belajar Seru</p>
+          <p className="text-ink-subtle text-[11px] font-bold uppercase tracking-wider mt-1">{t('nav.brand_tagline')}</p>
         </div>
       </div>
 
       {/* Nav */}
       <nav className="flex flex-col gap-1.5 px-3 flex-1">
-        {links.map(({ href, label, icon: Icon, match }) => {
+        {links.map(({ href, labelKey, icon: Icon, match }) => {
           const active = match(pathname)
           return (
             <Link
@@ -91,12 +93,11 @@ export default function Sidebar() {
               }`}
               style={active ? { boxShadow: '0 3px 0 0 #008F73' } : undefined}
             >
-              {/* Active indicator dot */}
               {active && (
                 <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-white rounded-r-full opacity-90" />
               )}
               <Icon active={active} />
-              <span>{label}</span>
+              <span>{t(labelKey)}</span>
             </Link>
           )
         })}

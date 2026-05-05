@@ -1,13 +1,31 @@
 import { redirect } from 'next/navigation'
-import { getCurrentUserId } from '@/lib/auth'
-import { getUserStats } from '@/lib/firestore/stats'
-import { getFolders } from '@/lib/firestore/folders'
-import { getUserData } from '@/lib/firestore/user'
-import PageHeader from '@/components/layout/PageHeader'
-import StickerChip from '@/components/ui/StickerChip'
-import PencilDivider from '@/components/ui/PencilDivider'
-import Highlight from '@/components/ui/Highlight'
 import Link from 'next/link'
+import { getCurrentUserId } from '@/lib/auth'
+import {
+  getUserStats,
+  getDailyActivity,
+  getForecast,
+  getRetentionRate,
+  getMasteryByFolder,
+  getIntervalDistribution,
+  getPersonalRecords,
+} from '@/lib/firestore/stats'
+import { getUserData } from '@/lib/firestore/user'
+import { computeAllAchievements } from '@/lib/achievements'
+import { t } from '@/lib/i18n/translations'
+
+import PageHeader from '@/components/layout/PageHeader'
+import Highlight from '@/components/ui/Highlight'
+import StatsTabs from '@/components/stats/StatsTabs'
+import MasteryDonut from '@/components/stats/MasteryDonut'
+import RetentionGauge from '@/components/stats/RetentionGauge'
+import MasteryByFolder from '@/components/stats/MasteryByFolder'
+import CalendarHeatmap from '@/components/stats/CalendarHeatmap'
+import ReviewsPerDayChart from '@/components/stats/ReviewsPerDayChart'
+import ForecastChart from '@/components/stats/ForecastChart'
+import IntervalHistogram from '@/components/stats/IntervalHistogram'
+import PersonalRecords from '@/components/stats/PersonalRecords'
+import TieredBadge from '@/components/stats/TieredBadge'
 
 export const dynamic = 'force-dynamic'
 
@@ -15,237 +33,184 @@ export default async function StatsPage() {
   const userId = await getCurrentUserId()
   if (!userId) redirect('/login')
 
-  const [stats, folders, userData] = await Promise.all([
-    getUserStats(userId),
-    getFolders(userId),
-    getUserData(userId),
-  ])
+  const userData = await getUserData(userId)
+  const tz = userData.timezone
+  const locale = userData.language
 
-  const topFolders = [...folders]
-    .sort((a, b) => b._count.decks - a._count.decks)
-    .slice(0, 5)
+  const [
+    stats,
+    dailyActivity,
+    forecast,
+    retention,
+    folderMastery,
+    intervalDist,
+    records,
+  ] = await Promise.all([
+    getUserStats(userId),
+    getDailyActivity(userId, 84, tz),
+    getForecast(userId, 14, tz),
+    getRetentionRate(userId, 30),
+    getMasteryByFolder(userId),
+    getIntervalDistribution(userId),
+    getPersonalRecords(userId, tz),
+  ])
 
   const streak = userData.currentStreak
   const longestStreak = userData.longestStreak
-  // XP: 1 review session = 1 XP for now (simple proxy until proper XP system ships)
-  const xp = stats.totalReps
-  const masteryPct = stats.cardCount > 0 ? Math.round((stats.masteredCount / stats.cardCount) * 100) : 0
+  const dailyGoal = userData.dailyGoal
+  const cardsToday = userData.cardsStudiedToday
+  const goalPct = Math.min(100, Math.round((cardsToday / Math.max(1, dailyGoal)) * 100))
 
-  return (
+  const achievements = computeAllAchievements({
+    currentStreak: streak,
+    masteredCount: stats.masteredCount,
+    totalReps: stats.totalReps,
+    retentionPct: Math.round(retention.rate * 100),
+    folderCount: stats.folderCount,
+    totalDaysStudied: records.totalDaysStudied,
+  })
+
+  const isFirstTime = stats.cardCount === 0
+
+  if (isFirstTime) {
+    return (
+      <>
+        <PageHeader title={t('stats.title', locale)} />
+        <div className="flex-1 px-5 py-8 flex flex-col items-center justify-center gap-4 text-center max-w-md mx-auto">
+          <div className="text-6xl mb-2">📊</div>
+          <h2 className="font-display text-3xl text-ink tracking-tight">
+            {t('stats.empty_title', locale)}
+          </h2>
+          <p className="text-ink-muted text-sm font-medium">
+            {t('stats.empty_desc', locale)}
+          </p>
+          <Link href="/decks" className="btn-3d btn-3d-mint h-12 px-7 text-sm mt-2">
+            {t('stats.empty_cta', locale)}
+          </Link>
+        </div>
+      </>
+    )
+  }
+
+  const overview = (
     <>
-      <PageHeader title="Progres" />
-      <div className="flex-1 px-5 py-5 overflow-y-auto max-w-2xl mx-auto w-full">
+      {/* Streak hero */}
+      <div
+        className="relative rounded-card-lg p-6 overflow-hidden bounce-in"
+        style={{ background: 'linear-gradient(135deg, #FF7676 0%, #FF5252 100%)' }}
+      >
+        <div className="absolute -right-6 -top-6 w-32 h-32 rounded-full bg-white/15" />
+        <div className="absolute -right-2 -bottom-10 w-28 h-28 rounded-full bg-white/10" />
 
-        {/* Streak hero — coral gradient card */}
-        <div
-          className="relative rounded-card-lg p-6 mb-6 overflow-hidden bounce-in"
-          style={{ background: 'linear-gradient(135deg, #FF7676 0%, #FF5252 100%)' }}
-        >
-          <div className="absolute -right-6 -top-6 w-32 h-32 rounded-full bg-white/15" />
-          <div className="absolute -right-2 -bottom-10 w-28 h-28 rounded-full bg-white/10" />
-
-          <div className="relative z-10">
-            <p className="text-white/85 text-xs font-bold uppercase tracking-wider mb-1">
-              Streak Saat Ini
+        <div className="relative z-10">
+          <p className="text-white/85 text-xs font-bold uppercase tracking-wider mb-1">
+            {t('stats.streak_label', locale)}
+          </p>
+          <div className="flex items-baseline gap-2 mb-1">
+            <span className="text-4xl flame-pulse">🔥</span>
+            <p className="font-display text-white text-6xl tabular leading-none tracking-tight">
+              {streak}
             </p>
-            <div className="flex items-baseline gap-2 mb-1">
-              <span className="text-4xl flame-pulse">🔥</span>
-              <p className="font-display text-white text-6xl tabular leading-none tracking-tight">
-                {streak}
-              </p>
-              <p className="text-white text-2xl font-extrabold ml-1">hari</p>
-            </div>
-            <p className="text-white/90 text-sm font-medium mt-2">
-              {streak > 0
-                ? <>Lanjut! Streak terpanjang <Highlight color="sun">{longestStreak} hari</Highlight></>
-                : 'Mulai belajar hari ini buat dapat streak pertama!'
-              }
-            </p>
+            <p className="text-white text-2xl font-extrabold ml-1">{t('stats.streak_unit', locale)}</p>
           </div>
-        </div>
+          <p className="text-white/90 text-sm font-medium mt-2">
+            {streak > 0 ? (
+              <>{t('stats.streak_continue', locale, { n: longestStreak }).split(String(longestStreak))[0]}<Highlight color="sun">{longestStreak} {t('stats.streak_unit', locale)}</Highlight></>
+            ) : (
+              t('stats.streak_start', locale)
+            )}
+          </p>
 
-        {/* XP + Total stats grid */}
-        <div className="grid grid-cols-2 gap-3 mb-6 pop-in" style={{ animationDelay: '80ms' }}>
-          <StatCard
-            emoji="⚡"
-            value={xp}
-            label="Total XP"
-            tone="sun"
-          />
-          <StatCard
-            emoji="🃏"
-            value={stats.cardCount}
-            label="Total Kartu"
-            tone="mint"
-          />
-        </div>
-
-        {/* Sub stats */}
-        <div className="flex items-center gap-2 mb-6 pop-in flex-wrap" style={{ animationDelay: '140ms' }}>
-          <StickerChip color="sky" tilt="left" icon="📁">
-            {stats.folderCount} folder
-          </StickerChip>
-          <StickerChip color="purple" tilt="right" icon="📚">
-            {stats.deckCount} deck
-          </StickerChip>
-          {stats.dueTodayCount > 0 && (
-            <StickerChip color="coral" tilt="left" icon="⏰">
-              {stats.dueTodayCount} perlu review
-            </StickerChip>
-          )}
-        </div>
-
-        {/* Mastery progress */}
-        {stats.cardCount > 0 && (
-          <div className="mb-6 pop-in" style={{ animationDelay: '180ms' }}>
-            <h2 className="font-display text-xl text-ink mb-3 tracking-tight">Progres Belajar</h2>
-            <div className="card-3d-soft p-5">
-              <div className="flex items-baseline justify-between mb-2">
-                <p className="font-display text-3xl text-ink tabular leading-none tracking-tight">
-                  {stats.masteredCount}<span className="text-ink-muted text-xl"> / {stats.cardCount}</span>
+          {dailyGoal > 0 && (
+            <div className="mt-4 pt-4 border-t border-white/20">
+              <div className="flex items-center justify-between mb-1.5">
+                <p className="text-white/85 text-xs font-bold uppercase tracking-wider">
+                  {t('stats.streak_target', locale)}
                 </p>
-                <p className="text-mint-deep text-sm font-bold">{masteryPct}% mastery</p>
+                <p className="text-white text-xs font-bold tabular">
+                  {cardsToday} / {dailyGoal}
+                </p>
               </div>
-              <p className="text-ink-muted text-xs font-bold uppercase tracking-wide mb-3">
-                Kartu sudah dikuasai
-              </p>
-
-              <div className="h-3 rounded-pill bg-bg-soft overflow-hidden mb-4">
+              <div className="h-2 rounded-pill bg-white/20 overflow-hidden">
                 <div
-                  className="h-full rounded-pill transition-all"
-                  style={{
-                    width: `${masteryPct}%`,
-                    background: 'linear-gradient(90deg, #00D4A8 0%, #00B891 100%)',
-                  }}
+                  className="h-full rounded-pill bg-white transition-all"
+                  style={{ width: `${goalPct}%` }}
                 />
               </div>
-
-              <div className="grid grid-cols-3 gap-2 text-center">
-                <MiniStat value={stats.newCount} label="Baru" tone="default" />
-                <MiniStat value={stats.learningCount} label="Belajar" tone="sun" />
-                <MiniStat value={stats.masteredCount} label="Hafal" tone="mint" />
-              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
+      </div>
 
-        {/* Activity stats */}
-        {stats.totalReps > 0 && (
-          <div className="grid grid-cols-2 gap-3 mb-6 pop-in" style={{ animationDelay: '220ms' }}>
-            <div className="card-3d-soft p-4 text-center">
-              <p className="font-display text-3xl text-ink tabular leading-none">{stats.totalReps}</p>
-              <p className="text-xs text-ink-muted mt-1.5 font-bold uppercase tracking-wide">Total Review</p>
-            </div>
-            <div className="card-3d-soft p-4 text-center">
-              <p className="font-display text-3xl text-ink tabular leading-none">{stats.totalLapses}</p>
-              <p className="text-xs text-ink-muted mt-1.5 font-bold uppercase tracking-wide">Pernah Lupa</p>
-            </div>
-          </div>
-        )}
+      <div className="pop-in" style={{ animationDelay: '80ms' }}>
+        <RetentionGauge stat={retention} locale={locale} />
+      </div>
 
-        <PencilDivider className="mb-5" />
+      <div className="pop-in" style={{ animationDelay: '140ms' }}>
+        <MasteryDonut
+          newCount={stats.newCount}
+          learningCount={stats.learningCount}
+          masteredCount={stats.masteredCount}
+          locale={locale}
+        />
+      </div>
 
-        {/* Top folders */}
-        {folders.length > 0 ? (
-          <div className="mb-6 pop-in" style={{ animationDelay: '200ms' }}>
-            <h2 className="font-display text-xl text-ink mb-3 tracking-tight">Folder Teratas</h2>
-            <div className="card-3d-soft overflow-hidden">
-              {topFolders.map((folder, i) => (
-                <Link
-                  key={folder.id}
-                  href={`/folders/${folder.id}`}
-                  className="flex items-center px-4 py-4 border-b border-ink-faint last:border-b-0 gap-3 hover:bg-bg-soft transition-colors"
-                >
-                  <div className="w-9 h-9 rounded-pill bg-mint-soft text-mint-deep flex items-center justify-center font-extrabold text-sm shrink-0">
-                    #{i + 1}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-ink font-bold text-base truncate">{folder.name}</p>
-                    <p className="text-ink-muted text-xs mt-0.5 font-medium">{folder._count.decks} deck</p>
-                  </div>
-                  <span className="text-ink-subtle text-base">→</span>
-                </Link>
-              ))}
-            </div>
-          </div>
-        ) : (
-          <div className="card-3d-soft py-12 px-6 flex flex-col items-center gap-3 text-center">
-            <div className="text-5xl mb-1">📊</div>
-            <p className="font-display text-2xl text-ink tracking-tight">Belum ada progres</p>
-            <p className="text-ink-muted text-sm font-medium">Mulai bikin folder dan deck untuk lihat statistik di sini.</p>
-            <Link href="/decks" className="btn-3d btn-3d-mint h-12 px-7 text-sm mt-2">
-              Mulai Sekarang
-            </Link>
-          </div>
-        )}
-
-        {/* Achievements placeholder (Phase 2) */}
-        {folders.length > 0 && (
-          <div className="pop-in" style={{ animationDelay: '260ms' }}>
-            <h2 className="font-display text-xl text-ink mb-3 tracking-tight">Pencapaian</h2>
-            <div className="grid grid-cols-3 gap-3">
-              <AchievementBadge emoji="🌱" label="Pemula" locked={stats.cardCount === 0} />
-              <AchievementBadge emoji="🔥" label="Streak 7" locked={streak < 7} />
-              <AchievementBadge emoji="⚡" label="100 XP" locked={xp < 100} />
-              <AchievementBadge emoji="📚" label="3 Folder" locked={stats.folderCount < 3} />
-              <AchievementBadge emoji="🎯" label="50 Kartu" locked={stats.cardCount < 50} />
-              <AchievementBadge emoji="🏆" label="30 Hari" locked={streak < 30} />
-            </div>
-          </div>
-        )}
+      <div className="pop-in" style={{ animationDelay: '200ms' }}>
+        <MasteryByFolder folders={folderMastery} locale={locale} />
       </div>
     </>
   )
-}
 
-function StatCard({
-  emoji, value, label, tone,
-}: {
-  emoji: string
-  value: number
-  label: string
-  tone: 'sun' | 'mint'
-}) {
-  const bg = tone === 'sun' ? '#FFF7D6' : '#E5FBF5'
-  const accent = tone === 'sun' ? '#F5B800' : '#00B891'
-  return (
-    <div
-      className="rounded-card-lg p-5 border-2"
-      style={{ backgroundColor: bg, borderColor: accent, boxShadow: `0 4px 0 0 ${accent}` }}
-    >
-      <div className="flex items-center justify-between mb-2">
-        <span className="text-3xl leading-none">{emoji}</span>
+  const activity = (
+    <>
+      <div className="pop-in">
+        <CalendarHeatmap data={dailyActivity} locale={locale} />
       </div>
-      <p className="font-display text-4xl text-ink tabular leading-none tracking-tight">{value}</p>
-      <p className="text-ink-muted text-xs font-bold uppercase tracking-wide mt-2">{label}</p>
-    </div>
-  )
-}
 
-function MiniStat({ value, label, tone }: { value: number; label: string; tone: 'default' | 'sun' | 'mint' }) {
-  const bgClass = tone === 'mint' ? 'bg-mint-soft' : tone === 'sun' ? 'bg-sun-soft' : 'bg-bg-soft'
-  const textClass = tone === 'mint' ? 'text-mint-deep' : tone === 'sun' ? 'text-ink' : 'text-ink-muted'
-  return (
-    <div className={`${bgClass} rounded-card py-2.5 px-2`}>
-      <p className={`font-display text-xl ${textClass} tabular leading-none`}>{value}</p>
-      <p className={`text-[10px] mt-1 font-bold uppercase tracking-wide ${textClass} opacity-80`}>{label}</p>
-    </div>
-  )
-}
+      <div className="pop-in" style={{ animationDelay: '80ms' }}>
+        <ReviewsPerDayChart data={dailyActivity} locale={locale} />
+      </div>
 
-function AchievementBadge({ emoji, label, locked }: { emoji: string; label: string; locked: boolean }) {
+      <div className="pop-in" style={{ animationDelay: '140ms' }}>
+        <ForecastChart data={forecast} locale={locale} />
+      </div>
+
+      <div className="pop-in" style={{ animationDelay: '200ms' }}>
+        <IntervalHistogram data={intervalDist} locale={locale} />
+      </div>
+    </>
+  )
+
+  const achievementsTab = (
+    <>
+      <div className="pop-in">
+        <PersonalRecords records={records} locale={locale} />
+      </div>
+
+      <div className="pop-in" style={{ animationDelay: '100ms' }}>
+        <h2 className="font-display text-xl text-ink mb-3 tracking-tight">
+          {t('stats.badges_title', locale)}
+        </h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          {achievements.map((ach) => (
+            <TieredBadge key={ach.def.id} progress={ach} locale={locale} />
+          ))}
+        </div>
+      </div>
+    </>
+  )
+
   return (
-    <div
-      className={`rounded-card p-3 flex flex-col items-center gap-1 border-2 transition-all ${
-        locked
-          ? 'border-ink-faint bg-bg-soft opacity-60 grayscale'
-          : 'border-mint bg-mint-soft'
-      }`}
-    >
-      <span className="text-3xl leading-none">{emoji}</span>
-      <p className={`text-[10px] font-bold uppercase tracking-wide text-center ${locked ? 'text-ink-subtle' : 'text-mint-deep'}`}>
-        {label}
-      </p>
-    </div>
+    <>
+      <PageHeader title={t('stats.title', locale)} />
+      <div className="flex-1 px-5 py-5 overflow-y-auto max-w-2xl mx-auto w-full">
+        <StatsTabs
+          overview={overview}
+          activity={activity}
+          achievements={achievementsTab}
+          locale={locale}
+        />
+      </div>
+    </>
   )
 }

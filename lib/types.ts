@@ -59,10 +59,13 @@ export type DeckWithCards = DeckData & {
   cards: CardData[]
 }
 
+export type Locale = 'id' | 'en'
+
 export type UserData = {
   uid: string
   email: string | null
   timezone: string
+  language: Locale
   currentStreak: number
   longestStreak: number
   lastStudyDate: string | null
