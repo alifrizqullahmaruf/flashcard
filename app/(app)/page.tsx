@@ -30,6 +30,13 @@ export default async function HomePage() {
   const cardsToday = isLastStudyToday ? userData.cardsStudiedToday : 0
   const goalProgress = Math.min((cardsToday / dailyGoal) * 100, 100)
 
+  // Estimate study minutes from cards count.
+  // ~10 sec/card average covers flashcard tap-flip-rate + quiz pick-confirm.
+  // Real per-rate timing exists in QuizCarousel but not persisted yet — upgrade to
+  // server-side tracking later if accuracy becomes a pain point.
+  const AVG_SECONDS_PER_CARD = 10
+  const minutesToday = Math.floor((cardsToday * AVG_SECONDS_PER_CARD) / 60)
+
   const firstName = user.email?.split('@')[0]?.split('.')[0] ?? 'kamu'
   const displayName = firstName.charAt(0).toUpperCase() + firstName.slice(1)
 
@@ -165,7 +172,7 @@ export default async function HomePage() {
           <Quest
             icon="🎯"
             title="Belajar 5 menit"
-            progress={0}
+            progress={minutesToday}
             target={5}
             xp={10}
             unit="mnt"
