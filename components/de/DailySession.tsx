@@ -5,7 +5,7 @@ import { ArrowRight, BookOpen, CalendarCheck, Check, CircleCheck, CircleX, Eye, 
 import { getCategory, getLevel, type Word } from '@/lib/de/content'
 import { getPractice, type Exercise } from '@/lib/de/exercises'
 import {
-  DAILY_NEW,
+  dailyNewTarget,
   bumpStreak,
   getDueAll,
   getDueGrammar,
@@ -291,7 +291,7 @@ function AllDone() {
       <IconBadge><CalendarCheck size={30} /></IconBadge>
       <p className="font-display font-extrabold text-xl">Semua beres untuk hari ini</p>
       <p className="text-sm text-ink-muted">
-        Tidak ada kartu yang perlu diulang dan target {DAILY_NEW} kata baru sudah tercapai. Mau lanjut? Baca materi baru atau latih kartu per kategori.
+        Tidak ada kartu yang perlu diulang dan target {dailyNewTarget()} kata baru sudah tercapai. Mau lanjut? Baca materi baru atau latih kartu per kategori.
       </p>
       <div className="grid grid-cols-2 gap-2 w-full">
         <Link href="/de/materi" className="h-12 rounded-btn bg-surface border border-ink-faint font-medium flex items-center justify-center gap-1.5"><BookOpen size={17} strokeWidth={2.4} />Materi</Link>

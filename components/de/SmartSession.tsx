@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { useProgress } from '@/lib/de/useProgress'
 import { ArrowRight, Brain, CircleCheck, CircleX, Ear, Keyboard, Snail, Sprout, Target, TreeDeciduous, Trophy, Volume2, type LucideIcon } from 'lucide-react'
 import { GENDER_STYLE, type Category, type Gender, type Word } from '@/lib/de/content'
-import { DAILY_NEW, bumpStreak, getDue, hasSrs, newLeftToday, nextDueLabel, review } from '@/lib/de/progress'
+import { bumpStreak, dailyNewTarget, getDue, hasSrs, newLeftToday, nextDueLabel, review } from '@/lib/de/progress'
 import Speak, { speakDe } from '@/components/de/Speak'
 import { BottomSheet, Details, IconBadge, WordTitle, haptic, spoken } from '@/components/de/WordFaces'
 
@@ -67,6 +67,7 @@ export default function SmartSession({ level, cat, onRestart }: { level: string;
     due: getDue(level, cat.slug),
     seen: cat.words.filter((w) => hasSrs(level, cat.slug, w.de)).map((w) => w.de),
     left: newLeftToday(),
+    target: dailyNewTarget(),
   }))
   if (snap && queue === null) {
     const due = new Set(snap.due)
@@ -100,8 +101,8 @@ export default function SmartSession({ level, cat, onRestart }: { level: string;
       return (
         <div className="paper-card border-2 border-ink-faint rounded-card-lg p-6 text-center flex flex-col gap-3 items-center">
           <IconBadge><Trophy size={30} /></IconBadge>
-          <p className="font-display font-extrabold text-xl">Target {DAILY_NEW} kata baru hari ini tercapai!</p>
-          <p className="text-ink-muted text-sm">Otak butuh waktu untuk menyimpan kata baru. Besok kamu dapat {DAILY_NEW} kata lagi, plus ulangan kata hari ini.</p>
+          <p className="font-display font-extrabold text-xl">Target {snap?.target} kata baru hari ini tercapai!</p>
+          <p className="text-ink-muted text-sm">Otak butuh waktu untuk menyimpan kata baru. Besok kamu dapat {snap?.target} kata lagi, plus ulangan kata hari ini.</p>
           <button onClick={() => { setExtra(true); setQueue(null) }} className="text-sm font-extrabold text-ink-muted underline">Tetap tambah {NEW_PER_SESSION} kata lagi</button>
         </div>
       )

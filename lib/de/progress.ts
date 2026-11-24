@@ -9,7 +9,7 @@ import { PRACTICE } from './exercises'
  */
 const scheduler = fsrs({ request_retention: 0.9, enable_short_term: false })
 
-export const DAILY_NEW = 10 // new words per day (user decision)
+export const DAILY_NEW = 10 // default new words per day (profile can override: 5/10/20)
 export const MASTERY_PCT = 80 // practice score for "Dikuasai"
 const MATURE_DAYS = 21 // interval ≥ 21 days = "Hafal permanen"
 const LEECH_LAPSES = 4 // forgotten ≥ 4× = "Kata sulit"
@@ -27,13 +27,59 @@ function read<T>(k: string, fallback: T): T {
   }
 }
 
+/* ── sync bookkeeping (lib/de/sync.ts pushes these keys to the account) ── */
+
+/** Keys that belong to the learner's account and are synced to Firestore. */
+export const isSyncKey = (k: string) => /^de:(srs|gsrs|topic|new|known):/.test(k) || k === 'de:streak' || k === 'de:profile'
+const DIRTY_KEY = 'de:dirty'
+
+export function dirtyKeys(): string[] {
+  return read<string[]>(DIRTY_KEY, [])
+}
+export function clearDirty(keys: string[]) {
+  const done = new Set(keys)
+  try {
+    localStorage.setItem(DIRTY_KEY, JSON.stringify(dirtyKeys().filter((k) => !done.has(k))))
+  } catch {
+    /* ignore */
+  }
+}
+export function markDirty(k: string) {
+  if (!isSyncKey(k)) return
+  const d = dirtyKeys()
+  if (d.includes(k)) return
+  try {
+    localStorage.setItem(DIRTY_KEY, JSON.stringify([...d, k]))
+  } catch {
+    /* ignore */
+  }
+}
+
 function write(k: string, v: unknown) {
   try {
     localStorage.setItem(k, JSON.stringify(v))
+    markDirty(k)
     window.dispatchEvent(new Event(PROGRESS_EVENT))
   } catch {
     /* storage unavailable */
   }
+}
+
+/* ── learner profile (from onboarding) ─────────────── */
+
+export type Goal = 'keluarga' | 'kerja' | 'kuliah' | 'hobi'
+export type Profile = { goal: Goal; targetLevel: LevelId; dailyNew: 5 | 10 | 20; onboarded: true; updatedAt: number }
+const PROFILE_KEY = 'de:profile'
+
+export function getProfile(): Profile | null {
+  return read<Profile | null>(PROFILE_KEY, null)
+}
+export function saveProfile(p: Omit<Profile, 'onboarded' | 'updatedAt'>) {
+  write(PROFILE_KEY, { ...p, onboarded: true, updatedAt: Date.now() })
+}
+/** New words per day: from the profile, default 10. */
+export function dailyNewTarget(): number {
+  return getProfile()?.dailyNew ?? DAILY_NEW
 }
 
 /** Local calendar day, e.g. 2026-11-24 (not UTC). */
@@ -150,7 +196,7 @@ export function newToday(): number {
 }
 
 export function newLeftToday(): number {
-  return Math.max(0, DAILY_NEW - newToday())
+  return Math.max(0, dailyNewTarget() - newToday())
 }
 
 export function nextDueLabel(level: string, cat: string): string | null {

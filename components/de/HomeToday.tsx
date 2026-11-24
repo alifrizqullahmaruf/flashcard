@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ArrowRight, BookOpen, ChevronRight, CircleCheck, Flame } from 'lucide-react'
 import { LEVELS } from '@/lib/de/content'
 import {
-  DAILY_NEW,
+  dailyNewTarget,
   getDueAll,
   getDueGrammar,
   getNewWords,
@@ -32,6 +32,7 @@ export function TodayCard() {
     due: getDueAll().length,
     fresh: getNewWords(newLeftToday()).length,
     learnedToday: newToday(),
+    target: dailyNewTarget(),
     gram: getDueGrammar(5).length,
     doneToday: getStreak().doneToday,
   }))
@@ -60,7 +61,7 @@ export function TodayCard() {
             <ArrowRight size={16} strokeWidth={2} />
           </Link>
         )}
-        <p className="text-[11px] text-ink-subtle text-center">Kata baru hari ini {t.learnedToday}/{DAILY_NEW}</p>
+        <p className="text-[11px] text-ink-subtle text-center">Kata baru hari ini {t.learnedToday}/{t.target}</p>
       </div>
     </div>
   )

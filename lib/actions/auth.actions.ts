@@ -35,3 +35,9 @@ export async function logout() {
   cookieStore.delete(SESSION_COOKIE_NAME)
   redirect('/login')
 }
+
+/** Klar: clear the session cookie without redirecting (the client routes to /masuk). */
+export async function endSession() {
+  const cookieStore = await cookies()
+  cookieStore.delete(SESSION_COOKIE_NAME)
+}

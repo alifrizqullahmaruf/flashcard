@@ -96,7 +96,11 @@ export default function ProgressPage() {
       </section>
 
       <section className="flex flex-col gap-3">
-        <p className="de-label">Aplikasi</p>
+        <p className="de-label">Aplikasi & akun</p>
+        <Link href="/de/akun" className="bg-surface border border-ink-faint rounded-card-lg px-4 py-3 flex items-center justify-between active:bg-bg-soft">
+          <span className="text-sm font-medium">Akun, target belajar & sinkronisasi</span>
+          <span className="text-ink-subtle">›</span>
+        </Link>
         <InstallCard variant="progress" />
         <OfflineDownload />
       </section>

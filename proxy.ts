@@ -3,16 +3,25 @@ import { NextResponse, type NextRequest } from 'next/server'
 export function proxy(request: NextRequest) {
   const session = request.cookies.get('firebase-session')?.value
 
-  const isAuthRoute = request.nextUrl.pathname.startsWith('/login')
+  const pathname = request.nextUrl.pathname
+  const isAuthRoute = pathname.startsWith('/login')
 
   // Klar is the main app: the root goes straight to the language picker
-  if (request.nextUrl.pathname === '/') {
+  if (pathname === '/') {
     return NextResponse.redirect(new URL('/mulai', request.url))
   }
 
-  // Klar (German): public, static-data routes (no login needed)
-  if (/^\/(de|mulai)(\/|$)/.test(request.nextUrl.pathname)) {
-    return NextResponse.next()
+  // Klar login page: already signed in → straight into the app
+  if (pathname === '/masuk') {
+    return session ? NextResponse.redirect(new URL('/de', request.url)) : NextResponse.next()
+  }
+
+  // Klar requires an account (Google). The offline fallback page stays public.
+  if (/^\/(de|mulai)(\/|$)/.test(pathname)) {
+    if (session || pathname === '/de/offline') return NextResponse.next()
+    const url = new URL('/masuk', request.url)
+    url.searchParams.set('next', pathname + request.nextUrl.search)
+    return NextResponse.redirect(url)
   }
 
   if (!session && !isAuthRoute) {

@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from 'next'
-import { Geist } from 'next/font/google'
+import { geist } from '@/lib/de/font'
 import { PwaRegister } from '@/components/de/Pwa'
+import { AccountGate } from '@/components/de/Account'
 
-const geist = Geist({ subsets: ['latin'], weight: ['400', '500', '600'], variable: '--font-geist', display: 'swap' })
 
 export const metadata: Metadata = {
   title: 'Klar — Pilih bahasa',
@@ -18,6 +18,7 @@ export default function MulaiLayout({ children }: { children: React.ReactNode })
     <div className={`de-ui ${geist.variable} min-h-dvh`}>
       {children}
       <PwaRegister />
+      <AccountGate />
     </div>
   )
 }

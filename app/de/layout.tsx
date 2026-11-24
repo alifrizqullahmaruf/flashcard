@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from 'next'
-import { Geist } from 'next/font/google'
+import { geist } from '@/lib/de/font'
 import DeNav from '@/components/de/DeNav'
 import { PwaRegister } from '@/components/de/Pwa'
+import { AccountGate } from '@/components/de/Account'
 
-const geist = Geist({ subsets: ['latin'], weight: ['400', '500', '600'], variable: '--font-geist', display: 'swap' })
 
 export const metadata: Metadata = {
   title: { default: 'Klar — Bahasa Jerman sampai lulus Goethe', template: '%s · Klar' },
@@ -20,6 +20,7 @@ export default function DeLayout({ children }: { children: React.ReactNode }) {
       <main className="mx-auto max-w-md px-5 pt-6 pb-8">{children}</main>
       <DeNav />
       <PwaRegister />
+      <AccountGate />
     </div>
   )
 }

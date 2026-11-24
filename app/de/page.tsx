@@ -5,6 +5,7 @@ import { CategoryIcon } from '@/components/de/icons'
 import { Logo } from '@/components/de/Logo'
 import { NextTopicCard, ReadinessRow, StreakChip, TodayCard } from '@/components/de/HomeToday'
 import { InstallCard } from '@/components/de/Pwa'
+import { AccountChip } from '@/components/de/Account'
 
 export default function DeHome() {
   const a1 = LEVELS[0]
@@ -19,6 +20,7 @@ export default function DeHome() {
             <ChevronDown size={15} strokeWidth={1.75} />
           </Link>
           <StreakChip />
+          <AccountChip />
         </div>
       </header>
 
