@@ -51,6 +51,21 @@ export function Front({ w, hint = true }: { w: Word; hint?: boolean }) {
   )
 }
 
+/** Reverse front (Indonesian → German): shows the meaning, the learner recalls the German word. */
+export function FrontReverse({ w, hint = 'Ketuk untuk melihat jawaban' }: { w: Word; hint?: string }) {
+  return (
+    <div className="relative flex flex-col justify-between h-full p-6 pl-7 text-left">
+      <span className="absolute left-0 top-6 bottom-6 w-[3px] rounded-r bg-ink-faint" />
+      <span className="de-label">Indonesia → Jerman · {KIND_DE[w.kind]}</span>
+      <div>
+        <p className="text-[2rem] font-semibold tracking-tight leading-tight break-words">{w.id}</p>
+        {w.gender && <p className="text-sm text-ink-muted mt-2">Jawab lengkap dengan artikel: der, die, atau das</p>}
+      </div>
+      <span className="text-xs text-ink-subtle">{hint}</span>
+    </div>
+  )
+}
+
 function Row({ k, children }: { k: string; children: React.ReactNode }) {
   return (
     <div className="grid grid-cols-[4.5rem_1fr] gap-3 py-2 border-t border-ink-faint items-baseline">

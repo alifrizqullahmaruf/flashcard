@@ -15,6 +15,7 @@ import {
   reviewGrammar,
   type CardRef,
   type GrammarRef,
+  type Grade,
 } from '@/lib/de/progress'
 import { useProgress } from '@/lib/de/useProgress'
 import { solution } from '@/lib/de/speech-texts'
@@ -125,13 +126,14 @@ export default function DailySession() {
         {cur.kind === 'card' && (
           <RecallCard
             item={cur}
-            onRate={(good) => {
+            onRate={(grade) => {
+              const forgot = grade === 'lupa'
               // A word forgotten earlier in this session keeps its "tomorrow" schedule,
               // even if the learner gets it right on the retry.
-              if (!(good && cur.tries > 0)) review(cur.ref.level, cur.ref.cat, cur.ref.word, good)
-              setStats((s) => ({ ...s, hafal: s.hafal + (good ? 1 : 0), belum: s.belum + (good ? 0 : 1) }))
-              // "Belum hafal" → once more in this session (max 2×), FSRS brings it back tomorrow
-              advance(!good && cur.tries < 2 ? { ...cur, id: uid++, tries: cur.tries + 1 } : undefined)
+              if (!(!forgot && cur.tries > 0)) review(cur.ref.level, cur.ref.cat, cur.ref.word, grade)
+              setStats((s) => ({ ...s, hafal: s.hafal + (forgot ? 0 : 1), belum: s.belum + (forgot ? 1 : 0) }))
+              // "Lupa" → once more in this session (max 2×), FSRS brings it back tomorrow
+              advance(forgot && cur.tries < 2 ? { ...cur, id: uid++, tries: cur.tries + 1 } : undefined)
             }}
           />
         )}
@@ -174,7 +176,7 @@ function NewWord({ w, onNext }: { w: Word; onNext: () => void }) {
   )
 }
 
-function RecallCard({ item, onRate }: { item: Extract<Item, { kind: 'card' }>; onRate: (good: boolean) => void }) {
+function RecallCard({ item, onRate }: { item: Extract<Item, { kind: 'card' }>; onRate: (grade: Grade) => void }) {
   const [shown, setShown] = useState(false)
   const { w } = item
   return (
@@ -190,15 +192,19 @@ function RecallCard({ item, onRate }: { item: Extract<Item, { kind: 'card' }>; o
           <div className="paper-card border-2 border-ink-faint rounded-card-lg p-5 pop-in">
             <Details w={w} />
           </div>
-          <p className="text-center text-sm font-bold text-ink-muted">Jawabanmu tadi benar?</p>
-          <div className="grid grid-cols-2 gap-2">
-            <button onClick={() => { haptic([25, 30, 25]); onRate(false) }} className="h-12 rounded-btn bg-surface border border-ink-faint text-ink font-medium btn-press flex items-center justify-center gap-1.5">
-              <X size={18} strokeWidth={3} />Belum hafal
+          <p className="text-center text-sm font-medium text-ink-muted">Seberapa ingat kamu tadi?</p>
+          <div className="grid grid-cols-3 gap-2">
+            <button onClick={() => { haptic([25, 30, 25]); onRate('lupa') }} className="h-12 rounded-btn bg-surface border border-ink-faint text-ink font-medium btn-press flex items-center justify-center gap-1.5">
+              <X size={17} />Lupa
             </button>
-            <button onClick={() => { haptic(15); onRate(true) }} className="h-12 rounded-btn bg-ink text-white font-medium btn-press flex items-center justify-center gap-1.5">
-              <Check size={18} strokeWidth={3} />Hafal
+            <button onClick={() => { haptic(10); onRate('sulit') }} className="h-12 rounded-btn bg-surface border border-ink-faint text-ink font-medium btn-press flex items-center justify-center">
+              Sulit
+            </button>
+            <button onClick={() => { haptic(15); onRate('hafal') }} className="h-12 rounded-btn bg-ink text-white font-medium btn-press flex items-center justify-center gap-1.5">
+              <Check size={17} />Hafal
             </button>
           </div>
+          <p className="text-center text-[11px] text-ink-subtle">Sulit = ingat tapi butuh waktu lama → diulang lebih cepat</p>
         </>
       ) : (
         <button
@@ -275,11 +281,11 @@ function Finished({ stats }: { stats: { hafal: number; belum: number; baru: numb
       <p className="font-display font-extrabold text-2xl">Tugas hari ini selesai!</p>
       <div className="grid grid-cols-2 gap-2 w-full">
         <Stat label="Kata baru" value={stats.baru} />
-        <Stat label="Hafal" value={stats.hafal} />
-        <Stat label="Belum hafal" value={stats.belum} />
+        <Stat label="Ingat" value={stats.hafal} />
+        <Stat label="Lupa" value={stats.belum} />
         <Stat label="Grammar benar" value={`${stats.grammarOk}/${stats.grammar}`} />
       </div>
-      <p className="text-sm text-ink-muted">Kata yang <b>belum hafal</b> muncul lagi besok. Yang <b>hafal</b> istirahat dulu beberapa hari.</p>
+      <p className="text-sm text-ink-muted">Kata yang <b>lupa</b> muncul lagi besok. Yang <b>sulit</b> diulang lebih cepat, yang <b>hafal</b> istirahat beberapa hari.</p>
       <Link href="/de" className="w-full h-12 rounded-btn bg-ink text-white font-medium btn-press">Kembali ke Beranda</Link>
     </div>
   )

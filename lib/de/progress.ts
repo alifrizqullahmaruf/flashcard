@@ -102,17 +102,22 @@ function getSrs(level: string, cat: string): SrsMap {
   return Object.fromEntries(Object.entries(raw).map(([w, c]) => [w, TypeConvert.card(c as FsrsCard)]))
 }
 
-/** Record a review: good → Rating.Good ("Hafal"), else Rating.Again ("Belum hafal"). */
-export function review(level: string, cat: string, word: string, good: boolean) {
+/** Learner's self-grade for a card: Lupa (forgot) · Sulit (remembered with effort) · Hafal (easy recall). */
+export type Grade = 'lupa' | 'sulit' | 'hafal'
+const RATING: Record<Grade, Rating.Again | Rating.Hard | Rating.Good> = { lupa: Rating.Again, sulit: Rating.Hard, hafal: Rating.Good }
+
+/** Record a review. `true`/`false` are kept for older callers (= hafal / lupa). */
+export function review(level: string, cat: string, word: string, grade: Grade | boolean) {
+  const g: Grade = grade === true ? 'hafal' : grade === false ? 'lupa' : grade
   const map = getSrs(level, cat)
   const isNew = !map[word]
   const card = map[word] ?? createEmptyCard()
-  map[word] = scheduler.next(card, new Date(), good ? Rating.Good : Rating.Again).card
+  map[word] = scheduler.next(card, new Date(), RATING[g]).card
   write(srsKey(level, cat), map)
   if (isNew) write(newKey(today()), newToday() + 1)
 
   const known = new Set(getKnown(level, cat))
-  if (good) known.add(word)
+  if (g !== 'lupa') known.add(word)
   else known.delete(word)
   write(knownKey(level, cat), [...known])
 }
