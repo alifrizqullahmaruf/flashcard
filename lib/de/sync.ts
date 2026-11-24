@@ -3,7 +3,8 @@
  * Klar progress sync — local-first.
  *
  * Every synced localStorage key (see isSyncKey) is mirrored as one Firestore
- * document: users/{uid}/de_state/{key} = { v: <JSON string>, updatedAt }.
+ * document: users/{uid}/de_state/{key} = { v: <JSON string>, updatedAt },
+ * read/written on the server (lib/actions/klar-sync.actions.ts, Firebase Admin).
  * ~40 small documents per learner (one per category / topic / day), so writes
  * stay cheap and far below Firestore's 1 MB document limit.
  *
@@ -14,8 +15,9 @@
  */
 import { useSyncExternalStore } from 'react'
 import { onAuthStateChanged, type User } from 'firebase/auth'
-import { collection, deleteDoc, doc, getDocs, serverTimestamp, writeBatch } from 'firebase/firestore'
-import { auth, clientDb, hasFirebaseConfig } from '@/lib/firebase/client'
+import { auth, hasFirebaseConfig } from '@/lib/firebase/client'
+import { createSession } from '@/lib/actions/auth.actions'
+import { deleteKlarState, pullKlarState, pushKlarState } from '@/lib/actions/klar-sync.actions'
 import { PROGRESS_EVENT, clearDirty, dirtyKeys, isSyncKey, markDirty } from './progress'
 
 type Card = { due?: string; last_review?: string | null; reps?: number }
@@ -58,7 +60,7 @@ export function mergeValue(key: string, local: unknown, remote: unknown): unknow
 
 /* ── status store (for the UI) ─────────────────────── */
 
-export type SyncStatus = { state: 'off' | 'syncing' | 'ok' | 'offline' | 'error'; ready: boolean; at: number | null; user: { name: string | null; email: string | null; photo: string | null } | null }
+export type SyncStatus = { state: 'off' | 'syncing' | 'ok' | 'offline' | 'error'; ready: boolean; error?: string | null; at: number | null; user: { name: string | null; email: string | null; photo: string | null } | null }
 let status: SyncStatus = { state: 'off', ready: false, at: null, user: null }
 const subs = new Set<() => void>()
 function setStatus(p: Partial<SyncStatus>) {
@@ -108,16 +110,25 @@ export function clearLocalProgress() {
   window.dispatchEvent(new Event(PROGRESS_EVENT))
 }
 
-/* ── pull / push ───────────────────────────────────── */
+/* ── pull / push (server actions, authenticated by the session cookie) ── */
 
-const stateCol = (uid: string) => collection(clientDb(), 'users', uid, 'de_state')
+class SyncError extends Error {}
 
-async function pull(uid: string) {
-  const snap = await getDocs(stateCol(uid))
-  for (const d of snap.docs) {
-    const key = d.id
+/** Run a server action; if the session cookie expired, renew it from the signed-in Firebase user once. */
+async function call<T>(fn: () => Promise<{ ok: true; data: T } | { ok: false; error: string }>): Promise<T> {
+  let res = await fn()
+  if (!res.ok && res.error === 'unauthenticated' && auth.currentUser) {
+    const renewed = await createSession(await auth.currentUser.getIdToken(true))
+    if (renewed.success) res = await fn()
+  }
+  if (!res.ok) throw new SyncError(res.error)
+  return res.data
+}
+
+async function pull() {
+  const docs = await call(() => pullKlarState())
+  for (const { key, v: remoteStr } of docs) {
     if (!isSyncKey(key)) continue
-    const remoteStr = (d.data().v as string) ?? null
     const localStr = readRaw(key)
     const merged = mergeValue(key, parse(localStr), parse(remoteStr))
     const mergedStr = JSON.stringify(merged)
@@ -128,27 +139,37 @@ async function pull(uid: string) {
 }
 
 let pushing = false
-async function push(uid: string) {
+async function push() {
   if (pushing) return
   const keys = dirtyKeys()
   if (!keys.length) return
   pushing = true
   try {
-    for (let i = 0; i < keys.length; i += 400) {
-      const chunk = keys.slice(i, i + 400)
-      const batch = writeBatch(clientDb())
-      for (const k of chunk) {
-        const v = readRaw(k)
-        if (v == null) batch.delete(doc(stateCol(uid), k))
-        else batch.set(doc(stateCol(uid), k), { v, updatedAt: serverTimestamp() })
-      }
-      await batch.commit()
-      clearDirty(chunk)
+    // server actions accept ~1 MB per request → send in chunks of ≤ 600 KB / 400 keys
+    let chunk: { key: string; v: string | null }[] = []
+    let size = 0
+    const send = async () => {
+      if (!chunk.length) return
+      const sent = chunk
+      await call(() => pushKlarState(sent))
+      clearDirty(sent.map((e) => e.key))
+      chunk = []
+      size = 0
     }
+    for (const k of keys) {
+      const v = readRaw(k)
+      const len = (v?.length ?? 0) + k.length
+      if (chunk.length >= 400 || size + len > 600_000) await send()
+      chunk.push({ key: k, v })
+      size += len
+    }
+    await send()
   } finally {
     pushing = false
   }
 }
+
+const reason = (e: unknown) => (e instanceof SyncError ? e.message : 'network')
 
 /* ── lifecycle ─────────────────────────────────────── */
 
@@ -160,21 +181,22 @@ export async function syncNow() {
   if (!navigator.onLine) return setStatus({ state: 'offline', ready: true })
   setStatus({ state: 'syncing' })
   try {
-    await pull(currentUid)
-    await push(currentUid)
-    setStatus({ state: 'ok', at: Date.now(), ready: true })
-  } catch {
-    setStatus({ state: navigator.onLine ? 'error' : 'offline', ready: true })
+    await pull()
+    await push()
+    setStatus({ state: 'ok', at: Date.now(), ready: true, error: null })
+  } catch (e) {
+    console.warn('[klar sync]', e)
+    setStatus({ state: navigator.onLine ? 'error' : 'offline', ready: true, error: reason(e) })
   }
 }
 
 async function flush() {
   if (!currentUid || !navigator.onLine) return
   try {
-    await push(currentUid)
-    setStatus({ state: 'ok', at: Date.now() })
-  } catch {
-    setStatus({ state: 'error' })
+    await push()
+    setStatus({ state: 'ok', at: Date.now(), error: null })
+  } catch (e) {
+    setStatus({ state: 'error', error: reason(e) })
   }
 }
 
@@ -223,9 +245,6 @@ export async function initialSync(user: User) {
 
 /** Delete this learner's Klar data from the account and from this device. */
 export async function deleteKlarData() {
-  if (currentUid) {
-    const snap = await getDocs(stateCol(currentUid))
-    await Promise.all(snap.docs.map((d) => deleteDoc(d.ref)))
-  }
+  if (currentUid) await call(() => deleteKlarState())
   clearLocalProgress()
 }

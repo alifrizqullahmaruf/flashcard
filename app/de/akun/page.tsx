@@ -18,6 +18,13 @@ const GOAL_LABEL: Record<Goal, string> = {
   hobi: 'Hobi / jalan-jalan',
 }
 
+const ERROR_TEXT: Record<string, string> = {
+  unauthenticated: 'Sesi login habis — keluar lalu masuk lagi',
+  server: 'Server sedang bermasalah — coba lagi nanti',
+  invalid: 'Data progres tidak valid — hubungi pengembang',
+  network: 'Koneksi bermasalah — coba lagi',
+}
+
 function ago(ts: number | null) {
   if (!ts) return '-'
   const s = Math.round((Date.now() - ts) / 1000)
@@ -61,7 +68,7 @@ export default function AkunPage() {
 
   const u = status.user
   const syncText =
-    status.state === 'syncing' ? 'Menyinkronkan…' : status.state === 'ok' ? `Tersinkron · ${ago(status.at)}` : status.state === 'offline' ? 'Offline — disinkron saat online' : status.state === 'error' ? 'Gagal sinkron — coba lagi' : 'Belum tersambung ke akun'
+    status.state === 'syncing' ? 'Menyinkronkan…' : status.state === 'ok' ? `Tersinkron · ${ago(status.at)}` : status.state === 'offline' ? 'Offline — disinkron saat online' : status.state === 'error' ? ERROR_TEXT[status.error ?? ''] ?? 'Gagal sinkron — coba lagi' : 'Belum tersambung ke akun'
 
   return (
     <div className="flex flex-col gap-6">

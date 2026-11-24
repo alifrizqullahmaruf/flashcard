@@ -1,7 +1,6 @@
 'use client'
 import { initializeApp, getApps, getApp, type FirebaseApp } from 'firebase/app'
 import { getAuth, type Auth } from 'firebase/auth'
-import { getFirestore, type Firestore } from 'firebase/firestore'
 
 let cachedApp: FirebaseApp | null = null
 
@@ -46,10 +45,3 @@ export const auth: Auth = new Proxy({} as Auth, {
 
 /** True when the public Firebase web config is available (false in local dev without .env.local). */
 export const hasFirebaseConfig = () => !!process.env.NEXT_PUBLIC_FIREBASE_API_KEY
-
-/** Lazy client Firestore (used by Klar to sync progress under users/{uid}/de_state). */
-let cachedDb: Firestore | null = null
-export function clientDb(): Firestore {
-  if (!cachedDb) cachedDb = getFirestore(getFirebaseApp())
-  return cachedDb
-}
