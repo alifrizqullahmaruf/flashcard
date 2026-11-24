@@ -6,6 +6,7 @@ import { useProgress } from '@/lib/de/useProgress'
 import { CategoryIcon } from '@/components/de/icons'
 import { STATE_STYLE, StateBar } from '@/components/de/CardStats'
 import { TopicStageIcon } from '@/components/de/TopicStatus'
+import { InstallCard, OfflineDownload } from '@/components/de/Pwa'
 
 export default function ProgressPage() {
   const lv = LEVELS[0]
@@ -92,6 +93,12 @@ export default function ProgressPage() {
             </Link>
           )
         })}
+      </section>
+
+      <section className="flex flex-col gap-3">
+        <p className="de-label">Aplikasi</p>
+        <InstallCard variant="progress" />
+        <OfflineDownload />
       </section>
 
       <Link href="/de/kredit" className="text-xs font-bold text-ink-subtle underline self-center">Kredit audio &amp; suara</Link>

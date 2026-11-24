@@ -28,6 +28,6 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // static audio files must stay public (no auth redirect)
-  matcher: ['/((?!_next/static|_next/image|favicon.ico|icon|audio/).*)'],
+  // static audio, PWA icons, service worker and manifest must stay public
+  matcher: ['/((?!_next/static|_next/image|favicon.ico|icon|audio/|icons/|sw.js|manifest.webmanifest).*)'],
 }

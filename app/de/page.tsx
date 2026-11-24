@@ -4,6 +4,7 @@ import { CATEGORIES, LEVELS } from '@/lib/de/content'
 import { CategoryIcon } from '@/components/de/icons'
 import { Logo } from '@/components/de/Logo'
 import { NextTopicCard, ReadinessRow, StreakChip, TodayCard } from '@/components/de/HomeToday'
+import { InstallCard } from '@/components/de/Pwa'
 
 export default function DeHome() {
   const a1 = LEVELS[0]
@@ -28,6 +29,8 @@ export default function DeHome() {
         </div>
         <TodayCard />
       </section>
+
+      <InstallCard variant="home" />
 
       <section className="flex flex-col gap-3">
         <p className="de-label">Target ujian</p>
