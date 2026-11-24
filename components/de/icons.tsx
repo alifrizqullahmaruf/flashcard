@@ -1,4 +1,4 @@
-import { Clock, GraduationCap, Hash, HeartPulse, IdCard, Palette, Plane, ShoppingBag, Sofa, TramFront, Users, UtensilsCrossed, type LucideIcon } from 'lucide-react'
+import { Briefcase, Clock, CloudSun, Music, Smartphone, GraduationCap, Hash, HeartPulse, IdCard, Palette, Plane, ShoppingBag, Sofa, TramFront, Users, UtensilsCrossed, type LucideIcon } from 'lucide-react'
 
 /** Category → line icon (one consistent icon set instead of emoji stickers). */
 export const CATEGORY_ICON: Record<string, LucideIcon> = {
@@ -10,6 +10,10 @@ export const CATEGORY_ICON: Record<string, LucideIcon> = {
   stadt: TramFront,
   reisen: Plane,
   koerper: HeartPulse,
+  arbeit: Briefcase,
+  freizeit: Music,
+  kommunikation: Smartphone,
+  wetter: CloudSun,
   essen: UtensilsCrossed,
   schule: GraduationCap,
   farben: Palette,

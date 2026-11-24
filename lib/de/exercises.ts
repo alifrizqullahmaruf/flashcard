@@ -183,9 +183,10 @@ const NEGASI: TopicPractice = {
 
 import { AKKUSATIV, MODAL } from './exercises-a1b'
 import { PLURAL, TRENNBAR } from './exercises-a1c'
+import { IMPERATIV, POSSESSIV } from './exercises-a1d'
 
 export const PRACTICE: Record<string, Record<string, TopicPractice>> = {
-  a1: { artikel: ARTIKEL, praesens: PRAESENS, satzstellung: SATZ, negasi: NEGASI, akkusativ: AKKUSATIV, modalverben: MODAL, plural: PLURAL, trennbar: TRENNBAR },
+  a1: { artikel: ARTIKEL, praesens: PRAESENS, satzstellung: SATZ, negasi: NEGASI, akkusativ: AKKUSATIV, modalverben: MODAL, plural: PLURAL, trennbar: TRENNBAR, possessiv: POSSESSIV, imperativ: IMPERATIV },
 }
 
 export function getPractice(level: string, topic: string): TopicPractice | undefined {

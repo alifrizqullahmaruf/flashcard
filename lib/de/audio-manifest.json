@@ -2396,6 +2396,246 @@
  "Du bist krank? Gute Besserung!": {
   "tts": "/audio/de/tts/be73e1f789f4.mp3"
  },
+ "die Arbeit": {
+  "tts": "/audio/de/tts/4a5800d2ca7f.mp3"
+ },
+ "Die Arbeit macht mir Spaß.": {
+  "tts": "/audio/de/tts/bc65f5c1c1da.mp3"
+ },
+ "der Job": {
+  "tts": "/audio/de/tts/2ac766150fc2.mp3"
+ },
+ "Ich suche einen neuen Job.": {
+  "tts": "/audio/de/tts/b00d9f78e19e.mp3"
+ },
+ "die Firma": {
+  "tts": "/audio/de/tts/05d749ac1f04.mp3"
+ },
+ "Die Firma ist in Hamburg.": {
+  "tts": "/audio/de/tts/ba583f47631e.mp3"
+ },
+ "das Büro": {
+  "tts": "/audio/de/tts/5f41efb67ed3.mp3"
+ },
+ "Ich arbeite im Büro.": {
+  "tts": "/audio/de/tts/24eaec836056.mp3"
+ },
+ "die Fabrik": {
+  "tts": "/audio/de/tts/b039bde401c7.mp3"
+ },
+ "Mein Vater arbeitet in einer Fabrik.": {
+  "tts": "/audio/de/tts/ee143adc9ab0.mp3"
+ },
+ "der Arbeitsplatz": {
+  "tts": "/audio/de/tts/0b9a7c89807e.mp3"
+ },
+ "Mein Arbeitsplatz ist sehr ruhig.": {
+  "tts": "/audio/de/tts/e8e38dad429e.mp3"
+ },
+ "die Stelle": {
+  "tts": "/audio/de/tts/4f7f7ca90897.mp3"
+ },
+ "Die Firma hat eine Stelle frei.": {
+  "tts": "/audio/de/tts/d6908cc5cb6d.mp3"
+ },
+ "der Kollege": {
+  "tts": "/audio/de/tts/df9715e7c340.mp3"
+ },
+ "Mein Kollege kommt aus Polen.": {
+  "tts": "/audio/de/tts/232cd83ba45d.mp3"
+ },
+ "die Kollegin": {
+  "tts": "/audio/de/tts/e125abf547f3.mp3"
+ },
+ "Meine Kollegin ist krank.": {
+  "tts": "/audio/de/tts/4f0c2240b662.mp3"
+ },
+ "der Chef": {
+  "tts": "/audio/de/tts/de429abdc97f.mp3"
+ },
+ "Der Chef ist heute nicht da.": {
+  "tts": "/audio/de/tts/f9e579f235af.mp3"
+ },
+ "die Chefin": {
+  "tts": "/audio/de/tts/33a48275bd1f.mp3"
+ },
+ "Die Chefin hat eine Besprechung.": {
+  "tts": "/audio/de/tts/0eb46ab267a2.mp3"
+ },
+ "der Computer": {
+  "tts": "/audio/de/tts/24ed2f46c17c.mp3"
+ },
+ "Der Computer ist sehr langsam.": {
+  "tts": "/audio/de/tts/a32ae7fcd20e.mp3"
+ },
+ "das Gehalt": {
+  "tts": "/audio/de/tts/b996786bdac1.mp3"
+ },
+ "Das Gehalt ist gut.": {
+  "tts": "/audio/de/tts/d018c1ee0532.mp3"
+ },
+ "die Pause": {
+  "tts": "/audio/de/tts/f7e9f41e26ea.mp3"
+ },
+ "Wir machen eine Pause.": {
+  "tts": "/audio/de/tts/260a6b1fd95d.mp3"
+ },
+ "der Feierabend": {
+  "tts": "/audio/de/tts/34cdea3c827c.mp3"
+ },
+ "Um fünf habe ich Feierabend.": {
+  "tts": "/audio/de/tts/96be98b6c6a7.mp3"
+ },
+ "die Besprechung": {
+  "tts": "/audio/de/tts/a1979e35c9ee.mp3"
+ },
+ "Die Besprechung beginnt um zehn.": {
+  "tts": "/audio/de/tts/0c9ea6b79de6.mp3"
+ },
+ "das Praktikum": {
+  "tts": "/audio/de/tts/02d6efdb5849.mp3"
+ },
+ "Ich mache ein Praktikum in Berlin.": {
+  "tts": "/audio/de/tts/1736059dd024.mp3"
+ },
+ "die Teilzeit": {
+  "tts": "/audio/de/tts/cd5831cbf2ad.mp3"
+ },
+ "Sie arbeitet in Teilzeit.": {
+  "tts": "/audio/de/tts/27e53400c55e.mp3"
+ },
+ "die Vollzeit": {
+  "tts": "/audio/de/tts/08a108566c82.mp3"
+ },
+ "Er arbeitet Vollzeit.": {
+  "tts": "/audio/de/tts/c3cf6fb403e5.mp3"
+ },
+ "der Ingenieur": {
+  "tts": "/audio/de/tts/6b829e48b094.mp3"
+ },
+ "Mein Bruder ist Ingenieur.": {
+  "tts": "/audio/de/tts/fa94fc1e0948.mp3"
+ },
+ "die Krankenschwester": {
+  "tts": "/audio/de/tts/9a269627c50b.mp3"
+ },
+ "Sie ist Krankenschwester.": {
+  "tts": "/audio/de/tts/ea5a038db8b4.mp3"
+ },
+ "der Krankenpfleger": {
+  "tts": "/audio/de/tts/8d5fcff36d5f.mp3"
+ },
+ "Er arbeitet als Krankenpfleger.": {
+  "tts": "/audio/de/tts/0cb9d77e8d39.mp3"
+ },
+ "der Kellner": {
+  "tts": "/audio/de/tts/8df46a9a69a6.mp3"
+ },
+ "Der Kellner bringt die Rechnung.": {
+  "tts": "/audio/de/tts/80889b5864f3.mp3"
+ },
+ "der Koch": {
+  "tts": "/audio/de/tts/b52f2c8c095b.mp3"
+ },
+ "Der Koch kocht sehr gut.": {
+  "tts": "/audio/de/tts/4f39f4851ee4.mp3"
+ },
+ "der Mechaniker": {
+  "tts": "/audio/de/tts/83c8c52de018.mp3"
+ },
+ "Der Mechaniker repariert das Auto.": {
+  "tts": "/audio/de/tts/917a2a1e8e41.mp3"
+ },
+ "der Friseur": {
+  "tts": "/audio/de/tts/e09a48093911.mp3"
+ },
+ "Ich gehe heute zum Friseur.": {
+  "tts": "/audio/de/tts/a209fbbbb023.mp3"
+ },
+ "der Polizist": {
+  "tts": "/audio/de/tts/9ada1d0a47dd.mp3"
+ },
+ "Der Polizist hilft uns.": {
+  "tts": "/audio/de/tts/08d5cccaa86a.mp3"
+ },
+ "die Hausfrau": {
+  "tts": "/audio/de/tts/7a3dafaf3430.mp3"
+ },
+ "Meine Mutter ist Hausfrau.": {
+  "tts": "/audio/de/tts/30999876dc22.mp3"
+ },
+ "der Rentner": {
+  "tts": "/audio/de/tts/a782de978a46.mp3"
+ },
+ "Mein Opa ist Rentner.": {
+  "tts": "/audio/de/tts/f849ffd97646.mp3"
+ },
+ "arbeiten": {
+  "tts": "/audio/de/tts/1e4f9ea3dc95.mp3"
+ },
+ "Ich arbeite bei Siemens.": {
+  "tts": "/audio/de/tts/a13da6b49606.mp3"
+ },
+ "verdienen": {
+  "tts": "/audio/de/tts/27fd2f84c15d.mp3"
+ },
+ "Wie viel verdienst du?": {
+  "tts": "/audio/de/tts/36c1c8a7225d.mp3"
+ },
+ "anfangen": {
+  "tts": "/audio/de/tts/e1c1c649a714.mp3"
+ },
+ "Wann fängt die Arbeit an?": {
+  "tts": "/audio/de/tts/9a0f510c7376.mp3"
+ },
+ "aufhören": {
+  "tts": "/audio/de/tts/9c9febb4c99f.mp3"
+ },
+ "Um fünf höre ich auf.": {
+  "tts": "/audio/de/tts/39606f0397c2.mp3"
+ },
+ "machen": {
+  "tts": "/audio/de/tts/19940f96a1c5.mp3"
+ },
+ "Was machst du beruflich?": {
+  "tts": "/audio/de/tts/d62b478ce940.mp3"
+ },
+ "studieren": {
+  "tts": "/audio/de/tts/484c0fc06826.mp3"
+ },
+ "Sie studiert Medizin.": {
+  "tts": "/audio/de/tts/1cbda43c635b.mp3"
+ },
+ "arbeitslos": {
+  "tts": "/audio/de/tts/e317570685f9.mp3"
+ },
+ "Er ist seit zwei Monaten arbeitslos.": {
+  "tts": "/audio/de/tts/975eac0af522.mp3"
+ },
+ "frei": {
+  "tts": "/audio/de/tts/2de3329fd3c3.mp3"
+ },
+ "Am Freitag habe ich frei.": {
+  "tts": "/audio/de/tts/e37d6904e46d.mp3"
+ },
+ "fertig": {
+  "tts": "/audio/de/tts/ea1fb6438264.mp3"
+ },
+ "Bist du fertig?": {
+  "tts": "/audio/de/tts/d890ca555013.mp3"
+ },
+ "schwer": {
+  "tts": "/audio/de/tts/bd0a3551e771.mp3"
+ },
+ "Die Arbeit ist schwer.": {
+  "tts": "/audio/de/tts/e122267706a6.mp3"
+ },
+ "leicht": {
+  "tts": "/audio/de/tts/8ac131b40ce2.mp3"
+ },
+ "Die Prüfung war leicht.": {
+  "tts": "/audio/de/tts/fc34a3673560.mp3"
+ },
  "die Schule": {
   "tts": "/audio/de/tts/dd7f2a10d0a9.mp3"
  },
@@ -2456,6 +2696,630 @@
  "Schreib deinen Namen, bitte.": {
   "tts": "/audio/de/tts/8b652b61b7a4.mp3"
  },
+ "der Kurs": {
+  "tts": "/audio/de/tts/4baf40fa29d0.mp3"
+ },
+ "Der Deutschkurs beginnt im März.": {
+  "tts": "/audio/de/tts/7cc96c04bcdd.mp3"
+ },
+ "die Klasse": {
+  "tts": "/audio/de/tts/42b3dccd1742.mp3"
+ },
+ "Unsere Klasse hat 15 Schüler.": {
+  "tts": "/audio/de/tts/c6688690e128.mp3"
+ },
+ "der Unterricht": {
+  "tts": "/audio/de/tts/82c5a4801a85.mp3"
+ },
+ "Der Unterricht beginnt um acht.": {
+  "tts": "/audio/de/tts/aaee8895f85f.mp3"
+ },
+ "die Hausaufgabe": {
+  "tts": "/audio/de/tts/c0a73d9795c9.mp3"
+ },
+ "Hast du die Hausaufgaben gemacht?": {
+  "tts": "/audio/de/tts/ffbc7789eccf.mp3"
+ },
+ "das Wörterbuch": {
+  "tts": "/audio/de/tts/1311875750e2.mp3"
+ },
+ "Ich brauche ein Wörterbuch.": {
+  "tts": "/audio/de/tts/74c29c19892f.mp3"
+ },
+ "die Seite": {
+  "tts": "/audio/de/tts/6132f361d9a8.mp3"
+ },
+ "Öffnen Sie das Buch auf Seite 12.": {
+  "tts": "/audio/de/tts/3e7789d72569.mp3"
+ },
+ "das Wort": {
+  "tts": "/audio/de/tts/c5258af1986f.mp3"
+ },
+ "Was bedeutet dieses Wort?": {
+  "tts": "/audio/de/tts/f4b6c830bcf6.mp3"
+ },
+ "der Satz": {
+  "tts": "/audio/de/tts/61ec2469ce51.mp3"
+ },
+ "Schreiben Sie einen Satz.": {
+  "tts": "/audio/de/tts/44a092bf04ca.mp3"
+ },
+ "die Frage": {
+  "tts": "/audio/de/tts/0d05bd21f61b.mp3"
+ },
+ "Ich habe eine Frage.": {
+  "tts": "/audio/de/tts/eae1a4687dbf.mp3"
+ },
+ "die Antwort": {
+  "tts": "/audio/de/tts/592faa2b29ed.mp3"
+ },
+ "Die Antwort ist richtig.": {
+  "tts": "/audio/de/tts/9a2562602996.mp3"
+ },
+ "der Fehler": {
+  "tts": "/audio/de/tts/99f734fc53ac.mp3"
+ },
+ "Der Text hat drei Fehler.": {
+  "tts": "/audio/de/tts/12137580329b.mp3"
+ },
+ "die Universität": {
+  "tts": "/audio/de/tts/3de224b30f2b.mp3"
+ },
+ "Sie studiert an der Universität.": {
+  "tts": "/audio/de/tts/e1a06824b95a.mp3"
+ },
+ "lesen": {
+  "tts": "/audio/de/tts/af2c8e43f110.mp3"
+ },
+ "Ich lese gern Bücher.": {
+  "tts": "/audio/de/tts/2fdcb99aabac.mp3"
+ },
+ "hören": {
+  "tts": "/audio/de/tts/77ee580c77e7.mp3"
+ },
+ "Hören Sie den Text.": {
+  "tts": "/audio/de/tts/b43d42daa9d8.mp3"
+ },
+ "fragen": {
+  "tts": "/audio/de/tts/9e5e1376dfa9.mp3"
+ },
+ "Darf ich etwas fragen?": {
+  "tts": "/audio/de/tts/bab369d580f4.mp3"
+ },
+ "antworten": {
+  "tts": "/audio/de/tts/553db4866d45.mp3"
+ },
+ "Bitte antworten Sie schnell.": {
+  "tts": "/audio/de/tts/39c2055f66b0.mp3"
+ },
+ "verstehen": {
+  "tts": "/audio/de/tts/04b99b9bc0a6.mp3"
+ },
+ "Ich verstehe das nicht.": {
+  "tts": "/audio/de/tts/59fa59ceb249.mp3"
+ },
+ "wiederholen": {
+  "tts": "/audio/de/tts/9b8f9fb341bb.mp3"
+ },
+ "Können Sie das bitte wiederholen?": {
+  "tts": "/audio/de/tts/262c775481e9.mp3"
+ },
+ "richtig": {
+  "tts": "/audio/de/tts/d42db2a1e1f6.mp3"
+ },
+ "Das ist richtig.": {
+  "tts": "/audio/de/tts/44e9a99c5cc0.mp3"
+ },
+ "falsch": {
+  "tts": "/audio/de/tts/8479e486128e.mp3"
+ },
+ "Die Antwort ist falsch.": {
+  "tts": "/audio/de/tts/7a086ecad4a4.mp3"
+ },
+ "die Freizeit": {
+  "tts": "/audio/de/tts/5ef5e46eb6ad.mp3"
+ },
+ "Was machst du in deiner Freizeit?": {
+  "tts": "/audio/de/tts/4fea103e219c.mp3"
+ },
+ "der Sport": {
+  "tts": "/audio/de/tts/1e154ac76d3a.mp3"
+ },
+ "Ich mache gern Sport.": {
+  "tts": "/audio/de/tts/da982cd9512e.mp3"
+ },
+ "der Fußball": {
+  "tts": "/audio/de/tts/771e0046de5a.mp3"
+ },
+ "Am Samstag spielen wir Fußball.": {
+  "tts": "/audio/de/tts/9654f293d2fb.mp3"
+ },
+ "der Ball": {
+  "tts": "/audio/de/tts/1760df836c2e.mp3"
+ },
+ "Der Hund spielt mit dem Ball.": {
+  "tts": "/audio/de/tts/99654612629d.mp3"
+ },
+ "die Musik": {
+  "tts": "/audio/de/tts/419b32e2f1ce.mp3"
+ },
+ "Ich höre gern Musik.": {
+  "tts": "/audio/de/tts/bd6eda2ffdf3.mp3"
+ },
+ "der Film": {
+  "tts": "/audio/de/tts/a23e4c4695f3.mp3"
+ },
+ "Der Film war sehr gut.": {
+  "tts": "/audio/de/tts/a635bea81014.mp3"
+ },
+ "das Konzert": {
+  "tts": "/audio/de/tts/85f61c940484.mp3"
+ },
+ "Das Konzert beginnt um 20 Uhr.": {
+  "tts": "/audio/de/tts/9015190ee2a3.mp3"
+ },
+ "das Theater": {
+  "tts": "/audio/de/tts/ac4f316a9c14.mp3"
+ },
+ "Wir gehen ins Theater.": {
+  "tts": "/audio/de/tts/203759444628.mp3"
+ },
+ "die Party": {
+  "tts": "/audio/de/tts/8dd404936578.mp3"
+ },
+ "Kommst du zu meiner Party?": {
+  "tts": "/audio/de/tts/c30b9f21a8cc.mp3"
+ },
+ "das Spiel": {
+  "tts": "/audio/de/tts/bebdac7bb51c.mp3"
+ },
+ "Das Spiel beginnt gleich.": {
+  "tts": "/audio/de/tts/2c6dd4e8cc5c.mp3"
+ },
+ "die Zeitung": {
+  "tts": "/audio/de/tts/b0a5ed14b2c8.mp3"
+ },
+ "Opa liest jeden Morgen die Zeitung.": {
+  "tts": "/audio/de/tts/9a96e5ef12cc.mp3"
+ },
+ "der Fernseher": {
+  "tts": "/audio/de/tts/36c9e9e2841b.mp3"
+ },
+ "Der Fernseher ist neu.": {
+  "tts": "/audio/de/tts/0523718c0d34.mp3"
+ },
+ "der Spaziergang": {
+  "tts": "/audio/de/tts/d9cbf1520538.mp3"
+ },
+ "Wir machen einen Spaziergang.": {
+  "tts": "/audio/de/tts/6b53fff6cc4e.mp3"
+ },
+ "der Ausflug": {
+  "tts": "/audio/de/tts/6306b8b40f37.mp3"
+ },
+ "Am Sonntag machen wir einen Ausflug.": {
+  "tts": "/audio/de/tts/eb4ff9993a28.mp3"
+ },
+ "das Schwimmbad": {
+  "tts": "/audio/de/tts/e3e21a4f5f0f.mp3"
+ },
+ "Das Schwimmbad ist im Sommer voll.": {
+  "tts": "/audio/de/tts/84d162dfe1c1.mp3"
+ },
+ "der Verein": {
+  "tts": "/audio/de/tts/af99ba7370a9.mp3"
+ },
+ "Ich spiele in einem Verein.": {
+  "tts": "/audio/de/tts/e1209d9801b7.mp3"
+ },
+ "die Gitarre": {
+  "tts": "/audio/de/tts/218ee06a3477.mp3"
+ },
+ "Er spielt Gitarre.": {
+  "tts": "/audio/de/tts/ea436724a179.mp3"
+ },
+ "das Klavier": {
+  "tts": "/audio/de/tts/c9aa63c28763.mp3"
+ },
+ "Meine Schwester spielt Klavier.": {
+  "tts": "/audio/de/tts/d637a198f679.mp3"
+ },
+ "das Bild": {
+  "tts": "/audio/de/tts/a52ed1940cd0.mp3"
+ },
+ "Das Bild ist sehr schön.": {
+  "tts": "/audio/de/tts/ecba96f46a79.mp3"
+ },
+ "der Hund": {
+  "tts": "/audio/de/tts/6c21d31d5042.mp3"
+ },
+ "Wir haben einen Hund.": {
+  "tts": "/audio/de/tts/88ab006c1710.mp3"
+ },
+ "die Katze": {
+  "tts": "/audio/de/tts/db0fa833071f.mp3"
+ },
+ "Die Katze schläft auf dem Sofa.": {
+  "tts": "/audio/de/tts/2cb3e6b12832.mp3"
+ },
+ "die Lust": {
+  "tts": "/audio/de/tts/4917693eab09.mp3"
+ },
+ "Hast du Lust auf Kino?": {
+  "tts": "/audio/de/tts/cde33128aa90.mp3"
+ },
+ "spielen": {
+  "tts": "/audio/de/tts/d45df5f2f39a.mp3"
+ },
+ "Die Kinder spielen draußen.": {
+  "tts": "/audio/de/tts/757e749119e2.mp3"
+ },
+ "schwimmen": {
+  "tts": "/audio/de/tts/fecd2b1c284f.mp3"
+ },
+ "Im Sommer schwimme ich viel.": {
+  "tts": "/audio/de/tts/af9265a98bbc.mp3"
+ },
+ "tanzen": {
+  "tts": "/audio/de/tts/696255018da1.mp3"
+ },
+ "Tanzt du gern?": {
+  "tts": "/audio/de/tts/f4a47193f555.mp3"
+ },
+ "singen": {
+  "tts": "/audio/de/tts/37445e11ab6d.mp3"
+ },
+ "Sie singt sehr schön.": {
+  "tts": "/audio/de/tts/1c0e19c5d254.mp3"
+ },
+ "fernsehen": {
+  "tts": "/audio/de/tts/5a42c50d46c0.mp3"
+ },
+ "Am Abend möchte ich fernsehen.": {
+  "tts": "/audio/de/tts/9223d085bb2f.mp3"
+ },
+ "spazieren gehen": {
+  "tts": "/audio/de/tts/93b7d0d3a71b.mp3"
+ },
+ "laufen": {
+  "tts": "/audio/de/tts/768d74d3bac0.mp3"
+ },
+ "Ich laufe jeden Morgen.": {
+  "tts": "/audio/de/tts/f39307fa4d20.mp3"
+ },
+ "malen": {
+  "tts": "/audio/de/tts/e219efbd1ae1.mp3"
+ },
+ "Das Kind malt ein Haus.": {
+  "tts": "/audio/de/tts/2ce98811ebbd.mp3"
+ },
+ "treffen": {
+  "tts": "/audio/de/tts/9fb841fb8e4b.mp3"
+ },
+ "Wir treffen uns um acht.": {
+  "tts": "/audio/de/tts/4708e4fd0d94.mp3"
+ },
+ "einladen": {
+  "tts": "/audio/de/tts/44771486d454.mp3"
+ },
+ "Ich möchte dich einladen.": {
+  "tts": "/audio/de/tts/d464e8fd13f6.mp3"
+ },
+ "mögen": {
+  "tts": "/audio/de/tts/01433a407a96.mp3"
+ },
+ "Ich mag Katzen.": {
+  "tts": "/audio/de/tts/3bd33b8bceab.mp3"
+ },
+ "gern": {
+  "tts": "/audio/de/tts/37d74747ca80.mp3"
+ },
+ "Ich lese gern.": {
+  "tts": "/audio/de/tts/ea8326775578.mp3"
+ },
+ "lustig": {
+  "tts": "/audio/de/tts/b09e541feb02.mp3"
+ },
+ "Der Film ist sehr lustig.": {
+  "tts": "/audio/de/tts/81cf73eb5aec.mp3"
+ },
+ "das Telefon": {
+  "tts": "/audio/de/tts/cb5655236f0e.mp3"
+ },
+ "Das Telefon klingelt.": {
+  "tts": "/audio/de/tts/416b5901e09a.mp3"
+ },
+ "das Handy": {
+  "tts": "/audio/de/tts/66aae34075b4.mp3"
+ },
+ "Mein Handy ist kaputt.": {
+  "tts": "/audio/de/tts/8919c96b4708.mp3"
+ },
+ "die Nachricht": {
+  "tts": "/audio/de/tts/8e86a62fdcc3.mp3"
+ },
+ "Ich schicke dir eine Nachricht.": {
+  "tts": "/audio/de/tts/1f94f7251168.mp3"
+ },
+ "die E-Mail": {
+  "tts": "/audio/de/tts/fc6b6f40e63d.mp3"
+ },
+ "Ich schreibe eine E-Mail.": {
+  "tts": "/audio/de/tts/ba2457f13005.mp3"
+ },
+ "der Brief": {
+  "tts": "/audio/de/tts/5f825c7e51c7.mp3"
+ },
+ "Der Brief ist für dich.": {
+  "tts": "/audio/de/tts/7406a0c6339d.mp3"
+ },
+ "die Postkarte": {
+  "tts": "/audio/de/tts/0088c08c7a7e.mp3"
+ },
+ "Ich schicke eine Postkarte aus Bali.": {
+  "tts": "/audio/de/tts/01589d354925.mp3"
+ },
+ "das Paket": {
+  "tts": "/audio/de/tts/eb5f48211933.mp3"
+ },
+ "Das Paket ist angekommen.": {
+  "tts": "/audio/de/tts/3f199490c7aa.mp3"
+ },
+ "die Briefmarke": {
+  "tts": "/audio/de/tts/d83ee212600b.mp3"
+ },
+ "Ich brauche eine Briefmarke.": {
+  "tts": "/audio/de/tts/1a35d6552e99.mp3"
+ },
+ "der Absender": {
+  "tts": "/audio/de/tts/df5dcda9c808.mp3"
+ },
+ "Der Absender steht oben links.": {
+  "tts": "/audio/de/tts/04644ea25d82.mp3"
+ },
+ "der Empfänger": {
+  "tts": "/audio/de/tts/a7ae08bc58c2.mp3"
+ },
+ "Wer ist der Empfänger?": {
+  "tts": "/audio/de/tts/b278504e8656.mp3"
+ },
+ "das Internet": {
+  "tts": "/audio/de/tts/afbc76820369.mp3"
+ },
+ "Das Internet ist heute langsam.": {
+  "tts": "/audio/de/tts/940a098f1d77.mp3"
+ },
+ "das Passwort": {
+  "tts": "/audio/de/tts/4903edf16d7b.mp3"
+ },
+ "Wie ist das Passwort für das WLAN?": {
+  "tts": "/audio/de/tts/2d366e2c223c.mp3"
+ },
+ "der Anruf": {
+  "tts": "/audio/de/tts/042aa2e3e832.mp3"
+ },
+ "Danke für deinen Anruf!": {
+  "tts": "/audio/de/tts/a6095857712e.mp3"
+ },
+ "das Gespräch": {
+  "tts": "/audio/de/tts/d855a974e514.mp3"
+ },
+ "Das Gespräch war sehr nett.": {
+  "tts": "/audio/de/tts/29f4f6821e94.mp3"
+ },
+ "die Information": {
+  "tts": "/audio/de/tts/bfe22ebf5268.mp3"
+ },
+ "Ich brauche mehr Informationen.": {
+  "tts": "/audio/de/tts/e6baed407483.mp3"
+ },
+ "der Text": {
+  "tts": "/audio/de/tts/4103e61ee899.mp3"
+ },
+ "Lesen Sie den Text.": {
+  "tts": "/audio/de/tts/00416344b4d7.mp3"
+ },
+ "die Unterschrift": {
+  "tts": "/audio/de/tts/1df0b5b1baa6.mp3"
+ },
+ "Hier fehlt noch Ihre Unterschrift.": {
+  "tts": "/audio/de/tts/b188f8f41f04.mp3"
+ },
+ "der Moment": {
+  "tts": "/audio/de/tts/b4e9a50f7295.mp3"
+ },
+ "Einen Moment, bitte.": {
+  "tts": "/audio/de/tts/8ddb88b53ac0.mp3"
+ },
+ "anrufen": {
+  "tts": "/audio/de/tts/80859e079485.mp3"
+ },
+ "Kannst du mich morgen anrufen?": {
+  "tts": "/audio/de/tts/526183a1d5ad.mp3"
+ },
+ "telefonieren": {
+  "tts": "/audio/de/tts/eb853544bca9.mp3"
+ },
+ "Sie telefoniert mit ihrer Mutter.": {
+  "tts": "/audio/de/tts/65e87e77f0af.mp3"
+ },
+ "schicken": {
+  "tts": "/audio/de/tts/1841661a082a.mp3"
+ },
+ "Schick mir bitte die Adresse.": {
+  "tts": "/audio/de/tts/c9d7f7d63dca.mp3"
+ },
+ "sagen": {
+  "tts": "/audio/de/tts/c86b75f7ddab.mp3"
+ },
+ "Was sagst du?": {
+  "tts": "/audio/de/tts/a19c9e23450f.mp3"
+ },
+ "erzählen": {
+  "tts": "/audio/de/tts/40f43e377592.mp3"
+ },
+ "Erzähl mal, wie war der Urlaub?": {
+  "tts": "/audio/de/tts/92d30e044e13.mp3"
+ },
+ "ausfüllen": {
+  "tts": "/audio/de/tts/d5368bb8215d.mp3"
+ },
+ "Bitte das Formular ausfüllen.": {
+  "tts": "/audio/de/tts/3aa8be72521c.mp3"
+ },
+ "unterschreiben": {
+  "tts": "/audio/de/tts/f870e0926d5a.mp3"
+ },
+ "Bitte hier unterschreiben.": {
+  "tts": "/audio/de/tts/5d97c252cc1b.mp3"
+ },
+ "bekommen": {
+  "tts": "/audio/de/tts/d355a74d5772.mp3"
+ },
+ "Ich bekomme viele E-Mails.": {
+  "tts": "/audio/de/tts/36c02f0a0d31.mp3"
+ },
+ "wissen": {
+  "tts": "/audio/de/tts/e5b948555107.mp3"
+ },
+ "Ich weiß es nicht.": {
+  "tts": "/audio/de/tts/f9207ae60429.mp3"
+ },
+ "kennen": {
+  "tts": "/audio/de/tts/126b5e69637f.mp3"
+ },
+ "Kennst du Anna?": {
+  "tts": "/audio/de/tts/d5043a38321d.mp3"
+ },
+ "besetzt": {
+  "tts": "/audio/de/tts/ac6d5f23123b.mp3"
+ },
+ "Die Leitung ist besetzt.": {
+  "tts": "/audio/de/tts/05ed7a618bef.mp3"
+ },
+ "kaputt": {
+  "tts": "/audio/de/tts/bdd46e06953d.mp3"
+ },
+ "Der Drucker ist kaputt.": {
+  "tts": "/audio/de/tts/303c77acd3a1.mp3"
+ },
+ "das Wetter": {
+  "tts": "/audio/de/tts/4c35ce7ba83e.mp3"
+ },
+ "Wie ist das Wetter heute?": {
+  "tts": "/audio/de/tts/a3a7975e6ff5.mp3"
+ },
+ "die Sonne": {
+  "tts": "/audio/de/tts/166a66891e70.mp3"
+ },
+ "Die Sonne scheint.": {
+  "tts": "/audio/de/tts/3ff88618e8dd.mp3"
+ },
+ "der Regen": {
+  "tts": "/audio/de/tts/c54de76924c8.mp3"
+ },
+ "Der Regen hört nicht auf.": {
+  "tts": "/audio/de/tts/2e67f60fbd91.mp3"
+ },
+ "der Schnee": {
+  "tts": "/audio/de/tts/29e76672c516.mp3"
+ },
+ "Im Winter gibt es viel Schnee.": {
+  "tts": "/audio/de/tts/2e5c0133c803.mp3"
+ },
+ "der Wind": {
+  "tts": "/audio/de/tts/719fe0fc138e.mp3"
+ },
+ "Der Wind ist heute stark.": {
+  "tts": "/audio/de/tts/0f84675f38b8.mp3"
+ },
+ "die Wolke": {
+  "tts": "/audio/de/tts/7c4784b66fa7.mp3"
+ },
+ "Am Himmel sind viele Wolken.": {
+  "tts": "/audio/de/tts/7b5dfd2c1d24.mp3"
+ },
+ "das Gewitter": {
+  "tts": "/audio/de/tts/217079c446df.mp3"
+ },
+ "Heute Abend kommt ein Gewitter.": {
+  "tts": "/audio/de/tts/275e0d334824.mp3"
+ },
+ "der Himmel": {
+  "tts": "/audio/de/tts/5b74b844f664.mp3"
+ },
+ "Der Himmel ist blau.": {
+  "tts": "/audio/de/tts/821a1c35a930.mp3"
+ },
+ "die Temperatur": {
+  "tts": "/audio/de/tts/4141927b9fc0.mp3"
+ },
+ "Die Temperatur ist heute hoch.": {
+  "tts": "/audio/de/tts/d507d0db649d.mp3"
+ },
+ "der Grad": {
+  "tts": "/audio/de/tts/3cbb867caebf.mp3"
+ },
+ "Es sind 30 Grad.": {
+  "tts": "/audio/de/tts/f765f82eb165.mp3"
+ },
+ "regnen": {
+  "tts": "/audio/de/tts/062d1ff57c23.mp3"
+ },
+ "Es regnet seit gestern.": {
+  "tts": "/audio/de/tts/63e038e4ad88.mp3"
+ },
+ "schneien": {
+  "tts": "/audio/de/tts/56512b7a572a.mp3"
+ },
+ "Morgen schneit es.": {
+  "tts": "/audio/de/tts/f58fe21c8670.mp3"
+ },
+ "scheinen": {
+  "tts": "/audio/de/tts/4c09541eb2da.mp3"
+ },
+ "Heute scheint die Sonne.": {
+  "tts": "/audio/de/tts/205c4394cc04.mp3"
+ },
+ "warm": {
+  "tts": "/audio/de/tts/11b5271edcb6.mp3"
+ },
+ "Heute ist es warm.": {
+  "tts": "/audio/de/tts/57dcc8554aa4.mp3"
+ },
+ "kalt": {
+  "tts": "/audio/de/tts/7d336635b83b.mp3"
+ },
+ "heiß": {
+  "tts": "/audio/de/tts/011e4aa2eebb.mp3"
+ },
+ "In Jakarta ist es immer heiß.": {
+  "tts": "/audio/de/tts/463a2adb89dd.mp3"
+ },
+ "kühl": {
+  "tts": "/audio/de/tts/21dd769cfd11.mp3"
+ },
+ "Am Abend wird es kühl.": {
+  "tts": "/audio/de/tts/0f90f9bbb9c8.mp3"
+ },
+ "sonnig": {
+  "tts": "/audio/de/tts/a2ccab7876b6.mp3"
+ },
+ "Morgen wird es sonnig.": {
+  "tts": "/audio/de/tts/8f390c50bcf1.mp3"
+ },
+ "windig": {
+  "tts": "/audio/de/tts/faac1c4c6a46.mp3"
+ },
+ "Am Meer ist es oft windig.": {
+  "tts": "/audio/de/tts/569082ac7d75.mp3"
+ },
+ "schön": {
+  "tts": "/audio/de/tts/126ce5251e76.mp3"
+ },
+ "Das Wetter ist schön.": {
+  "tts": "/audio/de/tts/31ab179e2c1d.mp3"
+ },
  "die Farbe": {
   "tts": "/audio/de/tts/dc1453dfb414.mp3"
  },
@@ -2470,9 +3334,6 @@
  },
  "blau": {
   "tts": "/audio/de/tts/c453212a7368.mp3"
- },
- "Der Himmel ist blau.": {
-  "tts": "/audio/de/tts/821a1c35a930.mp3"
  },
  "grün": {
   "tts": "/audio/de/tts/e9afeb3fb9a1.mp3"
@@ -2566,9 +3427,6 @@
  },
  "Sie ist 20 Jahre alt.": {
   "tts": "/audio/de/tts/2869a2e5a443.mp3"
- },
- "Wir haben einen Hund.": {
-  "tts": "/audio/de/tts/88ab006c1710.mp3"
  },
  "Hast du Zeit?": {
   "tts": "/audio/de/tts/788cd9a49010.mp3"
@@ -2783,8 +3641,56 @@
  "Ich bezahle mit Karte.": {
   "tts": "/audio/de/tts/295d87a24dc3.mp3"
  },
- "Ich verstehe das nicht.": {
-  "tts": "/audio/de/tts/59fa59ceb249.mp3"
+ "Das ist mein Vater.": {
+  "tts": "/audio/de/tts/ab1517b35dd1.mp3"
+ },
+ "Wie ist dein Name?": {
+  "tts": "/audio/de/tts/9752deb3df0c.mp3"
+ },
+ "Anna sucht ihren Schlüssel.": {
+  "tts": "/audio/de/tts/ee22a21123fb.mp3"
+ },
+ "Ist das Ihr Koffer?": {
+  "tts": "/audio/de/tts/23666475f881.mp3"
+ },
+ "Meine Mutter ist Lehrerin.": {
+  "tts": "/audio/de/tts/a7feaa70385f.mp3"
+ },
+ "Ich besuche meinen Bruder.": {
+  "tts": "/audio/de/tts/a4d12456c805.mp3"
+ },
+ "Unsere Kinder spielen draußen.": {
+  "tts": "/audio/de/tts/78fe2249b8ca.mp3"
+ },
+ "Wo ist eure Wohnung?": {
+  "tts": "/audio/de/tts/7452179eb2de.mp3"
+ },
+ "Komm bitte her!": {
+  "tts": "/audio/de/tts/22cf0d3fc883.mp3"
+ },
+ "Kinder, kommt essen!": {
+  "tts": "/audio/de/tts/0b7de339be8a.mp3"
+ },
+ "Warten Sie bitte einen Moment.": {
+  "tts": "/audio/de/tts/59ca4ad0b9b5.mp3"
+ },
+ "Nimm doch ein Stück Kuchen!": {
+  "tts": "/audio/de/tts/434c6b650f92.mp3"
+ },
+ "Lies den Text bitte laut.": {
+  "tts": "/audio/de/tts/943ba924b636.mp3"
+ },
+ "Fahr vorsichtig!": {
+  "tts": "/audio/de/tts/1ab9dc097bbc.mp3"
+ },
+ "Steh auf!": {
+  "tts": "/audio/de/tts/463a9c0640f3.mp3"
+ },
+ "Ruf mich morgen an!": {
+  "tts": "/audio/de/tts/a6ed8a6923d4.mp3"
+ },
+ "Machen Sie bitte das Fenster zu.": {
+  "tts": "/audio/de/tts/43b58bd49f85.mp3"
  },
  "Der Montag": {
   "tts": "/audio/de/tts/7b631d92ee79.mp3"
@@ -2797,9 +3703,6 @@
  },
  "Er ist neu.": {
   "tts": "/audio/de/tts/9ef36c485b18.mp3"
- },
- "der Regen": {
-  "tts": "/audio/de/tts/c54de76924c8.mp3"
  },
  "der Norden": {
   "tts": "/audio/de/tts/80fc0ec4e0c2.mp3"
@@ -2822,14 +3725,8 @@
  "die Freiheit": {
   "tts": "/audio/de/tts/aa07cdfa10dc.mp3"
  },
- "die Information": {
-  "tts": "/audio/de/tts/bfe22ebf5268.mp3"
- },
  "die Freundschaft": {
   "tts": "/audio/de/tts/dcdef0e62b46.mp3"
- },
- "die Musik": {
-  "tts": "/audio/de/tts/419b32e2f1ce.mp3"
  },
  "Die Mutter liest eine Zeitung.": {
   "tts": "/audio/de/tts/03d33d5e2523.mp3"
@@ -2911,9 +3808,6 @@
  },
  "Frau Weber, wo wohnen Sie?": {
   "tts": "/audio/de/tts/e71a208407e0.mp3"
- },
- "lesen": {
-  "tts": "/audio/de/tts/af2c8e43f110.mp3"
  },
  "Heute lerne ich Deutsch.": {
   "tts": "/audio/de/tts/3e4cbd669b69.mp3"
@@ -3151,5 +4045,65 @@
  },
  "Wir besuchen unsere Oma.": {
   "tts": "/audio/de/tts/0bc6d7ec356a.mp3"
+ },
+ "Das ist Tom und seine Schwester.": {
+  "tts": "/audio/de/tts/d8a413b79ab1.mp3"
+ },
+ "Das ist Lisa und ihr Bruder.": {
+  "tts": "/audio/de/tts/3647c4224ac9.mp3"
+ },
+ "Wie ist dein Name? (du)": {
+  "tts": "/audio/de/tts/d661d04efcf0.mp3"
+ },
+ "Ist das Ihr Koffer, Herr Weber?": {
+  "tts": "/audio/de/tts/b293bbd03d45.mp3"
+ },
+ "ihr (kalian)": {
+  "tts": "/audio/de/tts/ec8c07537b70.mp3"
+ },
+ "Die Kinder suchen ihren Hund.": {
+  "tts": "/audio/de/tts/85d2e0fa193e.mp3"
+ },
+ "Unsere Kinder spielen draußen. (wir)": {
+  "tts": "/audio/de/tts/b64feca50237.mp3"
+ },
+ "Wo ist eure Wohnung? (ihr)": {
+  "tts": "/audio/de/tts/7fc4765c1219.mp3"
+ },
+ "Vater": {
+  "tts": "/audio/de/tts/8fd2bdf8a48e.mp3"
+ },
+ "Mutter": {
+  "tts": "/audio/de/tts/6428b54980a7.mp3"
+ },
+ "Kind": {
+  "tts": "/audio/de/tts/1ee5409c65cf.mp3"
+ },
+ "Eltern": {
+  "tts": "/audio/de/tts/044b2198ac3b.mp3"
+ },
+ "geben": {
+  "tts": "/audio/de/tts/610078361157.mp3"
+ },
+ "warten": {
+  "tts": "/audio/de/tts/25d7d838ec6c.mp3"
+ },
+ "Sprechen Sie bitte langsam!": {
+  "tts": "/audio/de/tts/66be954a34bc.mp3"
+ },
+ "Öffnen Sie bitte das Fenster.": {
+  "tts": "/audio/de/tts/c5b900d81414.mp3"
+ },
+ "Kinder, macht eure Hausaufgaben!": {
+  "tts": "/audio/de/tts/6583fb4cfc55.mp3"
+ },
+ "Sei ruhig!": {
+  "tts": "/audio/de/tts/acc866b966a2.mp3"
+ },
+ "Seien Sie bitte pünktlich!": {
+  "tts": "/audio/de/tts/92608be0e7eb.mp3"
+ },
+ "Komm doch mit!": {
+  "tts": "/audio/de/tts/aba9629521ec.mp3"
  }
 }

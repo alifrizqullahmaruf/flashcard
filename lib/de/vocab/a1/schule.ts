@@ -2,7 +2,7 @@ import type { Category } from '../../content'
 
 const schule: Category = {
   slug: 'schule',
-  title: 'Sekolah',
+  title: 'Sekolah & Belajar',
   titleDe: 'Schule',
   words: [
     { de: 'Schule', id: 'sekolah', kind: 'noun', gender: 'die', plural: 'die Schulen', example: 'Die Schule beginnt um 7 Uhr.', exampleId: 'Sekolah mulai jam 7.' },
@@ -15,6 +15,26 @@ const schule: Category = {
     { de: 'Prüfung', id: 'ujian', kind: 'noun', gender: 'die', plural: 'die Prüfungen', example: 'Die Prüfung ist morgen.', exampleId: 'Ujiannya besok.', hint: 'Akhiran -ung selalu die.' },
     { de: 'lernen', id: 'belajar', kind: 'verb', forms: 'er lernt · hat gelernt', example: 'Ich lerne Deutsch.', exampleId: 'Aku belajar bahasa Jerman.' },
     { de: 'schreiben', id: 'menulis', kind: 'verb', forms: 'er schreibt · hat geschrieben', example: 'Schreib deinen Namen, bitte.', exampleId: 'Tolong tulis namamu.' },
+    { de: 'Kurs', id: 'kursus', kind: 'noun', gender: 'der', plural: 'die Kurse', example: 'Der Deutschkurs beginnt im März.', exampleId: 'Kursus bahasa Jerman mulai bulan Maret.' },
+    { de: 'Klasse', id: 'kelas', kind: 'noun', gender: 'die', plural: 'die Klassen', example: 'Unsere Klasse hat 15 Schüler.', exampleId: 'Kelas kami punya 15 murid.' },
+    { de: 'Unterricht', id: 'pelajaran (di kelas)', kind: 'noun', gender: 'der', plural: '–', example: 'Der Unterricht beginnt um acht.', exampleId: 'Pelajaran mulai jam delapan.' },
+    { de: 'Hausaufgabe', id: 'pekerjaan rumah (PR)', kind: 'noun', gender: 'die', plural: 'die Hausaufgaben', example: 'Hast du die Hausaufgaben gemacht?', exampleId: 'Kamu sudah mengerjakan PR?' },
+    { de: 'Wörterbuch', id: 'kamus', kind: 'noun', gender: 'das', plural: 'die Wörterbücher', example: 'Ich brauche ein Wörterbuch.', exampleId: 'Aku butuh kamus.', hint: 'Majemuk ikut kata terakhir: das Buch.' },
+    { de: 'Seite', id: 'halaman', kind: 'noun', gender: 'die', plural: 'die Seiten', example: 'Öffnen Sie das Buch auf Seite 12.', exampleId: 'Buka bukunya di halaman 12.' },
+    { de: 'Wort', id: 'kata', kind: 'noun', gender: 'das', plural: 'die Wörter', example: 'Was bedeutet dieses Wort?', exampleId: 'Apa arti kata ini?' },
+    { de: 'Satz', id: 'kalimat', kind: 'noun', gender: 'der', plural: 'die Sätze', example: 'Schreiben Sie einen Satz.', exampleId: 'Tulislah satu kalimat.' },
+    { de: 'Frage', id: 'pertanyaan', kind: 'noun', gender: 'die', plural: 'die Fragen', example: 'Ich habe eine Frage.', exampleId: 'Saya punya pertanyaan.' },
+    { de: 'Antwort', id: 'jawaban', kind: 'noun', gender: 'die', plural: 'die Antworten', example: 'Die Antwort ist richtig.', exampleId: 'Jawabannya benar.' },
+    { de: 'Fehler', id: 'kesalahan', kind: 'noun', gender: 'der', plural: 'die Fehler', example: 'Der Text hat drei Fehler.', exampleId: 'Teks itu punya tiga kesalahan.' },
+    { de: 'Universität', id: 'universitas', kind: 'noun', gender: 'die', plural: 'die Universitäten', example: 'Sie studiert an der Universität.', exampleId: 'Dia kuliah di universitas.', hint: 'Akhiran -tät → die.' },
+    { de: 'lesen', id: 'membaca', kind: 'verb', forms: 'er liest · hat gelesen', example: 'Ich lese gern Bücher.', exampleId: 'Aku suka membaca buku.', hint: 'e → ie: du liest, er liest.' },
+    { de: 'hören', id: 'mendengar', kind: 'verb', forms: 'er hört · hat gehört', example: 'Hören Sie den Text.', exampleId: 'Dengarkan teksnya.' },
+    { de: 'fragen', id: 'bertanya', kind: 'verb', forms: 'er fragt · hat gefragt', example: 'Darf ich etwas fragen?', exampleId: 'Boleh saya bertanya sesuatu?' },
+    { de: 'antworten', id: 'menjawab', kind: 'verb', forms: 'er antwortet · hat geantwortet', example: 'Bitte antworten Sie schnell.', exampleId: 'Tolong jawab dengan cepat.' },
+    { de: 'verstehen', id: 'mengerti', kind: 'verb', forms: 'er versteht · hat verstanden', example: 'Ich verstehe das nicht.', exampleId: 'Aku tidak mengerti itu.' },
+    { de: 'wiederholen', id: 'mengulang', kind: 'verb', forms: 'er wiederholt · hat wiederholt', example: 'Können Sie das bitte wiederholen?', exampleId: 'Bisakah Anda mengulanginya?' },
+    { de: 'richtig', id: 'benar', kind: 'adj', example: 'Das ist richtig.', exampleId: 'Itu benar.' },
+    { de: 'falsch', id: 'salah', kind: 'adj', example: 'Die Antwort ist falsch.', exampleId: 'Jawabannya salah.' },
   ],
 }
 

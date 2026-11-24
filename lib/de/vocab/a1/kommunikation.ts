@@ -1,0 +1,41 @@
+import type { Category } from '../../content'
+
+const kommunikation: Category = {
+  slug: 'kommunikation',
+  title: 'Komunikasi',
+  titleDe: 'Kommunikation',
+  words: [
+    { de: 'Telefon', id: 'telepon', kind: 'noun', gender: 'das', plural: 'die Telefone', example: 'Das Telefon klingelt.', exampleId: 'Teleponnya berdering.' },
+    { de: 'Handy', id: 'HP, ponsel', kind: 'noun', gender: 'das', plural: 'die Handys', example: 'Mein Handy ist kaputt.', exampleId: 'HP-ku rusak.' },
+    { de: 'Nachricht', id: 'pesan, berita', kind: 'noun', gender: 'die', plural: 'die Nachrichten', example: 'Ich schicke dir eine Nachricht.', exampleId: 'Aku kirim pesan kepadamu.' },
+    { de: 'E-Mail', id: 'surel, email', kind: 'noun', gender: 'die', plural: 'die E-Mails', example: 'Ich schreibe eine E-Mail.', exampleId: 'Aku menulis email.' },
+    { de: 'Brief', id: 'surat', kind: 'noun', gender: 'der', plural: 'die Briefe', example: 'Der Brief ist für dich.', exampleId: 'Surat itu untukmu.' },
+    { de: 'Postkarte', id: 'kartu pos', kind: 'noun', gender: 'die', plural: 'die Postkarten', example: 'Ich schicke eine Postkarte aus Bali.', exampleId: 'Aku mengirim kartu pos dari Bali.' },
+    { de: 'Paket', id: 'paket', kind: 'noun', gender: 'das', plural: 'die Pakete', example: 'Das Paket ist angekommen.', exampleId: 'Paketnya sudah tiba.' },
+    { de: 'Briefmarke', id: 'perangko', kind: 'noun', gender: 'die', plural: 'die Briefmarken', example: 'Ich brauche eine Briefmarke.', exampleId: 'Aku butuh perangko.' },
+    { de: 'Absender', id: 'pengirim', kind: 'noun', gender: 'der', plural: 'die Absender', example: 'Der Absender steht oben links.', exampleId: 'Pengirim ditulis di kiri atas.' },
+    { de: 'Empfänger', id: 'penerima', kind: 'noun', gender: 'der', plural: 'die Empfänger', example: 'Wer ist der Empfänger?', exampleId: 'Siapa penerimanya?' },
+    { de: 'Internet', id: 'internet', kind: 'noun', gender: 'das', plural: '–', example: 'Das Internet ist heute langsam.', exampleId: 'Internetnya hari ini lambat.' },
+    { de: 'Passwort', id: 'kata sandi', kind: 'noun', gender: 'das', plural: 'die Passwörter', example: 'Wie ist das Passwort für das WLAN?', exampleId: 'Apa kata sandi Wi-Fi-nya?' },
+    { de: 'Anruf', id: 'panggilan telepon', kind: 'noun', gender: 'der', plural: 'die Anrufe', example: 'Danke für deinen Anruf!', exampleId: 'Terima kasih sudah menelepon!' },
+    { de: 'Gespräch', id: 'percakapan', kind: 'noun', gender: 'das', plural: 'die Gespräche', example: 'Das Gespräch war sehr nett.', exampleId: 'Percakapannya sangat menyenangkan.' },
+    { de: 'Information', id: 'informasi', kind: 'noun', gender: 'die', plural: 'die Informationen', example: 'Ich brauche mehr Informationen.', exampleId: 'Aku butuh lebih banyak informasi.', hint: 'Akhiran -ion → die.' },
+    { de: 'Text', id: 'teks', kind: 'noun', gender: 'der', plural: 'die Texte', example: 'Lesen Sie den Text.', exampleId: 'Bacalah teksnya.' },
+    { de: 'Unterschrift', id: 'tanda tangan', kind: 'noun', gender: 'die', plural: 'die Unterschriften', example: 'Hier fehlt noch Ihre Unterschrift.', exampleId: 'Di sini tanda tangan Anda masih kurang.' },
+    { de: 'Moment', id: 'saat, sebentar', kind: 'noun', gender: 'der', plural: 'die Momente', example: 'Einen Moment, bitte.', exampleId: 'Sebentar, ya.' },
+    { de: 'anrufen', id: 'menelepon', kind: 'verb', forms: 'er ruft an · hat angerufen', example: 'Kannst du mich morgen anrufen?', exampleId: 'Bisakah kamu meneleponku besok?', hint: 'Terpisah: Ich rufe dich an.' },
+    { de: 'telefonieren', id: 'bertelepon', kind: 'verb', forms: 'er telefoniert · hat telefoniert', example: 'Sie telefoniert mit ihrer Mutter.', exampleId: 'Dia bertelepon dengan ibunya.' },
+    { de: 'schicken', id: 'mengirim', kind: 'verb', forms: 'er schickt · hat geschickt', example: 'Schick mir bitte die Adresse.', exampleId: 'Tolong kirimkan alamatnya padaku.' },
+    { de: 'sagen', id: 'berkata', kind: 'verb', forms: 'er sagt · hat gesagt', example: 'Was sagst du?', exampleId: 'Apa katamu?' },
+    { de: 'erzählen', id: 'bercerita', kind: 'verb', forms: 'er erzählt · hat erzählt', example: 'Erzähl mal, wie war der Urlaub?', exampleId: 'Ceritakan, bagaimana liburannya?' },
+    { de: 'ausfüllen', id: 'mengisi (formulir)', kind: 'verb', forms: 'er füllt aus · hat ausgefüllt', example: 'Bitte das Formular ausfüllen.', exampleId: 'Silakan isi formulirnya.', hint: 'Terpisah: Ich fülle das Formular aus.' },
+    { de: 'unterschreiben', id: 'menandatangani', kind: 'verb', forms: 'er unterschreibt · hat unterschrieben', example: 'Bitte hier unterschreiben.', exampleId: 'Silakan tanda tangan di sini.' },
+    { de: 'bekommen', id: 'menerima, mendapat', kind: 'verb', forms: 'er bekommt · hat bekommen', example: 'Ich bekomme viele E-Mails.', exampleId: 'Aku menerima banyak email.', hint: 'Bukan "menjadi"! bekommen = mendapat.' },
+    { de: 'wissen', id: 'tahu (fakta)', kind: 'verb', forms: 'er weiß · hat gewusst', example: 'Ich weiß es nicht.', exampleId: 'Aku tidak tahu.', hint: 'ich weiß, du weißt, er weiß.' },
+    { de: 'kennen', id: 'kenal', kind: 'verb', forms: 'er kennt · hat gekannt', example: 'Kennst du Anna?', exampleId: 'Kamu kenal Anna?', hint: 'kennen = kenal (orang/tempat), wissen = tahu (fakta).' },
+    { de: 'besetzt', id: 'sibuk (telepon), terisi', kind: 'adj', example: 'Die Leitung ist besetzt.', exampleId: 'Saluran teleponnya sibuk.' },
+    { de: 'kaputt', id: 'rusak', kind: 'adj', example: 'Der Drucker ist kaputt.', exampleId: 'Printernya rusak.' },
+  ],
+}
+
+export default kommunikation

@@ -8,6 +8,7 @@ import { A1_ARTIKEL, A1_NEGASI, A1_PRAESENS, A1_SATZ } from './lessons'
 import { CATEGORIES } from './vocab'
 import { A1_AKKUSATIV, A1_MODAL } from './lessons-a1b'
 import { A1_PLURAL, A1_TRENNBAR } from './lessons-a1c'
+import { A1_IMPERATIV, A1_POSSESSIV } from './lessons-a1d'
 
 export type LevelId = 'a1' | 'a2' | 'b1' | 'b2' | 'c1' | 'c2'
 export type Gender = 'der' | 'die' | 'das'
@@ -65,8 +66,8 @@ export const LEVELS: Level[] = [
       { slug: 'plural', title: 'Bentuk Jamak', summary: '-e, -er, -n, -s, dan umlaut', body: A1_PLURAL },
       { slug: 'modalverben', title: 'Modalverben', summary: 'können, müssen, wollen, möchten, dürfen', body: A1_MODAL },
       { slug: 'trennbar', title: 'Kata Kerja Terpisah', summary: 'aufstehen → Ich stehe um 7 Uhr auf.', body: A1_TRENNBAR },
-      { slug: 'possessiv', title: 'Kata Ganti Kepemilikan', summary: 'mein, dein, sein, ihr, unser' },
-      { slug: 'imperativ', title: 'Imperativ', summary: 'Komm! Kommt! Kommen Sie!' },
+      { slug: 'possessiv', title: 'Kata Ganti Kepemilikan', summary: 'mein, dein, sein, ihr, unser', body: A1_POSSESSIV },
+      { slug: 'imperativ', title: 'Imperativ', summary: 'Komm! Kommt! Kommen Sie!', body: A1_IMPERATIV },
       { slug: 'zeit', title: 'Angka, Jam & Tanggal', summary: 'um 8 Uhr, am Montag, im Mai' },
     ],
   },

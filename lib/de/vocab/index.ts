@@ -14,11 +14,15 @@ import wohnen from './a1/wohnen'
 import stadt from './a1/stadt'
 import reisen from './a1/reisen'
 import koerper from './a1/koerper'
+import arbeit from './a1/arbeit'
+import freizeit from './a1/freizeit'
+import kommunikation from './a1/kommunikation'
+import wetter from './a1/wetter'
 import zahlen from './a1/zahlen'
 import zeit from './a1/zeit'
 
 export const CATEGORIES: Record<LevelId, Category[]> = {
-  a1: [person, familie, zahlen, zeit, essen, einkaufen, wohnen, stadt, reisen, koerper, schule, farben],
+  a1: [person, familie, zahlen, zeit, essen, einkaufen, wohnen, stadt, reisen, koerper, arbeit, schule, freizeit, kommunikation, wetter, farben],
   a2: [],
   b1: [],
   b2: [],
