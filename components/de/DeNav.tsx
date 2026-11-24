@@ -12,7 +12,7 @@ const links = [
 
 /** Study sessions are full-screen (like Anki/Duolingo): no tab bar, back link at the top. */
 const isFocusRoute = (p: string) =>
-  /^\/de\/kartu\/[^/]+\/[^/]+/.test(p) || /\/latihan(\/|$)/.test(p) || /^\/de\/(hari-ini|latihan-artikel|mulai-belajar)(\/|$)/.test(p)
+  /^\/de\/kartu\/[^/]+\/[^/]+/.test(p) || /\/latihan(\/|$)/.test(p) || /^\/de\/(hari-ini|latihan-artikel|mulai-belajar|konteks)(\/|$)/.test(p)
 
 export default function DeNav() {
   const pathname = usePathname()

@@ -3,7 +3,7 @@ import { ChevronDown, ChevronRight } from 'lucide-react'
 import { CATEGORIES, LEVELS } from '@/lib/de/content'
 import { CategoryIcon } from '@/components/de/icons'
 import { Logo } from '@/components/de/Logo'
-import { NextTopicCard, ReadinessRow, StreakChip, TodayCard } from '@/components/de/HomeToday'
+import { ContextCard, NextTopicCard, ReadinessRow, StreakChip, TodayCard } from '@/components/de/HomeToday'
 import { InstallCard } from '@/components/de/Pwa'
 import { AccountChip } from '@/components/de/Account'
 
@@ -30,6 +30,7 @@ export default function DeHome() {
           <h1 className="text-[2rem] font-semibold tracking-tight leading-tight">Hari ini</h1>
         </div>
         <TodayCard />
+        <ContextCard />
       </section>
 
       <InstallCard variant="home" />

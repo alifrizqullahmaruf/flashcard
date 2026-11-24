@@ -161,6 +161,11 @@ export function getResting(level: string, cat: string): Set<string> {
   )
 }
 
+/** Words of a category the learner has studied at least once. */
+export function studiedWords(level: string, cat: string): Set<string> {
+  return new Set(Object.keys(getSrs(level, cat)))
+}
+
 export function hasSrs(level: string, cat: string, word: string) {
   return word in getSrs(level, cat)
 }

@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
-import { ArrowRight, BookOpen, ChevronRight, CircleCheck, Flame } from 'lucide-react'
+import { ArrowRight, BookOpen, ChevronRight, CircleCheck, Flame, Headphones, PencilLine } from 'lucide-react'
+import { todaysKind } from '@/lib/de/context'
 import { LEVELS } from '@/lib/de/content'
 import {
   dailyNewTarget,
@@ -120,6 +121,23 @@ export function ReadinessRow() {
       <div className="h-1 rounded-pill bg-bg-soft overflow-hidden">
         <div className="h-full bg-ink transition-all" style={{ width: `${pct}%` }} />
       </div>
+    </Link>
+  )
+}
+
+/** Home card: today's context practice (cloze / dictation alternate by weekday). */
+export function ContextCard() {
+  const kind = useProgress(() => todaysKind())
+  if (!kind) return null
+  const isCloze = kind === 'cloze'
+  return (
+    <Link href="/de/konteks" className="bg-surface border border-ink-faint rounded-card-lg px-4 py-3.5 flex items-center gap-3 active:bg-bg-soft transition-colors">
+      {isCloze ? <PencilLine size={18} className="text-ink-muted shrink-0" /> : <Headphones size={18} className="text-ink-muted shrink-0" />}
+      <div className="flex-1 min-w-0">
+        <p className="font-medium leading-snug">Latihan konteks · {isCloze ? 'Kalimat rumpang' : 'Dikte'}</p>
+        <p className="text-sm text-ink-muted truncate">±10 menit · kata yang sudah kamu pelajari, di dalam kalimat</p>
+      </div>
+      <ChevronRight size={16} strokeWidth={1.75} className="text-ink-subtle shrink-0" />
     </Link>
   )
 }
