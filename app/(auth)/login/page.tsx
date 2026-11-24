@@ -45,7 +45,7 @@ export default function LoginPage() {
       setError(result.error ?? 'Login gagal di server.')
       return false
     }
-    router.push('/')
+    router.push('/hafalin')
     router.refresh()
     return true
   }

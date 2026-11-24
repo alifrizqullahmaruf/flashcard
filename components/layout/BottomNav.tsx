@@ -51,7 +51,7 @@ function IconProfile({ active }: IconProps) {
 }
 
 const links = [
-  { href: '/', labelKey: 'nav.home' as const, icon: IconHome, match: (p: string) => p === '/' },
+  { href: '/hafalin', labelKey: 'nav.home' as const, icon: IconHome, match: (p: string) => p === '/hafalin' },
   { href: '/decks', labelKey: 'nav.folder' as const, icon: IconFolder, match: (p: string) => p === '/decks' || p.startsWith('/decks') || p.startsWith('/folders') || p.startsWith('/search') },
   { href: '/stats', labelKey: 'nav.progress' as const, icon: IconStats, match: (p: string) => p.startsWith('/stats') },
   { href: '/profile', labelKey: 'nav.profile' as const, icon: IconProfile, match: (p: string) => p.startsWith('/profile') },

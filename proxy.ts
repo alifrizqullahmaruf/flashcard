@@ -5,7 +5,12 @@ export function proxy(request: NextRequest) {
 
   const isAuthRoute = request.nextUrl.pathname.startsWith('/login')
 
-  // German MVP: public, static-data routes (no login needed)
+  // Klar is the main app: the root goes straight to the language picker
+  if (request.nextUrl.pathname === '/') {
+    return NextResponse.redirect(new URL('/mulai', request.url))
+  }
+
+  // Klar (German): public, static-data routes (no login needed)
   if (/^\/(de|mulai)(\/|$)/.test(request.nextUrl.pathname)) {
     return NextResponse.next()
   }
@@ -14,8 +19,9 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
 
+  // old Hafalin app: after login go to its own home
   if (session && isAuthRoute) {
-    return NextResponse.redirect(new URL('/', request.url))
+    return NextResponse.redirect(new URL('/hafalin', request.url))
   }
 
   return NextResponse.next()
