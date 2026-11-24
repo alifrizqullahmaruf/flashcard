@@ -42,10 +42,10 @@ export default function DeHome() {
       <section className="flex flex-col gap-3">
         <div className="flex items-baseline justify-between">
           <p className="de-label">Kosakata {a1.label}</p>
-          <Link href="/de/kartu" className="text-xs font-medium text-ink-muted">Semua</Link>
+          <Link href="/de/kartu" className="text-xs font-medium text-ink-muted">Semua ({cats.length})</Link>
         </div>
         <ul className="bg-surface border border-ink-faint rounded-card-lg divide-y divide-ink-faint overflow-hidden">
-          {cats.map((c) => (
+          {cats.slice(0, 5).map((c) => (
             <li key={c.slug}>
               <Link href={`/de/kartu/a1/${c.slug}`} className="flex items-center gap-3 px-4 py-3 active:bg-bg-soft transition-colors">
                 <CategoryIcon slug={c.slug} size={16} />

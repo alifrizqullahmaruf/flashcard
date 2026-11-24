@@ -1,0 +1,41 @@
+import type { Category } from '../../content'
+
+const reisen: Category = {
+  slug: 'reisen',
+  title: 'Perjalanan & Liburan',
+  titleDe: 'Reisen und Urlaub',
+  words: [
+    { de: 'Reise', id: 'perjalanan', kind: 'noun', gender: 'die', plural: 'die Reisen', example: 'Die Reise dauert zwei Stunden.', exampleId: 'Perjalanannya dua jam.' },
+    { de: 'Urlaub', id: 'liburan, cuti', kind: 'noun', gender: 'der', plural: 'die Urlaube', example: 'Im August mache ich Urlaub.', exampleId: 'Bulan Agustus aku liburan.' },
+    { de: 'Ferien', id: 'libur (sekolah)', kind: 'noun', gender: 'die', plural: 'Pl.', example: 'Die Ferien beginnen im Juli.', exampleId: 'Libur sekolah mulai bulan Juli.', hint: 'Hanya ada bentuk jamak.' },
+    { de: 'Hotel', id: 'hotel', kind: 'noun', gender: 'das', plural: 'die Hotels', example: 'Das Hotel ist sehr schön.', exampleId: 'Hotelnya sangat bagus.' },
+    { de: 'Einzelzimmer', id: 'kamar single', kind: 'noun', gender: 'das', plural: 'die Einzelzimmer', example: 'Ich möchte ein Einzelzimmer.', exampleId: 'Saya ingin kamar single.' },
+    { de: 'Doppelzimmer', id: 'kamar double', kind: 'noun', gender: 'das', plural: 'die Doppelzimmer', example: 'Ein Doppelzimmer kostet 90 Euro.', exampleId: 'Kamar double harganya 90 euro.' },
+    { de: 'Rezeption', id: 'resepsionis, meja depan', kind: 'noun', gender: 'die', plural: 'die Rezeptionen', example: 'Fragen Sie an der Rezeption.', exampleId: 'Tanyakan di meja resepsionis.', hint: 'Akhiran -ion → die.' },
+    { de: 'Gepäck', id: 'bagasi', kind: 'noun', gender: 'das', plural: '–', example: 'Wo ist mein Gepäck?', exampleId: 'Di mana bagasiku?' },
+    { de: 'Koffer', id: 'koper', kind: 'noun', gender: 'der', plural: 'die Koffer', example: 'Der Koffer ist zu schwer.', exampleId: 'Kopernya terlalu berat.' },
+    { de: 'Pass', id: 'paspor', kind: 'noun', gender: 'der', plural: 'die Pässe', example: 'Haben Sie Ihren Pass dabei?', exampleId: 'Apakah Anda membawa paspor?' },
+    { de: 'Visum', id: 'visa', kind: 'noun', gender: 'das', plural: 'die Visa', example: 'Ich brauche ein Visum für Deutschland.', exampleId: 'Aku butuh visa untuk Jerman.', hint: 'Akhiran -um → das.' },
+    { de: 'Flughafen', id: 'bandara', kind: 'noun', gender: 'der', plural: 'die Flughäfen', example: 'Der Flughafen ist weit weg.', exampleId: 'Bandaranya jauh.' },
+    { de: 'Flugzeug', id: 'pesawat', kind: 'noun', gender: 'das', plural: 'die Flugzeuge', example: 'Das Flugzeug landet um zehn.', exampleId: 'Pesawatnya mendarat jam sepuluh.' },
+    { de: 'Flug', id: 'penerbangan', kind: 'noun', gender: 'der', plural: 'die Flüge', example: 'Der Flug nach Jakarta ist lang.', exampleId: 'Penerbangan ke Jakarta itu lama.' },
+    { de: 'Meer', id: 'laut', kind: 'noun', gender: 'das', plural: 'die Meere', example: 'Wir fahren ans Meer.', exampleId: 'Kami pergi ke laut.' },
+    { de: 'Strand', id: 'pantai', kind: 'noun', gender: 'der', plural: 'die Strände', example: 'Der Strand ist sauber.', exampleId: 'Pantainya bersih.' },
+    { de: 'Berg', id: 'gunung', kind: 'noun', gender: 'der', plural: 'die Berge', example: 'Im Urlaub fahren wir in die Berge.', exampleId: 'Saat liburan kami pergi ke pegunungan.' },
+    { de: 'See', id: 'danau', kind: 'noun', gender: 'der', plural: 'die Seen', example: 'Der See ist sehr groß.', exampleId: 'Danaunya sangat besar.', hint: 'der See = danau; die See = laut (jarang).' },
+    { de: 'Ausland', id: 'luar negeri', kind: 'noun', gender: 'das', plural: '–', example: 'Sie arbeitet im Ausland.', exampleId: 'Dia bekerja di luar negeri.' },
+    { de: 'Foto', id: 'foto', kind: 'noun', gender: 'das', plural: 'die Fotos', example: 'Ich mache ein Foto.', exampleId: 'Aku memotret.' },
+    { de: 'Stadtplan', id: 'peta kota', kind: 'noun', gender: 'der', plural: 'die Stadtpläne', example: 'Haben Sie einen Stadtplan?', exampleId: 'Apakah Anda punya peta kota?' },
+    { de: 'Reservierung', id: 'reservasi', kind: 'noun', gender: 'die', plural: 'die Reservierungen', example: 'Ich habe eine Reservierung.', exampleId: 'Saya punya reservasi.', hint: 'Akhiran -ung → die.' },
+    { de: 'reisen', id: 'bepergian', kind: 'verb', forms: 'er reist · ist gereist', example: 'Ich reise gern.', exampleId: 'Aku suka bepergian.' },
+    { de: 'fliegen', id: 'terbang', kind: 'verb', forms: 'er fliegt · ist geflogen', example: 'Wir fliegen nach Berlin.', exampleId: 'Kami terbang ke Berlin.' },
+    { de: 'buchen', id: 'memesan (tiket/hotel)', kind: 'verb', forms: 'er bucht · hat gebucht', example: 'Ich buche ein Hotel.', exampleId: 'Aku memesan hotel.' },
+    { de: 'reservieren', id: 'mereservasi', kind: 'verb', forms: 'er reserviert · hat reserviert', example: 'Ich möchte einen Tisch reservieren.', exampleId: 'Saya ingin memesan meja.' },
+    { de: 'besuchen', id: 'mengunjungi', kind: 'verb', forms: 'er besucht · hat besucht', example: 'Wir besuchen unsere Freunde.', exampleId: 'Kami mengunjungi teman-teman kami.' },
+    { de: 'bleiben', id: 'tinggal, menetap', kind: 'verb', forms: 'er bleibt · ist geblieben', example: 'Wir bleiben eine Woche.', exampleId: 'Kami tinggal seminggu.' },
+    { de: 'packen', id: 'mengemas', kind: 'verb', forms: 'er packt · hat gepackt', example: 'Ich packe meinen Koffer.', exampleId: 'Aku mengemas koperku.' },
+    { de: 'Gute Reise!', id: 'selamat jalan!', kind: 'other', example: 'Tschüss und gute Reise!', exampleId: 'Dah, selamat jalan!' },
+  ],
+}
+
+export default reisen
