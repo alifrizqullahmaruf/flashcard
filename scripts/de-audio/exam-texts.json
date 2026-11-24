@@ -1,0 +1,591 @@
+[
+ {
+  "id": "exam-s1-h1-1",
+  "lines": [
+   {
+    "who": "f",
+    "text": "Entschuldigung, wann fährt der nächste Zug nach München?"
+   },
+   {
+    "who": "m",
+    "text": "Der Zug um zehn Uhr fünfzehn ist schon weg. Der nächste Zug fährt um zehn Uhr fünfzig."
+   },
+   {
+    "who": "f",
+    "text": "Zehn Uhr fünfzig. Vielen Dank!"
+   }
+  ]
+ },
+ {
+  "id": "exam-s1-h1-2",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Guten Tag, was möchten Sie?"
+   },
+   {
+    "who": "f",
+    "text": "Ich hätte gern ein Kilo Äpfel."
+   },
+   {
+    "who": "m",
+    "text": "Tut mir leid, Äpfel haben wir heute nicht mehr."
+   },
+   {
+    "who": "f",
+    "text": "Schade. Dann nehme ich ein Kilo Tomaten."
+   }
+  ]
+ },
+ {
+  "id": "exam-s1-h1-3",
+  "lines": [
+   {
+    "who": "f",
+    "text": "Entschuldigung, wo ist hier die Toilette?"
+   },
+   {
+    "who": "m",
+    "text": "Hier im Erdgeschoss leider nicht. Die Toilette ist im ersten Stock, neben dem Aufzug."
+   }
+  ]
+ },
+ {
+  "id": "exam-s1-h1-4",
+  "lines": [
+   {
+    "who": "f",
+    "text": "Wie viel kostet das T-Shirt hier?"
+   },
+   {
+    "who": "m",
+    "text": "Es hat neunundzwanzig Euro gekostet, aber heute kostet es nur neunzehn Euro."
+   },
+   {
+    "who": "f",
+    "text": "Super, dann nehme ich es."
+   }
+  ]
+ },
+ {
+  "id": "exam-s1-h1-5",
+  "lines": [
+   {
+    "who": "f",
+    "text": "Und was machst du am Wochenende? Fährst du wieder in die Berge?"
+   },
+   {
+    "who": "m",
+    "text": "Nein, diesmal nicht. Ich fahre zu meinen Eltern nach Hamburg."
+   }
+  ]
+ },
+ {
+  "id": "exam-s1-h1-6",
+  "lines": [
+   {
+    "who": "f",
+    "text": "Praxis Doktor Lenz, guten Tag."
+   },
+   {
+    "who": "m",
+    "text": "Guten Tag, ich brauche einen Termin. Geht es am Montag?"
+   },
+   {
+    "who": "f",
+    "text": "Montag und Dienstag sind leider voll. Am Mittwoch um neun Uhr ist noch frei."
+   },
+   {
+    "who": "m",
+    "text": "Gut, dann Mittwoch um neun."
+   }
+  ]
+ },
+ {
+  "id": "exam-s1-h2-1",
+  "lines": [
+   {
+    "who": "f",
+    "text": "Achtung an Gleis drei. Der ICE nach Frankfurt hat heute circa zwanzig Minuten Verspätung. Wir bitten um Entschuldigung."
+   }
+  ]
+ },
+ {
+  "id": "exam-s1-h2-2",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Liebe Kundinnen und Kunden, Kasse eins ist jetzt geschlossen. Bitte gehen Sie zu Kasse vier. Vielen Dank."
+   }
+  ]
+ },
+ {
+  "id": "exam-s1-h2-3",
+  "lines": [
+   {
+    "who": "f",
+    "text": "Die Passagiere für den Flug nach Wien kommen bitte jetzt zum Ausgang B zwölf. Der Flug ist bereit zum Einsteigen."
+   }
+  ]
+ },
+ {
+  "id": "exam-s1-h2-4",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Liebe Besucher, das Museum schließt heute schon um sechzehn Uhr. Morgen sind wir wieder von zehn bis zwanzig Uhr für Sie da."
+   }
+  ]
+ },
+ {
+  "id": "exam-s1-h3-1",
+  "lines": [
+   {
+    "who": "f",
+    "text": "Guten Tag, Herr Yilmaz, hier ist die Autowerkstatt Becker. Ihr Auto ist fertig. Können Sie morgen um fünfzehn Uhr kommen? Danke und auf Wiederhören."
+   }
+  ]
+ },
+ {
+  "id": "exam-s1-h3-2",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Hallo Anna, hier ist Paul. Am Freitag machen wir das Picknick im Park. Getränke habe ich schon. Kannst du einen Kuchen mitbringen? Bis Freitag!"
+   }
+  ]
+ },
+ {
+  "id": "exam-s1-h3-3",
+  "lines": [
+   {
+    "who": "f",
+    "text": "Hi Max, hier ist Julia. Es regnet so stark! Wir treffen uns nicht vor dem Kino, treffen wir uns lieber im Café neben dem Kino. Bis gleich!"
+   }
+  ]
+ },
+ {
+  "id": "exam-s1-h3-4",
+  "lines": [
+   {
+    "who": "f",
+    "text": "Guten Tag, hier spricht Monika Schulz. Ich habe eine Frage zu meiner Rechnung. Bitte rufen Sie mich zurück. Meine Nummer ist null drei vier eins, sechs sechs, sieben acht, zwei eins. Danke."
+   }
+  ]
+ },
+ {
+  "id": "exam-s1-h3-5",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Hallo Frau Wolf, hier ist Thomas Klein. Mein Zug hat leider Verspätung. Ich komme eine halbe Stunde später zur Besprechung. Bis dann."
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-h1-1",
+  "lines": [
+   {
+    "who": "f",
+    "text": "Möchtest du einen Kaffee?"
+   },
+   {
+    "who": "m",
+    "text": "Nein danke, am Abend trinke ich keinen Kaffee. Ich nehme lieber einen Tee."
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-h1-2",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Fährst du heute mit dem Auto zur Arbeit?"
+   },
+   {
+    "who": "f",
+    "text": "Nein, mein Auto ist kaputt. Diese Woche fahre ich mit dem Fahrrad. Der Bus ist mir zu voll."
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-h1-3",
+  "lines": [
+   {
+    "who": "f",
+    "text": "Herzlich willkommen im Hotel Lindner. Ihr Zimmer ist Nummer zweihundertvierzehn, im zweiten Stock."
+   },
+   {
+    "who": "m",
+    "text": "Danke schön. Und wann gibt es Frühstück?"
+   },
+   {
+    "who": "f",
+    "text": "Von sieben bis zehn Uhr."
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-h1-4",
+  "lines": [
+   {
+    "who": "f",
+    "text": "Guten Tag, Herr Hausmeister. Die Heizung in meiner Wohnung funktioniert nicht. Es ist so kalt!"
+   },
+   {
+    "who": "m",
+    "text": "Oh, das tut mir leid. Ich komme heute Nachmittag."
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-h1-5",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Ich möchte mich für den Deutschkurs A1 anmelden. Wann beginnt er?"
+   },
+   {
+    "who": "f",
+    "text": "Der Kurs beginnt am dritten März, immer montags und mittwochs."
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-h1-6",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Wohnst du noch in der Stadtmitte?"
+   },
+   {
+    "who": "f",
+    "text": "Nein, ich wohne jetzt in einem kleinen Dorf, zwanzig Kilometer von der Stadt. Das ist sehr ruhig."
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-h2-1",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Liebe Fahrgäste, die Linie U zwei fährt heute wegen Bauarbeiten nicht. Bitte nehmen Sie den Bus Nummer acht."
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-h2-2",
+  "lines": [
+   {
+    "who": "f",
+    "text": "Liebe Kunden, heute im zweiten Stock: alle Jacken dreißig Prozent billiger! Nur heute!"
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-h2-3",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Eine Information für die Teilnehmer vom Kurs A1: Der Kurs beginnt heute nicht um neun, sondern erst um zehn Uhr, in Raum fünf."
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-h2-4",
+  "lines": [
+   {
+    "who": "f",
+    "text": "Und jetzt das Wetter: Am Freitag gibt es noch Regen, aber am Wochenende scheint die Sonne, bei bis zu fünfundzwanzig Grad."
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-h3-1",
+  "lines": [
+   {
+    "who": "f",
+    "text": "Guten Tag, Herr Fischer, hier ist die Praxis Doktor Brandt. Ihr Termin ist am Donnerstag um acht Uhr. Bitte bringen Sie Ihre Versichertenkarte mit. Auf Wiederhören."
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-h3-2",
+  "lines": [
+   {
+    "who": "f",
+    "text": "Hallo Mama, hier ist Sara. Ich bin noch bei Lisa, wir lernen zusammen für den Test. Ich komme erst um einundzwanzig Uhr nach Hause. Tschüss!"
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-h3-3",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Hallo, hier ist Herr Becker von der Sprachschule. Am Montag haben wir keinen Unterricht. Wir machen einen Ausflug nach Heidelberg. Wir treffen uns um acht Uhr am Bahnhof."
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-h3-4",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Guten Tag, Frau Nowak, hier ist der Handy-Service. Ihr Handy ist repariert. Die Reparatur kostet fünfundvierzig Euro. Sie können es ab heute abholen."
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-h3-5",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Hey, hier ist Ben. Ich habe zwei Karten für das Konzert am Samstag. Hast du Lust? Ruf mich bitte bis morgen zurück!"
+   }
+  ]
+ },
+ {
+  "id": "exam-vorstellen",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Mein Name ist Rina. Ich bin 23 Jahre alt. Ich komme aus Indonesien. Ich wohne in Bandung. Ich spreche Indonesisch, Englisch und ein bisschen Deutsch. Ich bin Studentin. Mein Hobby ist Lesen."
+   }
+  ]
+ },
+ {
+  "id": "exam-spell",
+  "lines": [
+   {
+    "who": "m",
+    "text": "R – I – N – A."
+   }
+  ]
+ },
+ {
+  "id": "exam-number",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Null acht eins zwei, drei vier fünf sechs, sieben acht."
+   }
+  ]
+ },
+ {
+  "id": "exam-s1-sp2-0-0",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Was isst du zum Frühstück? Zum Frühstück esse ich Brot mit Käse."
+   }
+  ]
+ },
+ {
+  "id": "exam-s1-sp2-0-1",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Was ist dein Lieblingsessen? Mein Lieblingsessen ist Nasi Goreng."
+   }
+  ]
+ },
+ {
+  "id": "exam-s1-sp2-0-2",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Was trinkst du gern? Ich trinke gern Tee."
+   }
+  ]
+ },
+ {
+  "id": "exam-s1-sp2-1-0",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Wie groß ist deine Wohnung? Meine Wohnung hat zwei Zimmer."
+   }
+  ]
+ },
+ {
+  "id": "exam-s1-sp2-1-1",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Kennst du deine Nachbarn? Ja, meine Nachbarn sind sehr nett."
+   }
+  ]
+ },
+ {
+  "id": "exam-s1-sp2-1-2",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Hast du eine große Küche? Nein, meine Küche ist klein."
+   }
+  ]
+ },
+ {
+  "id": "exam-s1-sp3-0",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Können Sie bitte das Fenster aufmachen?"
+   }
+  ]
+ },
+ {
+  "id": "exam-s1-sp3-1",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Kannst du mir bitte einen Kugelschreiber geben?"
+   }
+  ]
+ },
+ {
+  "id": "exam-s1-sp3-2",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Ich hätte gern ein Glas Wasser, bitte."
+   }
+  ]
+ },
+ {
+  "id": "exam-s1-sp3-3",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Mach bitte das Licht an!"
+   }
+  ]
+ },
+ {
+  "id": "exam-s1-sp3-4",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Eine Fahrkarte nach Berlin, bitte."
+   }
+  ]
+ },
+ {
+  "id": "exam-s1-sp3-5",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Darf ich bitte dein Handy benutzen?"
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-sp2-0-0",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Was machst du am Wochenende? Am Wochenende treffe ich Freunde."
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-sp2-0-1",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Machst du gern Sport? Ja, ich spiele gern Fußball."
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-sp2-0-2",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Wie oft gehst du ins Kino? Ich gehe einmal im Monat ins Kino."
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-sp2-1-0",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Was sind Sie von Beruf? Ich bin Krankenschwester."
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-sp2-1-1",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Wie sind deine Kollegen? Meine Kollegen sind freundlich."
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-sp2-1-2",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Wann hast du Pause? Ich habe um zwölf Uhr Pause."
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-sp3-0",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Können Sie bitte die Tür aufmachen?"
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-sp3-1",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Die Rechnung, bitte!"
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-sp3-2",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Ich möchte einen Kaffee mit Milch, bitte."
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-sp3-3",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Kannst du bitte die Musik leiser machen?"
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-sp3-4",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Haben Sie einen Stadtplan für mich?"
+   }
+  ]
+ },
+ {
+  "id": "exam-s2-sp3-5",
+  "lines": [
+   {
+    "who": "m",
+    "text": "Können Sie bitte ein Foto von uns machen?"
+   }
+  ]
+ }
+]

@@ -1,18 +1,19 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { BookOpen, ChartColumn, House, Layers } from 'lucide-react'
+import { BookOpen, ChartColumn, GraduationCap, House, Layers } from 'lucide-react'
 
 const links = [
   { href: '/de', label: 'Beranda', Icon: House, match: (p: string) => p === '/de' },
   { href: '/de/materi', label: 'Materi', Icon: BookOpen, match: (p: string) => p.startsWith('/de/materi') },
   { href: '/de/kartu', label: 'Kartu', Icon: Layers, match: (p: string) => p.startsWith('/de/kartu') },
+  { href: '/de/ujian', label: 'Ujian', Icon: GraduationCap, match: (p: string) => p.startsWith('/de/ujian') },
   { href: '/de/progress', label: 'Progress', Icon: ChartColumn, match: (p: string) => p.startsWith('/de/progress') },
 ]
 
 /** Study sessions are full-screen (like Anki/Duolingo): no tab bar, back link at the top. */
 const isFocusRoute = (p: string) =>
-  /^\/de\/kartu\/[^/]+\/[^/]+/.test(p) || /\/latihan(\/|$)/.test(p) || /^\/de\/(hari-ini|latihan-artikel|mulai-belajar|konteks)(\/|$)/.test(p)
+  /^\/de\/kartu\/[^/]+\/[^/]+/.test(p) || /\/latihan(\/|$)/.test(p) || /^\/de\/(hari-ini|latihan-artikel|mulai-belajar|konteks)(\/|$)/.test(p) || /^\/de\/ujian\/(simulasi|[^/]+\/\d)/.test(p)
 
 export default function DeNav() {
   const pathname = usePathname()
@@ -26,7 +27,7 @@ export default function DeNav() {
         style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
         aria-label="Navigasi utama"
       >
-        <div className="mx-auto max-w-md grid grid-cols-4">
+        <div className="mx-auto max-w-md grid grid-cols-5">
           {links.map(({ href, label, Icon, match }) => {
             const active = match(pathname)
             return (

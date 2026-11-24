@@ -2,6 +2,7 @@
 import { createEmptyCard, fsrs, Rating, TypeConvert, type Card as FsrsCard } from 'ts-fsrs'
 import { CATEGORIES, LEVELS, type LevelId } from './content'
 import { PRACTICE } from './exercises'
+import { isOfficial } from './official'
 
 /**
  * enable_short_term: false → no minute-level learning steps.
@@ -27,10 +28,14 @@ function read<T>(k: string, fallback: T): T {
   }
 }
 
+/** Shared storage access for other modules (exam practice) — same dirty-marking and change events. */
+export const readKey = <T,>(k: string, fallback: T): T => read<T>(k, fallback)
+export const writeKey = (k: string, v: unknown) => write(k, v)
+
 /* ── sync bookkeeping (lib/de/sync.ts pushes these keys to the account) ── */
 
 /** Keys that belong to the learner's account and are synced to Firestore. */
-export const isSyncKey = (k: string) => /^de:(srs|gsrs|topic|new|known):/.test(k) || k === 'de:streak' || k === 'de:profile'
+export const isSyncKey = (k: string) => /^de:(srs|gsrs|topic|new|known|exam):/.test(k) || k === 'de:streak' || k === 'de:profile'
 const DIRTY_KEY = 'de:dirty'
 
 export function dirtyKeys(): string[] {
@@ -186,19 +191,21 @@ export function getDueAll(): CardRef[] {
   return out.sort((a, b) => a.due - b.due).map(({ level, cat, word }) => ({ level, cat, word }))
 }
 
-/** Next unseen words in curriculum order (A1 first, category order). */
+/** Next unseen words: A1 first, official exam words before extra words, then category order. */
 export function getNewWords(limit: number): CardRef[] {
-  const out: CardRef[] = []
+  const official: CardRef[] = []
+  const extra: CardRef[] = []
   for (const lv of LEVELS) {
     for (const c of CATEGORIES[lv.id]) {
       const srs = getSrs(lv.id, c.slug)
       for (const w of c.words) {
-        if (out.length >= limit) return out
-        if (!srs[w.de]) out.push({ level: lv.id, cat: c.slug, word: w.de })
+        if (srs[w.de]) continue
+        ;(isOfficial(lv.id, w) ? official : extra).push({ level: lv.id, cat: c.slug, word: w.de })
       }
     }
+    if (official.length >= limit) break
   }
-  return out
+  return [...official, ...extra].slice(0, limit)
 }
 
 export function newToday(): number {
@@ -320,10 +327,14 @@ export function levelReadiness(level: LevelId) {
   const mastered = ready.filter((t) => topicStage(getTopicStatus(level, t.slug)) === 'dikuasai').length
   let words = 0
   let hafal = 0
+  // exam readiness counts the official word list only
   for (const c of CATEGORIES[level]) {
-    const st = countStates(level, c.slug)
-    words += c.words.length
-    hafal += st.hafal
+    const states = cardStates(level, c.slug)
+    for (const w of c.words) {
+      if (!isOfficial(level, w)) continue
+      words++
+      if (states[w.de] === 'hafal') hafal++
+    }
   }
   const g = ready.length ? mastered / ready.length : 0
   const v = words ? hafal / words : 0

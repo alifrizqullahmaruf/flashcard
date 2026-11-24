@@ -5,6 +5,13 @@
  */
 import type { Category, LevelId } from '../content'
 import person from './a1/person'
+import formular from './a1/formular'
+import unterwegs from './a1/unterwegs'
+import leute from './a1/leute'
+import alltag from './a1/alltag'
+import dinge from './a1/dinge'
+import adverbien from './a1/adverbien'
+import pronomen from './a1/pronomen'
 import familie from './a1/familie'
 import essen from './a1/essen'
 import schule from './a1/schule'
@@ -24,7 +31,7 @@ import zahlen from './a1/zahlen'
 import zeit from './a1/zeit'
 
 export const CATEGORIES: Record<LevelId, Category[]> = {
-  a1: [person, familie, zahlen, zeit, essen, einkaufen, wohnen, stadt, reisen, koerper, arbeit, schule, freizeit, kommunikation, wetter, farben, verben, kleinwoerter],
+  a1: [person, formular, familie, leute, zahlen, zeit, essen, einkaufen, wohnen, alltag, dinge, stadt, reisen, unterwegs, koerper, arbeit, schule, freizeit, kommunikation, wetter, farben, verben, adverbien, kleinwoerter, pronomen],
   a2: [],
   b1: [],
   b2: [],

@@ -1,8 +1,15 @@
-import { Briefcase, CircleHelp, Clock, Zap, CloudSun, Music, Smartphone, GraduationCap, Hash, HeartPulse, IdCard, Palette, Plane, ShoppingBag, Sofa, TramFront, Users, UtensilsCrossed, type LucideIcon } from 'lucide-react'
+import { Briefcase, ClipboardList, Megaphone, PartyPopper, Hand, Package, SlidersHorizontal, Pilcrow, CircleHelp, Clock, Zap, CloudSun, Music, Smartphone, GraduationCap, Hash, HeartPulse, IdCard, Palette, Plane, ShoppingBag, Sofa, TramFront, Users, UtensilsCrossed, type LucideIcon } from 'lucide-react'
 
 /** Category → line icon (one consistent icon set instead of emoji stickers). */
 export const CATEGORY_ICON: Record<string, LucideIcon> = {
   person: IdCard,
+  formular: ClipboardList,
+  unterwegs: Megaphone,
+  leute: PartyPopper,
+  alltag: Hand,
+  dinge: Package,
+  adverbien: SlidersHorizontal,
+  pronomen: Pilcrow,
   familie: Users,
   zeit: Clock,
   einkaufen: ShoppingBag,

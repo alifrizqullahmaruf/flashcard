@@ -44,3 +44,17 @@ Kesiapan A1 = kosakata resmi (30%) + grammar resmi (20%) + skor simulasi terbaik
 | 8 | R3 Sprechen |
 | 9 | Simulasi penuh + rapor + R4 Kesiapan |
 Setiap sesi: tsc, lint, build, uji browser, commit + push, cek deploy.
+
+---
+
+## Status (25 Nov 2026): selesai
+
+| | Hasil |
+|---|---|
+| R1 kosakata resmi | 932 kata A1; cakupan Wortliste resmi 679/679 headword (100%). Kategori baru: formular, unterwegs, leute, alltag, dinge, adverbien, pronomen. Kata resmi diajarkan lebih dulu (`lib/de/official.ts`). |
+| R2 grammar | Topik baru: Perfekt + war/hatte, Dativ dasar, Sopan & penghubung (masing-masing ±20 latihan). |
+| R3 format ujian | `/de/ujian`: Hören (Teil 1–3, 2 suara Thorsten + Kerstin, batas putar 2×/1×), Lesen (Teil 1–3), Schreiben (formulir + pesan, penilaian 3/1,5/0), Sprechen (rekam + contoh + nilai sendiri). 2 set per modul. Simulasi bertimer + rapor. |
+| R4 kesiapan | Kata resmi 30% + grammar 20% + simulasi terbaik 50%, skor per modul. Hasil ujian tersinkron (`de:exam:a1`). |
+| Tes | Vitest: 78 tes unit + integrasi (`npm test`). |
+
+Audio ujian: `npx tsx scripts/de-audio/collect-exam.ts` lalu `python scripts/de-audio/exam.py --male <thorsten.onnx> --female <kerstin.onnx>`.

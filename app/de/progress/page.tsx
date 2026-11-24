@@ -53,6 +53,13 @@ export default function ProgressPage() {
         <p className="text-[11px] text-ink-subtle">Dihitung dari materi & kosakata yang sudah tersedia di MVP ini. Kata dianggap hafal permanen setelah jarak ulangnya ≥ 21 hari.</p>
       </div>
 
+      <Link href="/de/ujian" className="bg-surface border border-ink-faint rounded-card-lg px-4 py-3 flex items-center gap-3 text-sm">
+        <span className="flex-1">
+          <b>Siap ujian?</b> Lihat skor per modul (Hören, Lesen, Schreiben, Sprechen) & coba simulasi.
+        </span>
+        <span className="text-ink-subtle">→</span>
+      </Link>
+
       <section className="flex flex-col gap-3">
         <p className="de-label">Materi grammar</p>
         {ready.map((t) => (

@@ -1,0 +1,156 @@
+import type { LesenSet } from '../types'
+
+export const LESEN: LesenSet[] = [
+  {
+    id: 's1',
+    teil1: [
+      {
+        id: 's1-t1-a',
+        kind: 'email',
+        from: 'Maria',
+        subject: 'Samstag',
+        text: 'Liebe Sophie,\n\nam Samstag habe ich Geburtstag und mache eine kleine Party. Sie beginnt um 19 Uhr bei mir zu Hause. Meine Adresse ist neu: Gartenstraße 12. Du kannst mit dem Bus 34 fahren, die Haltestelle ist direkt vor dem Haus. Kannst du bitte einen Salat mitbringen? Getränke habe ich schon.\n\nBis Samstag!\nMaria',
+        items: [
+          { statement: 'Die Party ist am Abend.', answer: true, explain: 'Sie beginnt um 19 Uhr → abends.' },
+          { statement: 'Sophie soll Getränke mitbringen.', answer: false, explain: 'Maria hat schon Getränke; Sophie soll einen Salat mitbringen.' },
+          { statement: 'Maria wohnt jetzt in einer anderen Straße.', answer: true, explain: '„Meine Adresse ist neu“ → sie wohnt jetzt woanders.' },
+        ],
+      },
+      {
+        id: 's1-t1-b',
+        kind: 'notiz',
+        from: 'Papa',
+        text: 'Hallo Jonas,\nich bin heute bis 20 Uhr im Büro. Mama ist bei Oma. Im Kühlschrank ist Pizza, du musst sie nur 15 Minuten in den Ofen stellen. Bitte mach deine Hausaufgaben und geh nicht zu spät ins Bett!\nPapa',
+        items: [
+          { statement: 'Jonas isst heute mit seinem Vater.', answer: false, explain: 'Papa ist bis 20 Uhr im Büro, Mama bei Oma → Jonas isst allein.' },
+          { statement: 'Das Essen ist schon fertig im Kühlschrank.', answer: true, explain: 'Die Pizza ist im Kühlschrank, er muss sie nur warm machen.' },
+        ],
+      },
+    ],
+    teil2: [
+      {
+        id: 's1-t2-1',
+        situation: 'Sie möchten am Wochenende Deutsch lernen.',
+        a: { title: 'Volkshochschule – Deutschkurse', text: 'Deutsch A1 – Intensivkurs\nSamstag und Sonntag, 9–13 Uhr\nAnmeldung im Raum 104' },
+        b: { title: 'Sprachschule Lingua', text: 'Deutsch für Anfänger\nMontag bis Freitag, 18–20 Uhr\nJetzt anmelden!' },
+        answer: 'a',
+        explain: 'Wochenende = Samstag und Sonntag → Anzeige a.',
+      },
+      {
+        id: 's1-t2-2',
+        situation: 'Sie suchen eine Wohnung für sich und Ihre Familie mit zwei Kindern.',
+        a: { title: 'Wohnung zu vermieten', text: '1-Zimmer-Apartment, 30 m², ideal für Studenten, 450 € warm' },
+        b: { title: 'Familienwohnung frei', text: '4 Zimmer, Küche, Bad, Balkon, 95 m², Spielplatz am Haus, 1.150 €' },
+        answer: 'b',
+        explain: 'Eine Familie mit zwei Kindern braucht mehrere Zimmer → b.',
+      },
+      {
+        id: 's1-t2-3',
+        situation: 'Sie möchten mit dem Zug von Köln nach Berlin fahren und wissen, wann die Züge fahren.',
+        a: { title: 'www.bahn-info.de', text: 'Fahrplan und Tickets: Züge in ganz Deutschland. Verbindung suchen: Von … nach …' },
+        b: { title: 'www.flug-billig.de', text: 'Günstige Flüge ab Köln/Bonn. Berlin ab 39 €!' },
+        answer: 'a',
+        explain: 'Zug + Fahrplan → Bahn-Seite a. b ist für Flüge.',
+      },
+      {
+        id: 's1-t2-4',
+        situation: 'Ihr Fahrrad ist kaputt. Sie möchten es heute reparieren lassen.',
+        a: { title: 'Fahrrad Müller', text: 'Neue Fahrräder – große Auswahl! Montag–Freitag 10–18 Uhr' },
+        b: { title: 'Rad-Service Schmidt', text: 'Reparatur sofort – auch ohne Termin! Täglich 8–20 Uhr' },
+        answer: 'b',
+        explain: 'Reparatur sofort, ohne Termin → b. a verkauft nur neue Räder.',
+      },
+      {
+        id: 's1-t2-5',
+        situation: 'Sie möchten am Sonntag essen gehen.',
+        a: { title: 'Restaurant Adria', text: 'Italienische Küche\nDienstag–Sonntag 12–23 Uhr\nMontag Ruhetag' },
+        b: { title: 'Café Sonne', text: 'Frühstück und Kuchen\nMontag–Samstag 8–18 Uhr\nSonntag geschlossen' },
+        answer: 'a',
+        explain: 'Café Sonne ist sonntags geschlossen; Adria hat sonntags offen → a.',
+      },
+    ],
+    teil3: [
+      { id: 's1-t3-1', place: 'An der Tür einer Arztpraxis', sign: 'Praxis Dr. Weber\nVom 3. bis 14. August Urlaub.\nVertretung: Dr. Klein, Bahnhofstraße 5', statement: 'Im August können Sie zu Dr. Klein gehen.', answer: true, explain: 'Dr. Klein ist die Vertretung während des Urlaubs.' },
+      { id: 's1-t3-2', place: 'Im Supermarkt', sign: 'Kasse 3 – nur Kartenzahlung!\nKein Bargeld.', statement: 'An Kasse 3 können Sie bar bezahlen.', answer: false, explain: 'Kein Bargeld → nur mit Karte.' },
+      { id: 's1-t3-3', place: 'Am Bahnhof', sign: 'Achtung! Der Zug nach Hamburg fährt heute von Gleis 7 ab, nicht von Gleis 5.', statement: 'Der Zug nach Hamburg fährt heute von einem anderen Gleis.', answer: true, explain: 'Heute Gleis 7 statt Gleis 5.' },
+      { id: 's1-t3-4', place: 'An einer Schule', sign: 'Sprachschule Lingua\nSekretariat: Mo–Do 9–16 Uhr, Fr 9–12 Uhr', statement: 'Am Freitagnachmittag ist das Sekretariat offen.', answer: false, explain: 'Freitag nur bis 12 Uhr → nachmittags geschlossen.' },
+      { id: 's1-t3-5', place: 'Im Schwimmbad', sign: 'Eintritt\nErwachsene 5 €\nKinder bis 14 Jahre 2,50 €\nKinder unter 6 Jahren frei', statement: 'Ein Kind mit 4 Jahren muss nichts bezahlen.', answer: true, explain: 'Kinder unter 6 Jahren: frei.' },
+    ],
+  },
+  {
+    id: 's2',
+    teil1: [
+      {
+        id: 's2-t1-a',
+        kind: 'email',
+        from: 'Herr Braun',
+        subject: 'Termin',
+        text: 'Sehr geehrte Frau Santoso,\n\nleider kann ich am Donnerstag nicht zu unserem Termin kommen, ich bin krank. Haben Sie am Montag um 10 Uhr Zeit? Wir können uns wieder in meinem Büro treffen, Raum 215. Bitte rufen Sie mich kurz an: 0221 45 67 89.\n\nMit freundlichen Grüßen\nKarl Braun',
+        items: [
+          { statement: 'Herr Braun möchte den Termin am Donnerstag absagen.', answer: true, explain: '„leider kann ich am Donnerstag nicht … kommen“.' },
+          { statement: 'Der neue Termin ist in einem anderen Büro.', answer: false, explain: '„wieder in meinem Büro“ → dasselbe Büro.' },
+          { statement: 'Frau Santoso soll Herrn Braun eine E-Mail schreiben.', answer: false, explain: 'Sie soll ihn anrufen.' },
+        ],
+      },
+      {
+        id: 's2-t1-b',
+        kind: 'sms',
+        from: 'Lena',
+        text: 'Hi Tim! Ich stehe vor dem Kino, aber der Film ist schon ausverkauft :( Wollen wir stattdessen ins Café am Markt gehen? Ich warte dort auf dich. Lena',
+        items: [
+          { statement: 'Lena und Tim sehen heute den Film.', answer: false, explain: 'Der Film ist ausverkauft.' },
+          { statement: 'Lena wartet im Café.', answer: true, explain: '„Ich warte dort auf dich“ → im Café am Markt.' },
+        ],
+      },
+    ],
+    teil2: [
+      {
+        id: 's2-t2-1',
+        situation: 'Sie möchten am Abend schwimmen gehen.',
+        a: { title: 'Hallenbad Nord', text: 'Montag–Freitag 6–22 Uhr\nSamstag und Sonntag 8–18 Uhr' },
+        b: { title: 'Freibad am See', text: 'Juni–August, täglich 9–17 Uhr' },
+        answer: 'a',
+        explain: 'Abends (nach 17 Uhr) ist nur das Hallenbad offen → a.',
+      },
+      {
+        id: 's2-t2-2',
+        situation: 'Sie möchten ein gebrauchtes Sofa kaufen. Es soll nicht teuer sein.',
+        a: { title: 'Möbelhaus König', text: 'Neue Sofas – heute 10 % Rabatt! Ab 899 €' },
+        b: { title: 'Kleinanzeigen', text: 'Verkaufe mein altes Sofa, 3 Jahre alt, sehr gut, 80 €. Tel. 0176 23 45 11' },
+        answer: 'b',
+        explain: 'gebraucht = alt, nicht neu; billig → b.',
+      },
+      {
+        id: 's2-t2-3',
+        situation: 'Sie sind in Berlin und möchten eine Stadtführung auf Englisch machen.',
+        a: { title: 'Berlin zu Fuß', text: 'Stadtführungen täglich um 11 Uhr – auf Deutsch und Englisch. Treffpunkt: Brandenburger Tor' },
+        b: { title: 'Berlin mit dem Rad', text: 'Fahrräder mieten ab 10 € pro Tag. Stadtplan gratis!' },
+        answer: 'a',
+        explain: 'Führung auf Englisch → a. b vermietet nur Fahrräder.',
+      },
+      {
+        id: 's2-t2-4',
+        situation: 'Sie brauchen am Samstag einen Arzt.',
+        a: { title: 'Hausarztpraxis Dr. Aydin', text: 'Sprechzeiten: Mo, Di, Do 8–12 Uhr und 15–18 Uhr, Mi und Fr 8–12 Uhr' },
+        b: { title: 'Ärztlicher Notdienst', text: 'Am Wochenende und an Feiertagen: Tel. 116 117' },
+        answer: 'b',
+        explain: 'Samstag = Wochenende → Notdienst b.',
+      },
+      {
+        id: 's2-t2-5',
+        situation: 'Ihr Freund hat Geburtstag. Sie möchten ein Geschenk für ihn kaufen.',
+        a: { title: 'Bücher-Ecke', text: 'Bücher, Kalender und Geschenke für jeden Tag. Wir packen Ihr Geschenk gratis ein!' },
+        b: { title: 'Post & Paket', text: 'Pakete schicken – schnell und günstig. Mo–Sa geöffnet.' },
+        answer: 'a',
+        explain: 'Geschenke kaufen → a. Bei b schickt man Pakete.',
+      },
+    ],
+    teil3: [
+      { id: 's2-t3-1', place: 'An der Tür eines Geschäfts', sign: 'Wegen Krankheit heute geschlossen.\nAb morgen sind wir wieder für Sie da!', statement: 'Das Geschäft ist morgen wieder offen.', answer: true, explain: '„Ab morgen sind wir wieder für Sie da“.' },
+      { id: 's2-t3-2', place: 'Im Hotel', sign: 'Frühstück im Restaurant\n6.30–10.00 Uhr\nAm Wochenende bis 11.00 Uhr', statement: 'Am Sonntag gibt es um 10.30 Uhr noch Frühstück.', answer: true, explain: 'Am Wochenende bis 11 Uhr.' },
+      { id: 's2-t3-3', place: 'In der Sprachschule', sign: 'Der Kurs A1 von Frau Lang ist heute nicht in Raum 12, sondern in Raum 20 (2. Stock).', statement: 'Der Kurs ist heute im ersten Stock.', answer: false, explain: 'Raum 20 ist im 2. Stock.' },
+      { id: 's2-t3-4', place: 'Im Park', sign: 'Hunde bitte an die Leine!\nRadfahren verboten.', statement: 'Im Park darf man Rad fahren.', answer: false, explain: 'Radfahren verboten.' },
+      { id: 's2-t3-5', place: 'Am Kino', sign: 'Kinotag!\nJeden Dienstag alle Filme nur 6 €', statement: 'Am Dienstag sind die Kinokarten billiger.', answer: true, explain: 'Dienstag: alle Filme nur 6 €.' },
+    ],
+  },
+]

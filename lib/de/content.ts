@@ -10,6 +10,7 @@ import { A1_AKKUSATIV, A1_MODAL } from './lessons-a1b'
 import { A1_PLURAL, A1_TRENNBAR } from './lessons-a1c'
 import { A1_IMPERATIV, A1_POSSESSIV } from './lessons-a1d'
 import { A1_ZEIT } from './lessons-a1e'
+import { A1_DATIV, A1_HOEFLICH, A1_PERFEKT } from './lessons-a1f'
 
 export type LevelId = 'a1' | 'a2' | 'b1' | 'b2' | 'c1' | 'c2'
 export type Gender = 'der' | 'die' | 'das'
@@ -70,6 +71,9 @@ export const LEVELS: Level[] = [
       { slug: 'possessiv', title: 'Kata Ganti Kepemilikan', summary: 'mein, dein, sein, ihr, unser', body: A1_POSSESSIV },
       { slug: 'imperativ', title: 'Imperativ', summary: 'Komm! Kommt! Kommen Sie!', body: A1_IMPERATIV },
       { slug: 'zeit', title: 'Angka, Jam & Tanggal', summary: 'um 8 Uhr, am Montag, im Mai', body: A1_ZEIT },
+      { slug: 'perfekt', title: 'Perfekt + war/hatte', summary: 'Bercerita tentang kemarin: Ich habe … gemacht', body: A1_PERFEKT },
+      { slug: 'dativ', title: 'Dativ Dasar', summary: 'mir/dir/Ihnen, mit, bei, zum, im', body: A1_DATIV },
+      { slug: 'hoeflich', title: 'Sopan & Penghubung', summary: 'möchte, hätte gern, gern/lieber, und/aber/denn/dann', body: A1_HOEFLICH },
     ],
   },
   {

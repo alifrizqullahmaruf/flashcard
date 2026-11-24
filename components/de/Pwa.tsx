@@ -5,6 +5,8 @@ import { CircleCheck, CloudDownload, Download, Share, SquarePlus, X } from 'luci
 import { CATEGORIES, LEVELS } from '@/lib/de/content'
 import { PRACTICE } from '@/lib/de/exercises'
 import MANIFEST from '@/lib/de/audio-manifest.json'
+import EXAM_AUDIO from '@/lib/de/exam-audio.json'
+import { SETS, TEILE } from '@/lib/de/pruefung'
 import { downloadForOffline, initPwa, promptInstall, useInstallState } from '@/lib/de/pwa'
 
 /** Registers the service worker + captures the install prompt. Render once per layout. */
@@ -104,7 +106,13 @@ function offlineUrls(): string[] {
   const audio = Object.values(MANIFEST as Record<string, { tts: string; native?: { src: string } }>).flatMap((e) =>
     e.native ? [e.tts, e.native.src] : [e.tts],
   )
-  return [...pages, ...audio]
+  // exam practice (each set has its own URL) + its listening audio
+  pages.push('/de/ujian', '/de/ujian/simulasi')
+  for (const [m, parts] of Object.entries(TEILE)) {
+    pages.push(`/de/ujian/${m}`)
+    for (const t of parts) for (const s of SETS) pages.push(`/de/ujian/${m}/${t.n}?set=${s}`)
+  }
+  return [...pages, ...audio, ...Object.values(EXAM_AUDIO as Record<string, string>)]
 }
 
 const DONE_KEY = 'de:offline-downloaded'

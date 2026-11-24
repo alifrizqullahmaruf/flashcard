@@ -5,11 +5,11 @@ import { CategoryIcon } from '@/components/de/icons'
 
 /** Theme groups so a long category list stays scannable. Unknown slugs fall into "Lainnya". */
 const GROUPS: { label: string; slugs: string[] }[] = [
-  { label: 'Diri & keluarga', slugs: ['person', 'familie'] },
-  { label: 'Sehari-hari', slugs: ['zahlen', 'zeit', 'essen', 'einkaufen', 'wohnen'] },
-  { label: 'Kota & perjalanan', slugs: ['stadt', 'reisen'] },
+  { label: 'Diri & keluarga', slugs: ['person', 'formular', 'familie', 'leute'] },
+  { label: 'Sehari-hari', slugs: ['zahlen', 'zeit', 'essen', 'einkaufen', 'wohnen', 'alltag', 'dinge'] },
+  { label: 'Kota & perjalanan', slugs: ['stadt', 'reisen', 'unterwegs'] },
   { label: 'Kesehatan, sekolah & kerja', slugs: ['koerper', 'schule', 'arbeit', 'freizeit', 'kommunikation'] },
-  { label: 'Dasar bahasa', slugs: ['farben', 'wetter', 'verben', 'kleinwoerter'] },
+  { label: 'Dasar bahasa', slugs: ['farben', 'wetter', 'verben', 'adverbien', 'kleinwoerter', 'pronomen'] },
 ]
 
 function grouped(cats: Category[]) {

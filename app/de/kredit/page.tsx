@@ -43,7 +43,7 @@ export default function KreditPage() {
       <section className="paper-card border-2 border-ink-faint rounded-card-lg p-4 flex flex-col gap-2">
         <p className="font-extrabold flex items-center gap-2"><AudioLines size={18} strokeWidth={2.4} />Suara kalimat</p>
         <p className="text-sm text-ink-muted">
-          Kalimat contoh memakai suara <b>Thorsten</b>: suara pria Jerman asli dari dataset terbuka Thorsten-Voice (CC0), dibuat dengan mesin open-source Piper TTS.
+          Kalimat contoh memakai suara <b>Thorsten</b>: suara pria Jerman asli dari dataset terbuka Thorsten-Voice (CC0), dibuat dengan mesin open-source Piper TTS. Dialog latihan ujian (Hören) juga memakai suara perempuan <b>Kerstin</b> dari dataset terbuka Piper (CC0).
         </p>
       </section>
     </div>

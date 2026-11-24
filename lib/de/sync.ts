@@ -18,6 +18,7 @@ import { onAuthStateChanged, type User } from 'firebase/auth'
 import { auth, hasFirebaseConfig } from '@/lib/firebase/client'
 import { createSession } from '@/lib/actions/auth.actions'
 import { deleteKlarState, pullKlarState, pushKlarState } from '@/lib/actions/klar-sync.actions'
+import type { ExamState } from './pruefung/store'
 import { PROGRESS_EVENT, clearDirty, dirtyKeys, isSyncKey, markDirty } from './progress'
 
 type Card = { due?: string; last_review?: string | null; reps?: number }
@@ -53,6 +54,15 @@ export function mergeValue(key: string, local: unknown, remote: unknown): unknow
     const b = remote as { last: string; count: number }
     if (a.last === b.last) return { last: a.last, count: Math.max(a.count, b.count) }
     return a.last > b.last ? a : b
+  }
+  // exam practice: best score per part, simulations merged by id (newest 30 kept)
+  if (key.startsWith('de:exam:')) {
+    const a = local as ExamState
+    const b = remote as ExamState
+    const practice: ExamState['practice'] = { ...b.practice }
+    for (const [k, v] of Object.entries(a.practice ?? {})) if (!practice[k] || v.best >= practice[k].best) practice[k] = v
+    const sims = new Map([...(b.sims ?? []), ...(a.sims ?? [])].map((x) => [x.id, x]))
+    return { practice, sims: [...sims.values()].sort((x, y) => (x.id < y.id ? 1 : -1)).slice(0, 30) }
   }
   if (key === 'de:profile') return Number((local as Json).updatedAt ?? 0) >= Number((remote as Json).updatedAt ?? 0) ? local : remote
   return local
