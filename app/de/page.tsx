@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { ChevronDown, ChevronRight } from 'lucide-react'
 import { CATEGORIES, LEVELS } from '@/lib/de/content'
 import { CategoryIcon } from '@/components/de/icons'
+import { Logo } from '@/components/de/Logo'
 import { NextTopicCard, ReadinessRow, StreakChip, TodayCard } from '@/components/de/HomeToday'
 
 export default function DeHome() {
@@ -10,11 +11,14 @@ export default function DeHome() {
   return (
     <div className="flex flex-col gap-8">
       <header className="flex items-center justify-between">
-        <Link href="/mulai" className="text-sm font-medium text-ink-muted flex items-center gap-1">
-          Deutsch · {a1.label}
-          <ChevronDown size={15} strokeWidth={1.75} />
-        </Link>
-        <StreakChip />
+        <Logo />
+        <div className="flex items-center gap-4">
+          <Link href="/mulai" className="text-sm font-medium text-ink-muted flex items-center gap-1">
+            Deutsch · {a1.label}
+            <ChevronDown size={15} strokeWidth={1.75} />
+          </Link>
+          <StreakChip />
+        </div>
       </header>
 
       <section className="flex flex-col gap-3">

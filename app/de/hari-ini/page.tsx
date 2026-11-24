@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import DailySession from '@/components/de/DailySession'
 
-export const metadata = { title: 'Hari ini · Hafalin Deutsch' }
+export const metadata = { title: 'Hari ini' }
 
 export default function HariIniPage() {
   return (

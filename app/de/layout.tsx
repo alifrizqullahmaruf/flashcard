@@ -1,9 +1,16 @@
+import type { Metadata, Viewport } from 'next'
 import { Geist } from 'next/font/google'
 import DeNav from '@/components/de/DeNav'
 
 const geist = Geist({ subsets: ['latin'], weight: ['400', '500', '600'], variable: '--font-geist', display: 'swap' })
 
-export const metadata = { title: 'Hafalin Deutsch — MVP' }
+export const metadata: Metadata = {
+  title: { default: 'Klar — Bahasa Jerman sampai lulus Goethe', template: '%s · Klar' },
+  description: 'Belajar bahasa Jerman A1–C2 untuk Goethe-Zertifikat: materi grammar, latihan, dan flashcard dengan suara asli.',
+  applicationName: 'Klar',
+}
+
+export const viewport: Viewport = { themeColor: '#FAFAFA' }
 
 export default function DeLayout({ children }: { children: React.ReactNode }) {
   return (

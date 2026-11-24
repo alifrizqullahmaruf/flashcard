@@ -3,7 +3,7 @@ import { ArrowLeft } from 'lucide-react'
 import { ArticleDrill } from '@/components/de/CardStudy'
 import { CATEGORIES, type Category } from '@/lib/de/content'
 
-export const metadata = { title: 'Latihan der/die/das · Hafalin Deutsch' }
+export const metadata = { title: 'Latihan der/die/das' }
 export const dynamic = 'force-dynamic' // a different set of nouns every day
 
 const PER_SESSION = 30

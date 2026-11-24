@@ -4,7 +4,7 @@ import MANIFEST from '@/lib/de/audio-manifest.json'
 
 type Native = { word: string; author: string; license: string; page?: string; file: string }
 
-export const metadata = { title: 'Kredit audio · Hafalin Deutsch' }
+export const metadata = { title: 'Kredit audio' }
 
 export default function KreditPage() {
   const natives = Object.values(MANIFEST as Record<string, { native?: Native }>)

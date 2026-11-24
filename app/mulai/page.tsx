@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { ChevronRight, Lock } from 'lucide-react'
+import { Logo } from '@/components/de/Logo'
 
 // Language codes instead of flags: a flag is a country, not a language.
 const LANGS = [
@@ -13,8 +14,8 @@ export default function MulaiPage() {
     <div className="min-h-dvh">
       <main className="mx-auto max-w-md px-5 py-12 flex flex-col gap-8">
         <div>
-          <p className="de-label">Hafalin</p>
-          <h1 className="text-[2rem] font-semibold tracking-tight leading-tight mt-1">Mau belajar bahasa apa?</h1>
+          <Logo size="lg" />
+          <h1 className="text-[2rem] font-semibold tracking-tight leading-tight mt-6">Mau belajar bahasa apa?</h1>
           <p className="text-ink-muted mt-2">Pilih satu dulu. Kamu bisa ganti kapan saja.</p>
         </div>
         <div className="bg-surface border border-ink-faint rounded-card-lg divide-y divide-ink-faint overflow-hidden">
