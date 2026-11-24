@@ -77,7 +77,7 @@ export function Details({ w }: { w: Word }) {
         <span className="font-semibold">{w.id}</span>
       </Row>
       {w.plural && (
-        <Row k="Jamak">{w.plural === 'Pl.' ? 'hanya bentuk jamak' : w.plural === '–' ? 'tidak ada' : w.plural}</Row>
+        <Row k="Jamak">{w.plural === 'Pl.' ? 'hanya bentuk jamak' : w.plural === '–' ? 'jarang dipakai (tak terhitung)' : w.plural}</Row>
       )}
       {w.forms && <Row k="Bentuk">{w.forms}</Row>}
       <div className="py-2.5 border-t border-ink-faint flex items-start gap-2">

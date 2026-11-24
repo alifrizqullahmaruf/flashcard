@@ -4,11 +4,25 @@ import { ArticleDrill } from '@/components/de/CardStudy'
 import { CATEGORIES, type Category } from '@/lib/de/content'
 
 export const metadata = { title: 'Latihan der/die/das · Hafalin Deutsch' }
+export const dynamic = 'force-dynamic' // a different set of nouns every day
+
+const PER_SESSION = 30
+
+/** Deterministic shuffle seeded by the calendar day (same set all day, new set tomorrow). */
+function dailyShuffle<T>(arr: T[]): T[] {
+  let seed = Number(new Date().toISOString().slice(0, 10).replace(/-/g, ''))
+  const a = [...arr]
+  for (let i = a.length - 1; i > 0; i--) {
+    seed = (seed * 9301 + 49297) % 233280
+    const j = Math.floor((seed / 233280) * (i + 1))
+    ;[a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
 
 export default function LatihanArtikelPage() {
-  // every A1 noun, interleaved across categories so genders are mixed
-  const lists = CATEGORIES.a1.map((c) => c.words.filter((w) => w.gender && w.plural !== 'Pl.'))
-  const words = Array.from({ length: Math.max(...lists.map((l) => l.length)) }).flatMap((_, i) => lists.map((l) => l[i]).filter(Boolean))
+  const nouns = CATEGORIES.a1.flatMap((c) => c.words.filter((w) => w.gender && w.plural !== 'Pl.'))
+  const words = dailyShuffle(nouns).slice(0, PER_SESSION)
   const cat: Category = { slug: 'semua-a1', title: 'Semua kata benda A1', titleDe: 'Alle Nomen', words }
 
   return (
@@ -19,7 +33,7 @@ export default function LatihanArtikelPage() {
       <div>
         <p className="text-xs font-extrabold text-mint-deep">A1 · Latihan kosakata</p>
         <h1 className="font-display font-extrabold text-2xl leading-tight">der, die, atau das?</h1>
-        <p className="text-sm text-ink-muted mt-1">{words.length} kata benda dari semua kategori A1.</p>
+        <p className="text-sm text-ink-muted mt-1">{words.length} dari {nouns.length} kata benda A1 · set baru setiap hari.</p>
       </div>
       <ArticleDrill cat={cat} />
     </div>

@@ -28,7 +28,7 @@ export function solution(ex: Exercise): string | null {
 }
 
 /** Match-pair items that get read aloud when matched. */
-export const matchSpeakable = (s: string) => /[a-zäöüß]/i.test(s)
+export const matchSpeakable = (s: string) => /[a-zäöüß]/i.test(s) && !s.includes('___')
 
 /** Lesson example line → what is spoken (arrows become pauses). */
 export const lessonSpeech = (de: string) => de.replace(/[→–]/g, ',')

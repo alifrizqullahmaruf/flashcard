@@ -6,6 +6,7 @@
 
 import { A1_ARTIKEL, A1_NEGASI, A1_PRAESENS, A1_SATZ } from './lessons'
 import { CATEGORIES } from './vocab'
+import { A1_AKKUSATIV, A1_MODAL } from './lessons-a1b'
 
 export type LevelId = 'a1' | 'a2' | 'b1' | 'b2' | 'c1' | 'c2'
 export type Gender = 'der' | 'die' | 'das'
@@ -59,9 +60,9 @@ export const LEVELS: Level[] = [
       { slug: 'praesens', title: 'Konjugasi Präsens + sein/haben', summary: 'Mengubah kata kerja sesuai subjek', body: A1_PRAESENS },
       { slug: 'satzstellung', title: 'Posisi Kata Kerja & Pertanyaan', summary: 'Verba di posisi 2, W-Fragen, Ja/Nein', body: A1_SATZ },
       { slug: 'negasi', title: 'Negasi: nicht vs. kein', summary: 'Kapan pakai nicht, kapan kein', body: A1_NEGASI },
-      { slug: 'akkusativ', title: 'Akkusativ', summary: 'der → den, ein → einen (objek langsung)' },
+      { slug: 'akkusativ', title: 'Akkusativ', summary: 'der → den, ein → einen (objek langsung)', body: A1_AKKUSATIV },
       { slug: 'plural', title: 'Bentuk Jamak', summary: '-e, -er, -n, -s, dan umlaut' },
-      { slug: 'modalverben', title: 'Modalverben', summary: 'können, müssen, wollen, möchten, dürfen' },
+      { slug: 'modalverben', title: 'Modalverben', summary: 'können, müssen, wollen, möchten, dürfen', body: A1_MODAL },
       { slug: 'trennbar', title: 'Kata Kerja Terpisah', summary: 'aufstehen → Ich stehe um 7 Uhr auf.' },
       { slug: 'possessiv', title: 'Kata Ganti Kepemilikan', summary: 'mein, dein, sein, ihr, unser' },
       { slug: 'imperativ', title: 'Imperativ', summary: 'Komm! Kommt! Kommen Sie!' },
