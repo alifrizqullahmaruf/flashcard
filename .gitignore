@@ -44,3 +44,4 @@ next-env.d.ts
 
 # German MVP: generated text list for the audio build
 scripts/de-audio/texts.json
+scripts/de-vocab/.cache/
