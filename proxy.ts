@@ -5,6 +5,11 @@ export function proxy(request: NextRequest) {
 
   const isAuthRoute = request.nextUrl.pathname.startsWith('/login')
 
+  // German MVP: public, static-data routes (no login needed)
+  if (/^\/(de|mulai)(\/|$)/.test(request.nextUrl.pathname)) {
+    return NextResponse.next()
+  }
+
   if (!session && !isAuthRoute) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
@@ -17,5 +22,6 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico|icon).*)'],
+  // static audio files must stay public (no auth redirect)
+  matcher: ['/((?!_next/static|_next/image|favicon.ico|icon|audio/).*)'],
 }

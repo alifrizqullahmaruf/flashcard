@@ -407,3 +407,150 @@ body {
 .tilt-mild { transform: rotate(-1deg); }
 .tilt-soft { transform: rotate(1deg); }
 .tilt-extra { transform: rotate(-2deg); }
+
+/* ═══ German MVP — flashcard motion ═══ */
+.flip-scene { perspective: 1200px; }
+.flip-inner {
+  position: relative; width: 100%; height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.34, 1.3, 0.5, 1);
+}
+.flip-inner.is-flipped { transform: rotateY(180deg); }
+.flip-face {
+  position: absolute; inset: 0;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  overflow-y: auto;
+}
+.flip-back { transform: rotateY(180deg); }
+
+/* Entrance for 3D cards: scale only. Animating opacity on an ancestor of a
+   preserve-3d/backface-hidden card makes Chrome render the face see-through. */
+@keyframes card-enter {
+  0%   { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+.card-enter { animation: card-enter 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) backwards; }
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-10px); }
+  40% { transform: translateX(9px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(4px); }
+}
+.shake { animation: shake 0.45s ease-in-out; }
+
+@keyframes pop-good {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+.pop-good { animation: pop-good 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+@keyframes sheet-up {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+.sheet-up { animation: sheet-up 0.28s cubic-bezier(0.2, 0.9, 0.3, 1.1); }
+
+@keyframes confetti-fall {
+  0% { transform: translate3d(0, -10vh, 0) rotate(0deg); opacity: 1; }
+  100% { transform: translate3d(var(--dx), 105vh, 0) rotate(var(--rot)); opacity: 0.9; }
+}
+.confetti-piece {
+  position: fixed; top: 0; width: 9px; height: 14px; border-radius: 2px;
+  pointer-events: none; z-index: 60;
+  animation: confetti-fall var(--dur) cubic-bezier(0.25, 0.6, 0.4, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flip-inner { transition: none; }
+  .card-enter { animation: none !important; }
+  .shake, .pop-good, .sheet-up, .confetti-piece { animation: none !important; }
+  .confetti-piece { display: none; }
+}
+
+/* Horizontal chip rows without a visible scrollbar */
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   Hafalin Deutsch — "Calm Minimal + Swiss" (scoped to .de-ui)
+   Neutral UI; the only strong colours are der/die/das + right/wrong.
+   ═══════════════════════════════════════════════════════════════════ */
+.de-ui {
+  /* neutral palette — the old accent tokens are remapped so existing
+     utility classes (bg-mint, text-sky-dark …) render calm & neutral */
+  --color-bg: #FAFAFA;
+  --color-surface: #FFFFFF;
+  --color-bg-soft: #F4F4F5;
+  --color-ink: #0A0A0A;
+  --color-ink-muted: #525252;
+  --color-ink-subtle: #A3A3A3;
+  --color-ink-faint: #E5E5E5;
+
+  --color-mint: #0A0A0A;        /* primary action = black */
+  --color-mint-dark: #262626;
+  --color-mint-deep: #0A0A0A;
+  --color-mint-soft: #F4F4F5;
+
+  --color-coral: #B91C1C;       /* negative */
+  --color-coral-dark: #991B1B;
+  --color-coral-deep: #B91C1C;
+  --color-coral-soft: #FEF2F2;
+
+  --color-sky: #D4D4D4;
+  --color-sky-dark: #0A0A0A;
+  --color-sky-soft: #F4F4F5;
+  --color-sun-soft: #F4F4F5;
+  --color-sun-dark: #525252;
+
+  --color-success: #15803D;
+  --color-success-soft: #F0FDF4;
+  --color-error: #B91C1C;
+
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-weight-extrabold: 600;
+  --font-weight-bold: 500;
+
+  --radius-card: 12px;
+  --radius-card-lg: 14px;
+  --radius-btn: 10px;
+
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: var(--color-bg);
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+}
+.de-ui .font-display { letter-spacing: -0.02em; }
+.de-ui .border-2 { border-width: 1px; }
+.de-ui .paper-card { background-image: none; background-color: var(--color-surface); }
+.de-ui.paper-bg, .de-ui .paper-bg { background-image: none; background-color: var(--color-bg); }
+.de-ui .btn-press { box-shadow: none; transition: transform 120ms ease-out, opacity 120ms; }
+.de-ui .btn-press:active { transform: scale(0.98); }
+.de-ui .skeleton { background: linear-gradient(90deg, #F4F4F5, #FAFAFA, #F4F4F5); background-size: 200% 100%; }
+
+/* Swiss label: small caps-like metadata */
+.de-label {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-ink-subtle);
+}
+/* Big German word */
+.de-word {
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+/* Correct-answer tick */
+@keyframes tick-in {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.tick-in { animation: tick-in 180ms ease-out both; }
+/* one consistent, light icon stroke across the German MVP */
+.de-ui .lucide { stroke-width: 1.75px; }

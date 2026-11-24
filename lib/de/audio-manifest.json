@@ -1,0 +1,704 @@
+{
+ "die Familie": {
+  "tts": "/audio/de/tts/2b20c157f075.mp3"
+ },
+ "Meine Familie wohnt in Bandung.": {
+  "tts": "/audio/de/tts/21f84be6b8c5.mp3"
+ },
+ "die Mutter": {
+  "tts": "/audio/de/tts/7326bf565cef.mp3"
+ },
+ "Meine Mutter ist Ärztin.": {
+  "tts": "/audio/de/tts/f271873eb29d.mp3"
+ },
+ "der Vater": {
+  "tts": "/audio/de/tts/fcfff0a9dae6.mp3"
+ },
+ "Mein Vater kocht gern.": {
+  "tts": "/audio/de/tts/d8d77bc8c009.mp3"
+ },
+ "der Bruder": {
+  "tts": "/audio/de/tts/d7e1c476400c.mp3"
+ },
+ "Ich habe einen Bruder.": {
+  "tts": "/audio/de/tts/07f2a3107fe3.mp3"
+ },
+ "die Schwester": {
+  "tts": "/audio/de/tts/6b0d727039ae.mp3"
+ },
+ "Meine Schwester ist 12 Jahre alt.": {
+  "tts": "/audio/de/tts/82b54a1792c5.mp3"
+ },
+ "das Kind": {
+  "tts": "/audio/de/tts/060f446e03d9.mp3"
+ },
+ "Das Kind spielt im Garten.": {
+  "tts": "/audio/de/tts/eb80d06b4f19.mp3"
+ },
+ "das Mädchen": {
+  "tts": "/audio/de/tts/f9891fcb2169.mp3"
+ },
+ "Das Mädchen heißt Sari.": {
+  "tts": "/audio/de/tts/7f59efa23e58.mp3"
+ },
+ "die Eltern": {
+  "tts": "/audio/de/tts/0665d0a061ac.mp3"
+ },
+ "Meine Eltern kommen aus Medan.": {
+  "tts": "/audio/de/tts/da91f8747a0e.mp3"
+ },
+ "der Sohn": {
+  "tts": "/audio/de/tts/5f90e1d55ec3.mp3"
+ },
+ "Ihr Sohn geht zur Schule.": {
+  "tts": "/audio/de/tts/14b0444afe30.mp3"
+ },
+ "die Tochter": {
+  "tts": "/audio/de/tts/455129563a1c.mp3"
+ },
+ "Meine Tochter liest viel.": {
+  "tts": "/audio/de/tts/f96b08e4869f.mp3"
+ },
+ "das Brot": {
+  "tts": "/audio/de/tts/f162014976c9.mp3"
+ },
+ "Ich esse Brot zum Frühstück.": {
+  "tts": "/audio/de/tts/866756c540d4.mp3"
+ },
+ "der Apfel": {
+  "tts": "/audio/de/tts/ce4784d97052.mp3"
+ },
+ "Der Apfel ist rot.": {
+  "tts": "/audio/de/tts/6d6c1db7372f.mp3"
+ },
+ "die Milch": {
+  "tts": "/audio/de/tts/029101cb0dad.mp3"
+ },
+ "Trinkst du Milch?": {
+  "tts": "/audio/de/tts/75c09d34cd01.mp3"
+ },
+ "das Wasser": {
+  "tts": "/audio/de/tts/c8c474e08fd3.mp3"
+ },
+ "Ein Glas Wasser, bitte.": {
+  "tts": "/audio/de/tts/d04cfc4bd09c.mp3"
+ },
+ "der Kaffee": {
+  "tts": "/audio/de/tts/90f0742abeae.mp3"
+ },
+ "Ich trinke keinen Kaffee.": {
+  "tts": "/audio/de/tts/db8eab96f1f0.mp3"
+ },
+ "das Ei": {
+  "tts": "/audio/de/tts/b1b96a006347.mp3"
+ },
+ "Ich möchte zwei Eier.": {
+  "tts": "/audio/de/tts/278de4b8b394.mp3"
+ },
+ "der Fisch": {
+  "tts": "/audio/de/tts/3386548a6730.mp3"
+ },
+ "Der Fisch ist frisch.": {
+  "tts": "/audio/de/tts/f6e402a6b29a.mp3"
+ },
+ "die Kartoffel": {
+  "tts": "/audio/de/tts/5857e3e02fdf.mp3"
+ },
+ "Die Kartoffeln sind billig.": {
+  "tts": "/audio/de/tts/e65fa30c19ce.mp3"
+ },
+ "essen": {
+  "tts": "/audio/de/tts/e3e6ae9c1b4c.mp3"
+ },
+ "Wir essen um 12 Uhr.": {
+  "tts": "/audio/de/tts/6c62a190194c.mp3"
+ },
+ "trinken": {
+  "tts": "/audio/de/tts/15944aa8a417.mp3"
+ },
+ "Was trinkst du?": {
+  "tts": "/audio/de/tts/3e3af63a6bcd.mp3"
+ },
+ "die Schule": {
+  "tts": "/audio/de/tts/dd7f2a10d0a9.mp3"
+ },
+ "Die Schule beginnt um 7 Uhr.": {
+  "tts": "/audio/de/tts/108415bbad8f.mp3"
+ },
+ "der Lehrer": {
+  "tts": "/audio/de/tts/3c371dca3276.mp3"
+ },
+ "Der Lehrer ist nett.": {
+  "tts": "/audio/de/tts/d28c212991ed.mp3"
+ },
+ "die Lehrerin": {
+  "tts": "/audio/de/tts/10692303f37d.mp3"
+ },
+ "Unsere Lehrerin kommt aus Berlin.": {
+  "tts": "/audio/de/tts/ddf4b613685e.mp3"
+ },
+ "das Buch": {
+  "tts": "/audio/de/tts/c3380ff414d7.mp3"
+ },
+ "Das Buch ist interessant.": {
+  "tts": "/audio/de/tts/7098b8581a4e.mp3"
+ },
+ "das Heft": {
+  "tts": "/audio/de/tts/8e2da929e3e4.mp3"
+ },
+ "Ich brauche ein Heft.": {
+  "tts": "/audio/de/tts/581a419c11e6.mp3"
+ },
+ "der Stift": {
+  "tts": "/audio/de/tts/ea246c850d7e.mp3"
+ },
+ "Hast du einen Stift?": {
+  "tts": "/audio/de/tts/b694b35c7685.mp3"
+ },
+ "der Tisch": {
+  "tts": "/audio/de/tts/759f61b24d88.mp3"
+ },
+ "Das Buch liegt auf dem Tisch.": {
+  "tts": "/audio/de/tts/14f766e17fb8.mp3"
+ },
+ "die Prüfung": {
+  "tts": "/audio/de/tts/a1bb0363e02a.mp3"
+ },
+ "Die Prüfung ist morgen.": {
+  "tts": "/audio/de/tts/77be7419e810.mp3"
+ },
+ "lernen": {
+  "tts": "/audio/de/tts/c06efd0c7a7b.mp3"
+ },
+ "Ich lerne Deutsch.": {
+  "tts": "/audio/de/tts/f88d43d7b2f7.mp3"
+ },
+ "schreiben": {
+  "tts": "/audio/de/tts/032dbf0651e7.mp3"
+ },
+ "Schreib deinen Namen, bitte.": {
+  "tts": "/audio/de/tts/8b652b61b7a4.mp3"
+ },
+ "die Farbe": {
+  "tts": "/audio/de/tts/dc1453dfb414.mp3"
+ },
+ "Welche Farbe magst du?": {
+  "tts": "/audio/de/tts/ea104324c019.mp3"
+ },
+ "rot": {
+  "tts": "/audio/de/tts/bc69ea77c171.mp3"
+ },
+ "Die Tomate ist rot.": {
+  "tts": "/audio/de/tts/a019946e00b6.mp3"
+ },
+ "blau": {
+  "tts": "/audio/de/tts/c453212a7368.mp3"
+ },
+ "Der Himmel ist blau.": {
+  "tts": "/audio/de/tts/821a1c35a930.mp3"
+ },
+ "grün": {
+  "tts": "/audio/de/tts/e9afeb3fb9a1.mp3"
+ },
+ "Das Gras ist grün.": {
+  "tts": "/audio/de/tts/3338e2fe0865.mp3"
+ },
+ "gelb": {
+  "tts": "/audio/de/tts/333101dc6d84.mp3"
+ },
+ "Die Banane ist gelb.": {
+  "tts": "/audio/de/tts/c4a017464cd0.mp3"
+ },
+ "schwarz": {
+  "tts": "/audio/de/tts/4ee1cb43c470.mp3"
+ },
+ "Meine Katze ist schwarz.": {
+  "tts": "/audio/de/tts/20c7cb11fd8d.mp3"
+ },
+ "weiß": {
+  "tts": "/audio/de/tts/a28337b85e51.mp3"
+ },
+ "Der Schnee ist weiß.": {
+  "tts": "/audio/de/tts/42d59d35c564.mp3"
+ },
+ "braun": {
+  "tts": "/audio/de/tts/8b9fb099dbb9.mp3"
+ },
+ "Er hat braune Augen.": {
+  "tts": "/audio/de/tts/8a8043691b2e.mp3"
+ },
+ "grau": {
+  "tts": "/audio/de/tts/55acf8ddc66e.mp3"
+ },
+ "Heute ist der Himmel grau.": {
+  "tts": "/audio/de/tts/229d3d1c49a1.mp3"
+ },
+ "die Zahl": {
+  "tts": "/audio/de/tts/ade50f47eba2.mp3"
+ },
+ "Die Zahl ist zu groß.": {
+  "tts": "/audio/de/tts/e1e27fe3532a.mp3"
+ },
+ "null": {
+  "tts": "/audio/de/tts/0d7fdb1b5261.mp3"
+ },
+ "Meine Nummer beginnt mit null.": {
+  "tts": "/audio/de/tts/e6178d428227.mp3"
+ },
+ "eins": {
+  "tts": "/audio/de/tts/412f156a747e.mp3"
+ },
+ "Eins, zwei, drei – los!": {
+  "tts": "/audio/de/tts/e2e0548efa67.mp3"
+ },
+ "zwei": {
+  "tts": "/audio/de/tts/43b3a5bf0050.mp3"
+ },
+ "Ich habe zwei Brüder.": {
+  "tts": "/audio/de/tts/e1d9cb6e5f1d.mp3"
+ },
+ "drei": {
+  "tts": "/audio/de/tts/c1522f71d209.mp3"
+ },
+ "Das kostet drei Euro.": {
+  "tts": "/audio/de/tts/808a1f792b55.mp3"
+ },
+ "zehn": {
+  "tts": "/audio/de/tts/46b7caba9a59.mp3"
+ },
+ "Der Kurs hat zehn Teilnehmer.": {
+  "tts": "/audio/de/tts/2ef002274de8.mp3"
+ },
+ "zwölf": {
+  "tts": "/audio/de/tts/2843bfd45ed4.mp3"
+ },
+ "Es ist zwölf Uhr.": {
+  "tts": "/audio/de/tts/201378d7ea5d.mp3"
+ },
+ "zwanzig": {
+  "tts": "/audio/de/tts/8375bb3a08dd.mp3"
+ },
+ "Ich bin zwanzig Jahre alt.": {
+  "tts": "/audio/de/tts/da5fa7a04906.mp3"
+ },
+ "einundzwanzig": {
+  "tts": "/audio/de/tts/184015edfbc7.mp3"
+ },
+ "Bus einundzwanzig kommt gleich.": {
+  "tts": "/audio/de/tts/aa9f5ccd347c.mp3"
+ },
+ "hundert": {
+  "tts": "/audio/de/tts/d14d96519284.mp3"
+ },
+ "Das Buch hat hundert Seiten.": {
+  "tts": "/audio/de/tts/6d7a4c4233ef.mp3"
+ },
+ "Das ist ein Tisch. Der Tisch ist neu.": {
+  "tts": "/audio/de/tts/df99b6127bdd.mp3"
+ },
+ "Das ist eine Lampe. Die Lampe ist alt.": {
+  "tts": "/audio/de/tts/b7eba6e77b6d.mp3"
+ },
+ "Das ist ein Buch. Das Buch ist gut.": {
+  "tts": "/audio/de/tts/aaf01fb47f49.mp3"
+ },
+ "Der Vater kocht heute. Er kocht gut.": {
+  "tts": "/audio/de/tts/f09d74acfe4d.mp3"
+ },
+ "Am Montag regnet es. Der Regen ist kalt.": {
+  "tts": "/audio/de/tts/9078136664ff.mp3"
+ },
+ "Der Student wohnt in Berlin.": {
+  "tts": "/audio/de/tts/ab5c9952c8a5.mp3"
+ },
+ "Die Mutter liest. Sie liest eine Zeitung.": {
+  "tts": "/audio/de/tts/3206cb7bc1f3.mp3"
+ },
+ "Die Lehrerin ist sehr nett.": {
+  "tts": "/audio/de/tts/5eb90e1a2460.mp3"
+ },
+ "Die Universität ist groß.": {
+  "tts": "/audio/de/tts/5eb73a12af37.mp3"
+ },
+ "Das Mädchen spielt. Es ist acht Jahre alt.": {
+  "tts": "/audio/de/tts/a8194533924b.mp3"
+ },
+ "Das Essen ist lecker.": {
+  "tts": "/audio/de/tts/b91334d25ad7.mp3"
+ },
+ "Das Hotel ist im Zentrum.": {
+  "tts": "/audio/de/tts/09b7f616fc35.mp3"
+ },
+ "der Tisch , die Tische": {
+  "tts": "/audio/de/tts/7bb68973e7ef.mp3"
+ },
+ "das Kind , die Kinder": {
+  "tts": "/audio/de/tts/a1d02bc6b8c7.mp3"
+ },
+ "Das sind Bücher. Die Bücher sind neu.": {
+  "tts": "/audio/de/tts/22fb267afb65.mp3"
+ },
+ "Du wohnst in Jakarta.": {
+  "tts": "/audio/de/tts/008f4c4c1c82.mp3"
+ },
+ "Wir spielen Fußball.": {
+  "tts": "/audio/de/tts/2fd44454eb22.mp3"
+ },
+ "Er arbeitet in einem Café.": {
+  "tts": "/audio/de/tts/f3456de02ba8.mp3"
+ },
+ "Wie heißt du?": {
+  "tts": "/audio/de/tts/35054f94bfd4.mp3"
+ },
+ "Ich bin Student.": {
+  "tts": "/audio/de/tts/350cbc083107.mp3"
+ },
+ "Sie ist 20 Jahre alt.": {
+  "tts": "/audio/de/tts/2869a2e5a443.mp3"
+ },
+ "Wir haben einen Hund.": {
+  "tts": "/audio/de/tts/88ab006c1710.mp3"
+ },
+ "Hast du Zeit?": {
+  "tts": "/audio/de/tts/788cd9a49010.mp3"
+ },
+ "Er fährt nach Berlin.": {
+  "tts": "/audio/de/tts/9d16f58c8374.mp3"
+ },
+ "Was isst du gern?": {
+  "tts": "/audio/de/tts/2d761d86775b.mp3"
+ },
+ "Wir essen zusammen.": {
+  "tts": "/audio/de/tts/311fdc3c1984.mp3"
+ },
+ "Wie heißen Sie?": {
+  "tts": "/audio/de/tts/8216c87db75f.mp3"
+ },
+ "Woher kommen Sie, Frau Weber?": {
+  "tts": "/audio/de/tts/4c0b75cf9aed.mp3"
+ },
+ "Ich gehe heute ins Kino.": {
+  "tts": "/audio/de/tts/8eba25dfa097.mp3"
+ },
+ "Heute gehe ich ins Kino.": {
+  "tts": "/audio/de/tts/d5952c87e044.mp3"
+ },
+ "In Berlin wohnt meine Schwester.": {
+  "tts": "/audio/de/tts/611f86e3295f.mp3"
+ },
+ "Ich kann gut schwimmen.": {
+  "tts": "/audio/de/tts/84aae60f576e.mp3"
+ },
+ "Wir möchten einen Kaffee trinken.": {
+  "tts": "/audio/de/tts/762cf66b99ed.mp3"
+ },
+ "Woher kommst du? , Ich komme aus Indonesien.": {
+  "tts": "/audio/de/tts/102dff38c2a0.mp3"
+ },
+ "Wann beginnt der Kurs? , Um neun Uhr.": {
+  "tts": "/audio/de/tts/6779bc6a4a7b.mp3"
+ },
+ "Wohnst du in Jakarta? , Ja, ich wohne in Jakarta.": {
+  "tts": "/audio/de/tts/cdcbb96d08e3.mp3"
+ },
+ "Sprichst du Deutsch? , Nein, noch nicht.": {
+  "tts": "/audio/de/tts/c7fc67d46fb1.mp3"
+ },
+ "Kommst du nicht? , Doch, ich komme!": {
+  "tts": "/audio/de/tts/a16818edcb26.mp3"
+ },
+ "Hast du keinen Hunger? , Doch!": {
+  "tts": "/audio/de/tts/0c40a19b7aa4.mp3"
+ },
+ "Das ist ein Hund. , Das ist kein Hund.": {
+  "tts": "/audio/de/tts/482175191ac4.mp3"
+ },
+ "Ich habe einen Bruder. , Ich habe keinen Bruder.": {
+  "tts": "/audio/de/tts/021d7722ab14.mp3"
+ },
+ "Ich trinke Kaffee. , Ich trinke keinen Kaffee.": {
+  "tts": "/audio/de/tts/28e35733b288.mp3"
+ },
+ "Wir haben Zeit. , Wir haben keine Zeit.": {
+  "tts": "/audio/de/tts/9cac77a9a53c.mp3"
+ },
+ "Ich habe keine Geschwister.": {
+  "tts": "/audio/de/tts/d6367854c3ae.mp3"
+ },
+ "Ich komme heute nicht.": {
+  "tts": "/audio/de/tts/6b48c81fff80.mp3"
+ },
+ "Das Buch ist nicht neu.": {
+  "tts": "/audio/de/tts/dc99cf90b024.mp3"
+ },
+ "Ich wohne nicht in Berlin.": {
+  "tts": "/audio/de/tts/689c2386c8d2.mp3"
+ },
+ "Das ist nicht mein Handy.": {
+  "tts": "/audio/de/tts/bc911003b6e9.mp3"
+ },
+ "Ich schwimme nicht gern.": {
+  "tts": "/audio/de/tts/0ef3df1e48a3.mp3"
+ },
+ "Das ist kein Tee, sondern Kaffee.": {
+  "tts": "/audio/de/tts/1e8b37cb877e.mp3"
+ },
+ "Ich wohne nicht in Berlin, sondern in München.": {
+  "tts": "/audio/de/tts/021d1ef04440.mp3"
+ },
+ "Der Montag": {
+  "tts": "/audio/de/tts/7b631d92ee79.mp3"
+ },
+ "Der Lehrer": {
+  "tts": "/audio/de/tts/8af44df95a98.mp3"
+ },
+ "Der Student lernt Deutsch.": {
+  "tts": "/audio/de/tts/afeb8719617c.mp3"
+ },
+ "Er ist neu.": {
+  "tts": "/audio/de/tts/9ef36c485b18.mp3"
+ },
+ "der Sommer": {
+  "tts": "/audio/de/tts/849581327900.mp3"
+ },
+ "der Regen": {
+  "tts": "/audio/de/tts/c54de76924c8.mp3"
+ },
+ "der Januar": {
+  "tts": "/audio/de/tts/ca26e2f801bb.mp3"
+ },
+ "der Norden": {
+  "tts": "/audio/de/tts/80fc0ec4e0c2.mp3"
+ },
+ "Der Vater kocht heute.": {
+  "tts": "/audio/de/tts/c7f6fc1ce54c.mp3"
+ },
+ "Die Zeitung": {
+  "tts": "/audio/de/tts/b464f27c233c.mp3"
+ },
+ "Die Universität": {
+  "tts": "/audio/de/tts/96a33d603bc3.mp3"
+ },
+ "Das ist eine Lehrerin.": {
+  "tts": "/audio/de/tts/453a9167d3d5.mp3"
+ },
+ "Sie ist kaputt.": {
+  "tts": "/audio/de/tts/9c25c0f2eadc.mp3"
+ },
+ "die Freiheit": {
+  "tts": "/audio/de/tts/aa07cdfa10dc.mp3"
+ },
+ "die Information": {
+  "tts": "/audio/de/tts/bfe22ebf5268.mp3"
+ },
+ "die Freundschaft": {
+  "tts": "/audio/de/tts/dcdef0e62b46.mp3"
+ },
+ "die Musik": {
+  "tts": "/audio/de/tts/419b32e2f1ce.mp3"
+ },
+ "Die Mutter liest eine Zeitung.": {
+  "tts": "/audio/de/tts/03d33d5e2523.mp3"
+ },
+ "Das Mädchen": {
+  "tts": "/audio/de/tts/edcb677680a1.mp3"
+ },
+ "Das Museum": {
+  "tts": "/audio/de/tts/51f41c81a2c8.mp3"
+ },
+ "Das ist ein Hotel.": {
+  "tts": "/audio/de/tts/cda7d042cd60.mp3"
+ },
+ "Es ist neun.": {
+  "tts": "/audio/de/tts/a130507f3d49.mp3"
+ },
+ "das Brötchen": {
+  "tts": "/audio/de/tts/38837d6f2962.mp3"
+ },
+ "das Kino": {
+  "tts": "/audio/de/tts/9fc4ed0c8fba.mp3"
+ },
+ "das Thema": {
+  "tts": "/audio/de/tts/0e8a4c7a8168.mp3"
+ },
+ "Die Bücher": {
+  "tts": "/audio/de/tts/b00e45b38eea.mp3"
+ },
+ "Die Haustür": {
+  "tts": "/audio/de/tts/54c4b153c00b.mp3"
+ },
+ "Das Schulbuch": {
+  "tts": "/audio/de/tts/5ec0e75a4c94.mp3"
+ },
+ "Wo sind die Kinder?": {
+  "tts": "/audio/de/tts/26f8a4f4bd6e.mp3"
+ },
+ "der": {
+  "tts": "/audio/de/tts/883ad8742701.mp3"
+ },
+ "die (tunggal)": {
+  "tts": "/audio/de/tts/af0974da6d73.mp3"
+ },
+ "das": {
+  "tts": "/audio/de/tts/a0c06bc93049.mp3"
+ },
+ "die (jamak)": {
+  "tts": "/audio/de/tts/3338b26988c7.mp3"
+ },
+ "Ich wohne in Jakarta.": {
+  "tts": "/audio/de/tts/fd4c7dd7f1ed.mp3"
+ },
+ "Du lernst Deutsch.": {
+  "tts": "/audio/de/tts/2712e96cd7ae.mp3"
+ },
+ "ich": {
+  "tts": "/audio/de/tts/9adb45559e79.mp3"
+ },
+ "du": {
+  "tts": "/audio/de/tts/cfca1f787e3f.mp3"
+ },
+ "wir": {
+  "tts": "/audio/de/tts/48e552e273cb.mp3"
+ },
+ "ihr": {
+  "tts": "/audio/de/tts/fc47196e6363.mp3"
+ },
+ "Wir spielen heute Fußball.": {
+  "tts": "/audio/de/tts/7495c673b352.mp3"
+ },
+ "Ihr seid sehr nett.": {
+  "tts": "/audio/de/tts/614bd71aea19.mp3"
+ },
+ "Anna hat heute Geburtstag.": {
+  "tts": "/audio/de/tts/a89a18a67df6.mp3"
+ },
+ "er": {
+  "tts": "/audio/de/tts/9aa6626a8708.mp3"
+ },
+ "Du liest gern Bücher.": {
+  "tts": "/audio/de/tts/42b96eb22d7e.mp3"
+ },
+ "Ich spreche ein bisschen Deutsch.": {
+  "tts": "/audio/de/tts/dbbb799b2657.mp3"
+ },
+ "Frau Weber, wo wohnen Sie?": {
+  "tts": "/audio/de/tts/e71a208407e0.mp3"
+ },
+ "lesen": {
+  "tts": "/audio/de/tts/af2c8e43f110.mp3"
+ },
+ "schlafen": {
+  "tts": "/audio/de/tts/e3848817c737.mp3"
+ },
+ "helfen": {
+  "tts": "/audio/de/tts/eccd651b3fc7.mp3"
+ },
+ "Heute lerne ich Deutsch.": {
+  "tts": "/audio/de/tts/3e4cbd669b69.mp3"
+ },
+ "Am Wochenende spiele ich Tennis.": {
+  "tts": "/audio/de/tts/c8a27074c739.mp3"
+ },
+ "Ich": {
+  "tts": "/audio/de/tts/a52f2b2e94cf.mp3"
+ },
+ "Heute": {
+  "tts": "/audio/de/tts/e3468e64ca19.mp3"
+ },
+ "Morgen": {
+  "tts": "/audio/de/tts/d80a4cc8f9b3.mp3"
+ },
+ "Wir": {
+  "tts": "/audio/de/tts/edce31bf7340.mp3"
+ },
+ "Woher kommst du? – Aus Indonesien.": {
+  "tts": "/audio/de/tts/fc6a4dd3ea5f.mp3"
+ },
+ "Wie heißt du? – Ich heiße Rina.": {
+  "tts": "/audio/de/tts/2705c63e8cb9.mp3"
+ },
+ "Wo wohnst du? – In Surabaya.": {
+  "tts": "/audio/de/tts/fded79b55834.mp3"
+ },
+ "wer": {
+  "tts": "/audio/de/tts/8a5d24bc01ae.mp3"
+ },
+ "was": {
+  "tts": "/audio/de/tts/4cf9b4743ec8.mp3"
+ },
+ "wann": {
+  "tts": "/audio/de/tts/8ea23129729a.mp3"
+ },
+ "warum": {
+  "tts": "/audio/de/tts/7c554ecd9bdd.mp3"
+ },
+ "Wann beginnt der Kurs?": {
+  "tts": "/audio/de/tts/9cc23fed9584.mp3"
+ },
+ "Sprichst du Deutsch?": {
+  "tts": "/audio/de/tts/d13a928dc8ec.mp3"
+ },
+ "Wohnst du in Jakarta?": {
+  "tts": "/audio/de/tts/2cee19f4db06.mp3"
+ },
+ "Trinkst du Kaffee? – Ja, gern.": {
+  "tts": "/audio/de/tts/d3781947ebac.mp3"
+ },
+ "Kommst du nicht? – Doch, ich komme!": {
+  "tts": "/audio/de/tts/b0065feb19fb.mp3"
+ },
+ "Hast du keinen Hunger?": {
+  "tts": "/audio/de/tts/e14fd663cf9f.mp3"
+ },
+ "Bist du müde?": {
+  "tts": "/audio/de/tts/a89442478af5.mp3"
+ },
+ "Das ist kein Hund.": {
+  "tts": "/audio/de/tts/ff8fe36901d0.mp3"
+ },
+ "Wir haben keine Zeit.": {
+  "tts": "/audio/de/tts/cf80b71ce127.mp3"
+ },
+ "Ich habe keinen Bruder.": {
+  "tts": "/audio/de/tts/7e0d1e344658.mp3"
+ },
+ "Ich trinke keine Milch.": {
+  "tts": "/audio/de/tts/6a4aa08f6c9f.mp3"
+ },
+ "Das ist ein Auto.": {
+  "tts": "/audio/de/tts/dda612188ce9.mp3"
+ },
+ "Ich habe eine Katze.": {
+  "tts": "/audio/de/tts/8f9e23ebe9b2.mp3"
+ },
+ "Ich habe einen Stift.": {
+  "tts": "/audio/de/tts/9f7f74804cf7.mp3"
+ },
+ "Ich esse Fleisch.": {
+  "tts": "/audio/de/tts/6a37544adced.mp3"
+ },
+ "Wir haben kein Auto.": {
+  "tts": "/audio/de/tts/27fefb30c972.mp3"
+ },
+ "Das ist nicht der Lehrer.": {
+  "tts": "/audio/de/tts/44f07643cb6a.mp3"
+ },
+ "Ich bin nicht müde.": {
+  "tts": "/audio/de/tts/70dbe1b26046.mp3"
+ },
+ "Das ist kein Problem.": {
+  "tts": "/audio/de/tts/6d275950ad90.mp3"
+ },
+ "Ich bin müde.": {
+  "tts": "/audio/de/tts/9003a584cf1a.mp3"
+ },
+ "Ich habe Hunger.": {
+  "tts": "/audio/de/tts/a82bd6dc3141.mp3"
+ },
+ "Das ist eine Tasche.": {
+  "tts": "/audio/de/tts/a5436ac47bef.mp3"
+ },
+ "Ich wohne in Köln.": {
+  "tts": "/audio/de/tts/f38cbffdf611.mp3"
+ }
+}
